@@ -1,0 +1,16 @@
+
+.utility-button.debug-button {
+    background-color: var(--color-button-bg);
+}
+body .iaridash .header h1 {
+    color: var(--color-title);
+}
+.data-grid .data-row {
+    background-color: var(--color-grid-bg);
+}
+.control-box {
+    background-color: var(--color-control-box-bg);
+}
+.data-lines {
+    background-color: var(--color-data-lines-bg);
+}
