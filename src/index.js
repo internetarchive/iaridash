@@ -4,7 +4,8 @@ import App from './App.js';
 import 'react-tooltip/dist/react-tooltip.css'
 
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import './custom.scss'; // includes bootstrap.scss
+// import './custom.scss'; // includes bootstrap.scss
+import 'bootstrap/scss/bootstrap.scss';
 
 import './index.css';
 import './custom_defs_v1.css';
