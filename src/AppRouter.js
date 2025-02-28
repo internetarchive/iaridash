@@ -1,6 +1,7 @@
 // src/AppRouter.js
 import React from 'react';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+// import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Home from './components/pages/Home';
 import Grid from './components/pages/Grid';
 import Command from './components/pages/Command';
@@ -12,7 +13,7 @@ const  AppRouter = () => {
     console.log("rendering AppRouter.js")
 
     return (
-        <BrowserRouter>
+        <Router>
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
@@ -21,7 +22,7 @@ const  AppRouter = () => {
                     <Route path="/links" element={<TestLinks/>}/>
                 </Route>
             </Routes>
-        </BrowserRouter>
+        </Router>
     );
 };
 
