@@ -1,5 +1,6 @@
 // src/components/pages/TestLinks.js
 import React from 'react';
+import RouteHeader from "../RouteHeader";
 
 const TestLinks = () => {
 
@@ -57,26 +58,20 @@ const TestLinks = () => {
         }
 
     return <>
-        <div className={"container-fluid"}>
-            
-            <div className={"row"}>
-                <h1>Test Links</h1>
-            </div>
+        <RouteHeader caption = {"Test Links"} />
 
+        <div className={"container-fluid"}>
             <div className="row">
                 <div className={"col-12"}>
-
                     {
                         iari_sources.map(iSrc => {
                             return linksForSource(iSrc)
                         })
                     }
-
                 </div>
             </div>
-
         </div>
     </>
-};
+}
 
-export default TestLinks;
+export default TestLinks

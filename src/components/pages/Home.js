@@ -1,6 +1,7 @@
 // src/components/pages/Home.js
 import React, {useState} from 'react';
 import {getIabotArchiveData, getWaybackArchiveData} from "./../../utils/archiveUtils"
+import RouteHeader from "../RouteHeader";
 
 const Home = () => {
 
@@ -83,12 +84,11 @@ const Home = () => {
         onClick={engageWaybackArchive}><span>Query Wayback Archive</span></button>
 
 
-    return ( <div className={"container-fluid"}>
-            <div className={"row"}>
-                <h1>Home</h1>
-                <p>Welcome to the Home page</p>
-            </div>
+    return ( <>
+        <RouteHeader caption = {"Home"}
+                     subCaption = "Welcome to the Home page" />
 
+        <div className={"container-fluid"}>
             <div className={"row"}>
 
                 <div className={"row header-left-part"}>
@@ -115,7 +115,7 @@ const Home = () => {
                               />
             </div>
         </div>
-    );
-};
+    </> )
+}
 
-export default Home;
+export default Home

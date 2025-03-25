@@ -35,8 +35,8 @@ const displayUrlStatus = (cellData) => {
 
         return <>
             <div className={"url-status-col"} key={i} >
-                <div className={"status-code"}>{d?.status_code ? d.status_code : "?"}</div>
-                <div>{d?.elapsed ? `${Math.trunc(d.elapsed)} ms` : "~"}</div>
+                <div key={"x1"} className={"status-code"}>{d?.status_code ? d.status_code : "?"}</div>
+                <div key={"x2"}>{d?.elapsed ? `${Math.trunc(d.elapsed)} ms` : "~"}</div>
                 {d?.status_code_error_details && d.status_code === 0
                     ? d.status_code_error_details
                     : null}

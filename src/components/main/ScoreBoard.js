@@ -33,52 +33,11 @@ export default function ScoreBoard({options = {}}) {
 
     /*
     gridDef is the definition of operation(s) to apply for each column in the grid.
-    the results are placed in gridData
+    The results are placed in gridData
     */
     const myGridDef = gridDef
     // NB chrome dev tools does not like imported constants...
-    //  by assigning to a new variable, we can fix this behavior
-
-                // /*
-                // gridData is what is rendered in dashboard grid
-                //                 *** for now, it is totes hard-coded. it has a row entry for each item in gridItems, and each
-                //                     row has a place to hold information about that row (like fetch status, e.g.), and a column for
-                //                     data for each defined column in gridDef
-                //                 *** should be initialized with empty values for each entry of gridItems
-                // */
-                // // const [gridData, setGridData] = useState(testGridData)
-                // const [gridData, setGridData] = useState({})
-
-
-                // const [gridItems, setGridItems] = useState([
-                //     "https://www.bbc.com/news/business-63953096",
-                //     "https://www.politico.com/amp/news/2022/11/09/crypto-megadonor-sam-bankman-fried-00066062",
-                // ])
-                    // const gridItems = [
-                    //     "https://www.bbc.com/news/business-63953096",
-                    //     "https://www.politico.com/amp/news/2022/11/09/crypto-megadonor-sam-bankman-fried-00066062",
-                    // ]
-
-                // const testPromises = async () => {
-                //     // const resultss = testPromiseA()
-                //     // console.log("results of testPromiseA: ", results)
-                //     // alert("testPromise: return from testPromiseA")
-                //
-                //             // const item = "item1"
-                //             // const promiseArray = [
-                //             //     testPromiseA, testPromiseB, testPromiseC,
-                //             // ]
-                //             //
-                //             // const var2 = "xyz"
-                //             //
-                //             // const myValues = await Promise.allSettled(promiseArray.map(promiseFunc => {
-                //             //     return promiseFunc.call(item, var2)
-                //             // }))
-                //             //
-                //             // console.log("testPromises returned values:", myValues)
-                //
-                //     return "test promises results"
-                // }
+    //  by assigning to a new variable, we fix this behavior
 
     // returns dict of results for each column operation in gridDef for item specified.
     const fetchRowData = async (item, gridDef) => {
@@ -103,16 +62,14 @@ export default function ScoreBoard({options = {}}) {
         return rowData
     }
 
-    /*
-        newRowData is assumed to be a keyed dict of column keys with their data
-     */
+
     const setItemStatus = (item, newStatus) => {
 
         setGridData(oldGridData => {
             const newItemState = oldGridData[item]
 
+            // if item did not exist in old gridData, create it
             if (!newItemState) {
-                // if item does not exist in gridData, create it
                 return {
                     ...oldGridData,
                     [item]: getNewRow(item, newStatus)

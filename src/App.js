@@ -76,10 +76,12 @@ export default function App({env, myPath, myRefresh, myMethod, myIariSourceId, m
         <Dropdown choices={iariChoices} label={'Iari Source:'} onSelect={handleIariSourceIdChange} defaultChoice={myIariSourceId}/>
     </div>
 
-    const versionDisplay = `version ${package_json.version}`
-    const siteDisplay = (env !== 'env-production') ? ` STAGING SITE ` : ''
+    const versionInfo = `version ${package_json.version}`
+    const siteInfo = (env !== 'env-production')
+        ? (env !== 'env-staging' ? ` LOCAL SITE ` : ` STAGING SITE `)
+        : ''
 
-    const showHideDebugButton = (env !== 'env-production') && <button className={"utility-button debug-button small-button"}
+    const buttonShowDebug = (env !== 'env-production') && <button className={"utility-button debug-button small-button"}
             onClick={toggleDebug} >{
                 isDebug ? <>&#8212;</> : "+"  // dash and plus sign
             }</button>
@@ -90,12 +92,12 @@ export default function App({env, myPath, myRefresh, myMethod, myIariSourceId, m
     const config = {
         appTitle: appTitle,
         environment: env,
-        versionDisplay: versionDisplay,
-        siteDisplay: siteDisplay,
-        showHideDebugButton: showHideDebugButton,
+        versionDisplay: versionInfo,
+        siteDisplay: siteInfo,
         iariBase: IariSources[myIariSourceId]?.proxy,
         urlStatusMethod: checkMethod,
         isDebug: !!isDebug,
+        buttonShowDebug: buttonShowDebug,
         isShowShortcuts: isShowShortcuts,
         isShowExpertMode: isShowExpertMode,
         isShowNewFeatures: isShowNewFeatures,
@@ -149,7 +151,13 @@ export default function App({env, myPath, myRefresh, myMethod, myIariSourceId, m
         <p><span className={'label'}>Force Refresh:</span> {refreshCheck ? "TRUE" : "false"}</p>
 
     </div>
+    config.debugContents = debug
 
+    // in the following render, we wrap in ConfigContext to provide general config values to any
+    // component in the sub-tree, and
+    // provide DataContext to provide access to data that is retained across routing changes (within AppRouter).
+    // If we did not pass dataContext from up at thos level, data for the Grid component would be reset every time
+    // we changed the route. I suppose there are other ways to persist state or data (like a db)
     return (
         <ConfigContext.Provider value={config}>
             <DataContext.Provider value={{gridItems, setGridItems, gridData, setGridData}}>

@@ -1,6 +1,6 @@
-// src/components/pages/Command.js
 import React from 'react';
 import CommandTest from "../main/CommandTest";
+import RouteHeader from "../RouteHeader";
 
 const Command = () => {
 
@@ -21,18 +21,17 @@ const Command = () => {
 
     }
 
-    return (<div className={"container-fluid"}>
-            <div className={"row"}>
-                <h1>Command Tester</h1>
-                <p>Page to exercise commands over the wire</p>
-            </div>
+    return (<>
+        <RouteHeader caption = {"Command Tester"} subCaption = "Page to exercise commands over the wire" />
 
+        <div className={"container-fluid"}>
             <div className="row">
                 <div className={"col-12"}>
                     <CommandTest commandData={{}} onAction={handleAction}/>
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

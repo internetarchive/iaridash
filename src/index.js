@@ -16,11 +16,12 @@ import {UrlStatusCheckMethods} from "./constants/checkMethods";
 import {IariSources} from "./constants/endpoints";
 
 const getEnvironment = () => {
+    // return 'env-staging'
     const REGEX_PRODUCTION_ENV = new RegExp(/^(?:(?:[\w-]+\.)+)?(?:[\w-]+\.)?archive\.org$/);  // if "(\.?)archive.org" at end of string
     const host = window.location.host
     if (REGEX_PRODUCTION_ENV.test(host)) return 'env-production'
     if (host === "internetarchive.github.io") return 'env-staging'
-    if (host === "localhost:3000") return 'env-local'
+    if (host === "localhost:3300") return 'env-local'
     return "env-other"
 }
 
@@ -41,17 +42,16 @@ const getIariSource = (qParams, targetEnvironment) => {
 }
 
 const getMethod = (qParams, targetEnvironment) => {
-    // const temporaryDefaultKey = UrlStatusCheckMethods.WAYBACK.key  // hard-set to WAYBACK for production
-    const temporaryDefaultKey = UrlStatusCheckMethods.IABOT.key  // using IABot until LWC settles down
+    const keyDefaultMethod = UrlStatusCheckMethods.WAYBACK.key
 
-    if (targetEnvironment === 'env-production') return temporaryDefaultKey
+    if (targetEnvironment === 'env-production') return keyDefaultMethod
     // else
-    const methodKey = queryParameters.has("method") ? queryParameters.get("method") : temporaryDefaultKey
+    const methodKey = queryParameters.has("method") ? queryParameters.get("method") : keyDefaultMethod
 
-    // if specified mehtod not in our defined choices, default to WAYBACK, and error
+    // if specified method not in defined methods, default to keyDefaultMethod, and log error
     if (!UrlStatusCheckMethods[methodKey]) {
         console.error(`Method ${methodKey} not supported.`)
-        return temporaryDefaultKey
+        return keyDefaultMethod
     }
     return methodKey
 }
