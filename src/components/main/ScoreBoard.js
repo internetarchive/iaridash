@@ -158,7 +158,7 @@ export default function ScoreBoard({options = {}}) {
             // const results = fetchRowData(item, myGridDef)
 
             setItemStatus(item, 0)
-
+``
             // fetchRowData returns a promise, so we can chain it with .then
             fetchRowData(item, myGridDef)
 

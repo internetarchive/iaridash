@@ -1,6 +1,7 @@
 import React from "react";
 import {Link, useLocation} from "react-router-dom";
 import {ConfigContext} from "./contexts/ConfigContext";
+import {IareEnvironments} from "./constants/environments";
 
 export default function AppHeader({
                                       appTitle,
@@ -15,17 +16,25 @@ export default function AppHeader({
     let myConfig = React.useContext(ConfigContext)
     myConfig = myConfig ? myConfig : {} // prevents undefined myConfig.[param_name] errors
 
-    const localRoutes = (myConfig.environment === "env-local")
-        ? <>
-            <li>
-                <Link to="/command" className={location.pathname === "/command" ? "active-link" : ""}>Command Tester</Link>
-            </li>
-            <li>
-                <Link to="/links" className={location.pathname === "/links" ? "active-link" : ""}>Test Links</Link>
-            </li>
-        </>
-        : null
+    const publicRoutes = [
+        ["/",'Home'],
+        ["/tarb",'TARB Insights'],
+        ["/webrx",'Web Rx'],
+        ["/grid",'Data Grid'],
+    ].map( rp => {
+        return <li key={rp[0]}>
+            <Link to={rp[0]} className={location.pathname === rp[0] ? "active-link" : ""}>{rp[1]}</Link>
+        </li>
+    })
 
+    const localRoutes = [
+        ["/command", 'Command Tester'],
+        ["/links", 'Link Tester'],
+    ].map(rp => {
+        return <li key={rp[0]}>
+            <Link to={rp[0]} className={location.pathname === rp[0] ? "active-link" : ""}>{rp[1]}</Link>
+        </li>
+    })
 
     return <div className={"header"}>
 
@@ -37,18 +46,10 @@ export default function AppHeader({
 
         <nav className={"main-page-nav"}>
             <ul>
-                <li>
-                    <Link to="/" className={location.pathname === "/" ? "active-link" : ""}>Home</Link>
-                </li>
-                <li>
-                    <Link to="/tarb" className={location.pathname === "/tarb" ? "active-link" : ""}>TARB Insights</Link>
-                </li>
-                <li>
-                    <Link to="/grid" className={location.pathname === "/grid" ? "active-link" : ""}>Data Grid</Link>
-                </li>
-
-                {localRoutes}
-
+                {publicRoutes}
+                {myConfig.environmentKey === IareEnvironments.LOCAL.key
+                    ? localRoutes
+                    : null}
             </ul>
         </nav>
 
