@@ -2,8 +2,14 @@
 import React from 'react';
 import RouteHeader from "../RouteHeader";
 import WebRxStats from "../main/WebRxStats";
+import '../main/webrx.css';
+import webRxData from '../../__tests__/_test_data/webRxData.json';
 
 const WebRx = () => {
+
+    // await fetch results for rx data:
+////    iariSource/insights
+
 
     // useEffect( () => { // [myIariBase, pageData, processReferences, processUrls, myStatusCheckMethod]
     //
@@ -83,9 +89,10 @@ const WebRx = () => {
 
 
     return <>
-            <RouteHeader caption = {"WebRx"}
+            <RouteHeader caption = {"WebRx Statistics"}
                          subCaption = "Show WebRx aggregate data results." />
-            <WebRxStats options={{dateRange:"2001-2025", anotherDate:"latest"}} />
+            <WebRxStats webRxData={webRxData}
+                        options={{dateRange:"2001-2025", anotherDate:"latest"}} />
         </>
 
 }
