@@ -90,7 +90,7 @@ const WebRx = () => {
 
     return <>
             <RouteHeader caption = {"WebRx Statistics"}
-                         subCaption = "Show WebRx aggregate data results." />
+                         subCaption = {false && "Show WebRx aggregate data results."} />
             <WebRxStats webRxData={webRxData}
                         options={{dateRange:"2001-2025", anotherDate:"latest"}} />
         </>

@@ -1,22 +1,28 @@
 /* webrx css */
+:root {
+    --width-webrx-cell: 6rem;
+    --width-webrx-cell-first: 10rem;
+    --height-webrx-detail-table: 21.75rem;
+}
 
 .iari-table-display {
     margin-bottom:1rem;
 }
+
 .webrx-table {
-    max-height:21.75rem;
+    max-height:var(--height-webrx-detail-table);
     overflow: scroll;
 }
 
 .webrx-table th {
-    max-width: 5rem;
-    min-width: 5rem;
+    max-width: var(--width-webrx-cell);
+    min-width: var(--width-webrx-cell);
     text-align: center;
 }
 
 .webrx-table th:first-child {
-    max-width:10rem;
-    min-width:10rem;
+    max-width:var(--width-webrx-cell-first);
+    min-width:var(--width-webrx-cell-first);
     text-align: left;
 }
 
@@ -39,5 +45,24 @@
 
 .webrx-table .stats-by-site {
     max-height: 22rem;
-    overflowY: "auto"
+    overflowY: auto;
+}
+
+.webrx-table-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.webrx-table-element {
+    /*border: 3px solid palevioletred;*/
+}
+
+.webrx-table-main {
+    flex-basis: auto;
+}
+
+.webrx-table-filler {
+    flex-basis: auto;
 }

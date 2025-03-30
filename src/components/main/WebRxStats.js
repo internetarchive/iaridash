@@ -120,18 +120,30 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
     }
 
 
-    const colsTotals = getColumnData(webRxData['table_totals']['column_names'], "Table Name")
-    const dataTotals = getRowData(webRxData['table_totals']['tables'])
+    const tableTotals = {
+        cols: getColumnData(webRxData['table_totals']['column_names'], "Table Name"),
+        rows: getRowData(webRxData['table_totals']['tables'])
+    }
     const tables = transformTableData(webRxData['tables'])
 
+    const handleSelectionChange = (selectedId) => {
+        console.log(`Selection changed, ${selectedId}`)
+    }
 
     return <>
 
+        {/* Totals Table */}
         <div className="row iari-table-display">
             <div className="col col-12">
-                <h3>WebRx Statistics, All Wikis</h3>
+                <h3>All Wikis Total</h3>
                 <div className="webrx-table">
-                    <Table data={dataTotals} columns={colsTotals} />
+                    {/*<Table data={dataTotals} columns={colsTotals} onSelectionChange={handleSelectionChange} sortable={false}/>*/}
+                    <Table
+                        data={tableTotals.rows}
+                        columns={tableTotals.cols}
+                        onSelectionChange={handleSelectionChange}
+                        sortable={false}
+                    />
                 </div>
             </div>
         </div>
@@ -143,14 +155,28 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
         </>)}
 
         {tables.map( (table, i) => {
-            return <div className="row iari-table-display" key={i}>
-                <div className="col col-12">
-                    <h3>{table.name}</h3>
-                    <div className="webrx-table">
-                        <Table data={table.rows} columns={table.cols} className={"stats-by-site"} />
+            return (
+                <div className="row iari-table-display" key={i}>
+                    <div className="col col-12">
+                        <div className={"webrx-table-wrapper"}>
+                            <div className={"webrx-table-element webrx-table-main"}>
+                                <h3>{table.name}</h3>
+                                <div className="webrx-table">
+                                    <Table
+                                        data={table.rows}
+                                        columns={table.cols}
+                                        className={"stats-by-site"}
+                                        sortable={true}
+                                    />
+                                </div>
+                            </div>
+                            <div className={"webrx-table-element webrx-table-filler"}>
+                                &nbsp;
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            )
         })}
 
     </>
