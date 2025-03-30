@@ -1,9 +1,19 @@
 import React from "react";
-import RawJson from "../RawJson";
+// import RawJson from "../RawJson";
 import Table  from "../Table"
 
 
 export default function WebRxStats({webRxData={}, options = null, onAction}) {
+
+    // const selectedRowRef = React.useRef(null);
+    const [selectedRow, setSelectedRow] = React.useState(null);
+
+    const handleSelectionChange = React.useCallback((selectedId) => {
+        setSelectedRow(selectedId); // Updates selection without unnecessary re-renders
+        // selectedRowRef.current = selectedId;
+        console.log(`Selected row changed to: ${selectedId}`)
+    }, [])
+
 
     // // Sample Data
 
@@ -19,49 +29,60 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
     //     { id: 3, name: "Charlie", age: 35 },
     // ];
 
-    const getColumnData = (dataColNames =[], idCaption = "ID") => {
-        // define columns
-        const cols = []
-        cols.push({
-            accessorKey: "id", header: idCaption
-        })
-
-        // add column names as columns with keys dX, where X is index of column
-        dataColNames.forEach( (colName, i) => {
+    const getTableTotals = (tableData = {}) => {
+        const getColumnData = (dataColNames =[], idCaption = "ID") => {
+            // define columns
+            const cols = []
             cols.push({
-                accessorKey: `d${i}`, header: colName
-            })
-        })
-
-        // add final "Total" column
-        cols.push({
-            accessorKey: "total", header: "Total"
-        })
-
-        return cols
-    }
-
-
-    const getRowData = (dataRows =[], idKey = "name", totalKey="total") => {
-        // create row data for each array element of dataRows
-        // assumes there is a "cols" array in each row of dataRows
-        const rows = []
-        dataRows.forEach( row => {
-            const r = {
-                id: row[idKey],  // NB row.name should "match" the id column of column descriptor
-                total: row[totalKey].toLocaleString()
-            }
-            row.cols.forEach( (d,i) => {
-                r[`d${i}`] = d.toLocaleString()  // each column keyed as "dx", where x is index of column
+                accessorKey: "id", header: idCaption
             })
 
-            rows.push(r)
-        })
+            // add column names as columns with keys dX, where X is index of column
+            dataColNames.forEach( (colName, i) => {
+                cols.push({
+                    accessorKey: `d${i}`, header: colName
+                })
+            })
 
-        return rows
-    }
+            // add final "Total" column
+            cols.push({
+                accessorKey: "total", header: "Total"
+            })
 
-    const transformTableData = (tableData) => {
+            return cols
+        }
+
+        const getRowData = (dataRows =[], idKey = "name", totalKey="total") => {
+            // create row data for each array element of dataRows
+            // assumes there is a "cols" array in each row of dataRows
+            const rows = []
+            dataRows.forEach( row => {
+                const r = {
+                    id: row[idKey],  // NB row.name should "match" the id column of column descriptor
+                    total: row[totalKey].toLocaleString()
+                }
+                row.cols.forEach( (d,i) => {
+                    r[`d${i}`] = d.toLocaleString()  // each column keyed as "dx", where x is index of column
+                })
+
+                rows.push(r)
+            })
+
+            return rows
+        }
+
+        return {
+            cols: getColumnData(tableData['column_names'], "Table Name"),
+            rows: getRowData(tableData['tables'])
+        }
+
+    }  // end getTableTotals
+
+
+    const getTableDetails = (tableData) => {
+
+        console.log("getting table details")
+
         const parseLocaleNumber = (value) => {
             if (typeof value !== "string") return value;
 
@@ -80,12 +101,15 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
 
         // create table data for details
         const tables = tableData.map( (table, i) => {
-            const t = {name: table.name}  // initialize temporary table object
+            const t = {
+                name: table.name,
+                id: i
+            }  // initialize new table object
 
             // get column names - data columns have keys "dX", where X is index of column
             t.cols = [{
                 accessorKey: "id",
-                header: "Site",
+                header: "Wiki Site",
             }]
 
             table["column_names"].forEach( (colName, i) => {
@@ -119,42 +143,40 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
         return tables
     }
 
+    const tableTotals = getTableTotals(webRxData['table_totals'])
+    const tablesDetails = getTableDetails(webRxData['tables'])
 
-    const tableTotals = {
-        cols: getColumnData(webRxData['table_totals']['column_names'], "Table Name"),
-        rows: getRowData(webRxData['table_totals']['tables'])
-    }
-    const tables = transformTableData(webRxData['tables'])
-
-    const handleSelectionChange = (selectedId) => {
-        console.log(`Selection changed, ${selectedId}`)
-    }
+    console.log(`re-rendering WebRxStats, selectedRow: ${selectedRow}`)
 
     return <>
 
         {/* Totals Table */}
         <div className="row iari-table-display">
             <div className="col col-12">
-                <h3>All Wikis Total</h3>
+                <h3>Totals for All Wikis</h3>
                 <div className="webrx-table">
-                    {/*<Table data={dataTotals} columns={colsTotals} onSelectionChange={handleSelectionChange} sortable={false}/>*/}
                     <Table
                         data={tableTotals.rows}
                         columns={tableTotals.cols}
                         onSelectionChange={handleSelectionChange}
                         sortable={false}
+                        selectedRow={selectedRow}
+                        // selectedRow={selectedRowRef.current}
                     />
                 </div>
             </div>
         </div>
 
+        {/*{false && ( <>*/}
+        {/*    <h3>Transformed WebRx data</h3>*/}
+        {/*    <RawJson obj={tables}/>*/}
+        {/*</>)}*/}
 
-        {false && ( <>
-            <h3>Transformed WebRx data</h3>
-            <RawJson obj={tables}/>
-        </>)}
-
-        {tables.map( (table, i) => {
+        {/* Details tables - show */}
+        {tablesDetails.map( (table, i) => {
+            if (Number(table.id) !== Number(selectedRow)) {  // NB != non-equate (vs. !== non-equate) to match number to string (4 == "4")
+                return null
+            }
             return (
                 <div className="row iari-table-display" key={i}>
                     <div className="col col-12">

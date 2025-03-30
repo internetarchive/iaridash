@@ -3,10 +3,13 @@ import { useReactTable, getCoreRowModel, getSortedRowModel, flexRender } from "@
 // NB: load first using: npm install @tanstack/react-table
 
 
-const Table = ({ data, columns, sortable=true, onSelectionChange, className = "" }) => {
+const Table = React.memo(
+    ({ data, columns, sortable=true, selectedRow=null, onSelectionChange, className = "" }) => {
 
-    const [sorting, setSorting] = React.useState([]);
-    const [selectedRow, setSelectedRow] = React.useState(null);
+    // const [sorting, setSorting] = React.useState([]);
+    const [sorting, setSorting] = React.useState(sortable ? [
+        {desc: true, id:"total"}
+    ] : []);
 
     const table = useReactTable({
         data,
@@ -20,37 +23,23 @@ const Table = ({ data, columns, sortable=true, onSelectionChange, className = ""
     })
 
 
-    const handleSelect = (rowId) => {
-        setSelectedRow(rowId);
-        if (typeof onSelectionChange === 'function') {
-            onSelectionChange(rowId);
-        }
-    };
+    // // Efficiently update the selected row without causing a re-render
+    // const handleSelect = React.useCallback(
+    //     (rowId) => {
+    //         selectedRowRef.current = rowId;
+    //         onSelectionChange(rowId);
+    //     },
+    //     [onSelectionChange] // Only re-create if `onSelectionChange` changes
+    // );
 
-    // const RadioButtonColumnHeader = <>
-    //     {/* Radio Button Column */}
-    //     <th
-    //         key={"000"}
-    //         className={"border border-gray-400 px-3 py-2"}
-    //     >
-    //         {/*{flexRender(header.column.columnDef.header, header.getContext())}*/}
-    //         {/*{header.column.getIsSorted() === "asc" ? " 🔼" : ""}*/}
-    //         {/*{header.column.getIsSorted() === "desc" ? " 🔽" : ""}*/}
-    //
-    //     </th>
-    // </>
-    //
-    // const RadioButtonColumnData = <>
-    //     {/* Radio Button Column */}
-    //     <td>
-    //         <input
-    //             type="radio"
-    //             name="selectedRow"
-    //             checked={selectedRow === row.id}
-    //             onChange={() => handleSelect(row.id)}
-    //         />
-    //     </td>
-    // </>
+    const handleSelect = (rowId) => {
+        if (typeof(onSelectionChange) === "function") {
+            onSelectionChange(rowId)
+        }
+    }
+
+    console.log(`render Table, selectedRow = ${selectedRow}`)
+
 
     return (
         <div className={`${className ? className : null}`}>
@@ -76,7 +65,12 @@ const Table = ({ data, columns, sortable=true, onSelectionChange, className = ""
                 </thead>
                 <tbody>
                 {table.getRowModel().rows.map((row) => (
-                    <tr key={row.id} onClick={() => handleSelect(row.id)} >
+                    <tr
+                        key={row.id}
+                        onClick={() => handleSelect(row.id)}
+                        // className = {selectedRowRef.current === row.id ? "table-row-selected" : ""}
+                        className = {selectedRow === row.id ? "table-row-selected" : ""}
+                    >
 
                         {/* Data Columns */}
                         {row.getVisibleCells().map((cell) => (
@@ -94,5 +88,6 @@ const Table = ({ data, columns, sortable=true, onSelectionChange, className = ""
         </div>
     )
 }
+)  // end of React.memo
 
 export default Table

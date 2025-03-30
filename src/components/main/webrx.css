@@ -3,6 +3,8 @@
     --width-webrx-cell: 6rem;
     --width-webrx-cell-first: 10rem;
     --height-webrx-detail-table: 21.75rem;
+    --color-selected-table-row: #bee3f9;
+
 }
 
 .iari-table-display {
@@ -46,6 +48,10 @@
 .webrx-table .stats-by-site {
     max-height: 22rem;
     overflowY: auto;
+}
+
+tr.table-row-selected {
+    background-color: var(--color-selected-table-row);
 }
 
 .webrx-table-wrapper {
