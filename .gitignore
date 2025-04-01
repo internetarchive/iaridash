@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-/src/__tests__/_test_data/
+#/src/__tests__/_test_data/
 
 # production
 /build
