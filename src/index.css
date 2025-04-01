@@ -81,7 +81,7 @@ body.env-production .iaridash .header h1 {
     color:#e30040;
 }
 body.env-local .iaridash .header h1 {
-    color: #1acf84;
+    color: #3692c4;
 }
 
 /* bootstrap fixes */
@@ -141,14 +141,16 @@ xxx.container-fluid .row {
 
 .iaridash .main-page-nav li a {
     text-decoration-line: none !important;
-    border: 2px solid transparent;
+    border: 3pt solid transparent;
     padding:2pt 4pt;
 }
 
 .iaridash .main-page-nav li .active-link {
     /*font-weight: bold;*/
     /*color: red;*/
-    border-color: rgba(var(--bs-link-color-rgb), 0.53); /* add opacity */
+    /*border-color: rgba(var(--bs-link-color-rgb), 0.53); !* add opacity *!*/
+    border-color: hsl(192deg 91% 42% / 80%);
+    background-color: hsl(162deg 33% 88% / 1);
 }
 
 .iaridash textarea {

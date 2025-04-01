@@ -1,19 +1,19 @@
 import React from "react";
 // import RawJson from "../RawJson";
 import Table  from "../Table"
+import {isNullOrUndef} from "chart.js/helpers";
 
 
 export default function WebRxStats({webRxData={}, options = null, onAction}) {
 
-    // const selectedRowRef = React.useRef(null);
-    const [selectedRow, setSelectedRow] = React.useState(null);
+    //// const selectedRowRef = React.useRef(null);
+    const [selectedRowId, setSelectedRowId] = React.useState(0)  // assume first row as default selection
 
     const handleSelectionChange = React.useCallback((selectedId) => {
-        setSelectedRow(selectedId); // Updates selection without unnecessary re-renders
+        setSelectedRowId(selectedId); // Updates selection without unnecessary re-renders
         // selectedRowRef.current = selectedId;
         console.log(`Selected row changed to: ${selectedId}`)
     }, [])
-
 
     // // Sample Data
 
@@ -29,12 +29,13 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
     //     { id: 3, name: "Charlie", age: 35 },
     // ];
 
-    const getTableTotals = (tableData = {}) => {
-        const getColumnData = (dataColNames =[], idCaption = "ID") => {
+    const getSummaryTable = (tableData = {}) => {
+
+        const getColumnData = (dataColNames =[]) => {
             // define columns
             const cols = []
             cols.push({
-                accessorKey: "id", header: idCaption
+                accessorKey: "id", header: "Metric"
             })
 
             // add column names as columns with keys dX, where X is index of column
@@ -72,16 +73,16 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
         }
 
         return {
-            cols: getColumnData(tableData['column_names'], "Table Name"),
+            cols: getColumnData(tableData['column_names']),
             rows: getRowData(tableData['tables'])
         }
 
     }  // end getTableTotals
 
 
-    const getTableDetails = (tableData) => {
+    const getDetailTables = (tableData) => {
 
-        console.log("getting table details")
+        console.log("getting tables details")
 
         const parseLocaleNumber = (value) => {
             if (typeof value !== "string") return value;
@@ -143,24 +144,28 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
         return tables
     }
 
-    const tableTotals = getTableTotals(webRxData['table_totals'])
-    const tablesDetails = getTableDetails(webRxData['tables'])
+    const tableSummary = getSummaryTable(webRxData['table_totals'])
+    const tablesDetails = getDetailTables(webRxData['tables'])
 
-    console.log(`re-rendering WebRxStats, selectedRow: ${selectedRow}`)
+    console.log(`WebRxStats render, selectedRowId: ${selectedRowId}`)
 
     return <>
 
         {/* Totals Table */}
         <div className="row iari-table-display">
             <div className="col col-12">
-                <h3>Totals for All Wikis</h3>
+                <h3>WebRx Metrics, All Wikis <
+                    span
+                    style={{fontSize:"67%", fontStyle:"italic", color:"hsl(201deg 37% 49% / 96%)"}}
+                > Click on row to show expanded metric details<
+                    /span></h3>
                 <div className="webrx-table">
                     <Table
-                        data={tableTotals.rows}
-                        columns={tableTotals.cols}
+                        data={tableSummary.rows}
+                        columns={tableSummary.cols}
                         onSelectionChange={handleSelectionChange}
                         sortable={false}
-                        selectedRow={selectedRow}
+                        selectedRowId={selectedRowId}
                         // selectedRow={selectedRowRef.current}
                     />
                 </div>
@@ -172,9 +177,12 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
         {/*    <RawJson obj={tables}/>*/}
         {/*</>)}*/}
 
-        {/* Details tables - show */}
+        {/* Details tables */}
         {tablesDetails.map( (table, i) => {
-            if (Number(table.id) !== Number(selectedRow)) {  // NB != non-equate (vs. !== non-equate) to match number to string (4 == "4")
+
+            // skip all tables except that which id matches selectedRowId
+            if (isNullOrUndef(selectedRowId) ||
+                (Number(table.id) !== Number(selectedRowId))) {
                 return null
             }
             return (
@@ -182,7 +190,7 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
                     <div className="col col-12">
                         <div className={"webrx-table-wrapper"}>
                             <div className={"webrx-table-element webrx-table-main"}>
-                                <h3>{table.name}</h3>
+                                <h3>Details for: {table.name}</h3>
                                 <div className="webrx-table">
                                     <Table
                                         data={table.rows}
@@ -193,7 +201,7 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
                                 </div>
                             </div>
                             <div className={"webrx-table-element webrx-table-filler"}>
-                                &nbsp;
+                                &nbsp; {/* provides shim so that out-of-table scrolling can occur */}
                             </div>
                         </div>
                     </div>

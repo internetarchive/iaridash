@@ -4,7 +4,15 @@ import { useReactTable, getCoreRowModel, getSortedRowModel, flexRender } from "@
 
 
 const Table = React.memo(
-    ({ data, columns, sortable=true, selectedRow=null, onSelectionChange, className = "" }) => {
+    ({
+         data,
+         columns,
+         onSelectionChange,
+         sortable=true,
+         selectedRowId = null,
+         className = "",
+
+     }) => {
 
     // const [sorting, setSorting] = React.useState([]);
     const [sorting, setSorting] = React.useState(sortable ? [
@@ -38,7 +46,7 @@ const Table = React.memo(
         }
     }
 
-    console.log(`render Table, selectedRow = ${selectedRow}`)
+    console.log(`render Table, selectedRowId = ${selectedRowId}`)
 
 
     return (
@@ -69,7 +77,7 @@ const Table = React.memo(
                         key={row.id}
                         onClick={() => handleSelect(row.id)}
                         // className = {selectedRowRef.current === row.id ? "table-row-selected" : ""}
-                        className = {selectedRow === row.id ? "table-row-selected" : ""}
+                        className = {String(selectedRowId) === String(row.id) ? "table-row-selected" : ""}
                     >
 
                         {/* Data Columns */}

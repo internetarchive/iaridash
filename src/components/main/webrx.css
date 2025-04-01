@@ -4,7 +4,7 @@
     --width-webrx-cell-first: 10rem;
     --height-webrx-detail-table: 21.75rem;
     --color-selected-table-row: #bee3f9;
-
+    --color-column-header: #b0b0b0;
 }
 
 .iari-table-display {
@@ -20,6 +20,7 @@
     max-width: var(--width-webrx-cell);
     min-width: var(--width-webrx-cell);
     text-align: center;
+    color: var(--color-column-header);
 }
 
 .webrx-table th:first-child {
