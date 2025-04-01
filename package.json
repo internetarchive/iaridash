@@ -1,8 +1,8 @@
 {
   "name": "iaridash",
-  "version": "0.0.1.1",
+  "version": "0.0.1.2",
   "description": "Dashboard for Internet Archive Researcher Interface",
-  "version_name": "0.0.1.1.working routes",
+  "version_name": "0.0.1.1.Summary/Detail table syncing",
   "private": true,
   "dependencies": {
     "@tanstack/react-table": "^8.21.2",
