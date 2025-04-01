@@ -50,7 +50,7 @@ const Table = React.memo(
 
 
     return (
-        <div className={`${className ? className : null}`}>
+        // <div className={`${className ? className : null}`}>
             <table className={"border-collapse border border-gray-400 w-full"}>
                 <thead>
                 {table.getHeaderGroups().map((headerGroup) => (
@@ -93,7 +93,7 @@ const Table = React.memo(
                 ))}
                 </tbody>
             </table>
-        </div>
+        // </div>
     )
 }
 )  // end of React.memo

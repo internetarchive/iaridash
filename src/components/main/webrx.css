@@ -2,7 +2,9 @@
 :root {
     --width-webrx-cell: 6rem;
     --width-webrx-cell-first: 10rem;
-    --height-webrx-detail-table: 21.75rem;
+    --height-webrx-table: 21.75rem;
+    --color-webrx-data: var(--bs-body-color);
+    --color-webrx-data-light: color-mix(in srgb, var(--bs-body-color) 50%, white);
     --color-selected-table-row: #bee3f9;
     --color-column-header: #b0b0b0;
 }
@@ -12,8 +14,11 @@
 }
 
 .webrx-table {
-    max-height:var(--height-webrx-detail-table);
+    max-height:var(--height-webrx-table);
     overflow: scroll;
+    overflowY: auto;
+    /*background-color: #d1d2d4 ;*/
+    color:var(--color-webrx-data);
 }
 
 .webrx-table th {
@@ -46,30 +51,39 @@
     box-shadow: inset 0 -1px 0 #ccc;
 }
 
-.webrx-table .stats-by-site {
-    max-height: 22rem;
-    overflowY: auto;
+.webrx-table tr.table-row-selected {
+    background-color: var(--color-selected-table-row) !important;
 }
 
-tr.table-row-selected {
-    background-color: var(--color-selected-table-row);
+.webrx-summary-table {
+    /*color:deeppink;*/
+}
+.webrx-summary-table tbody tr {
+    /*background-color: darkseagreen;*/
+    cursor: pointer;
+}
+.webrx-summary-table tbody tr:hover {
+    color:var(--color-webrx-data-light);
+}
+.webrx-summary-table tbody tr.table-row-selected {
+    color: black;
 }
 
+
+/* webrx-table-wrapper, webrx-table-element, and webrx-table-main
+   aid in the more natural scrolling along detail tables */
 .webrx-table-wrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
 }
-
 .webrx-table-element {
     /*border: 3px solid palevioletred;*/
 }
-
 .webrx-table-main {
     flex-basis: auto;
 }
-
-.webrx-table-filler {
+.webrx-table-shim {
     flex-basis: auto;
 }

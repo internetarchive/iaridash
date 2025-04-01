@@ -42,6 +42,8 @@
 
     --padding-cells: .5rem;
     --border-normal: 1pt solid black;
+
+    --size-h1: 1.6rem;
 }
 
 html, body, #root {
@@ -66,7 +68,7 @@ body {
     margin-top:0;
     margin-bottom: 0.5rem;
     /*padding-left:.3rem;*/
-    font-size:2rem;
+    font-size:var(--size-h1);
     font-weight:bold;
 }
 
@@ -129,6 +131,9 @@ xxx.container-fluid .row {
     margin-bottom:.65rem;
 }
 
+.iaridash .main-page-nav {
+    margin-top:.22rem;
+}
 .iaridash .main-page-nav ol,
 .iaridash .main-page-nav ul {
     padding-left: 0px !important;
@@ -141,8 +146,13 @@ xxx.container-fluid .row {
 
 .iaridash .main-page-nav li a {
     text-decoration-line: none !important;
-    border: 3pt solid transparent;
+    /*border: 3pt solid transparent;*/
+    border: 3pt solid hsl(192deg 91% 42% / 20%);
+
     padding:2pt 4pt;
+}
+.iaridash .main-page-nav li a:hover {
+    border: 3pt solid hsl(192deg 91% 42% / 40%);
 }
 
 .iaridash .main-page-nav li .active-link {
@@ -163,7 +173,8 @@ xxx.container-fluid .row {
 }
 
 .header-aux1 {
-    padding-top: 1.0rem;
+    margin-top: 0;
+    padding-top: 0.75rem;
     font-weight: normal;
     color: grey;
 }

@@ -154,20 +154,24 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
         {/* Totals Table */}
         <div className="row iari-table-display">
             <div className="col col-12">
-                <h3>WebRx Metrics, All Wikis <
-                    span
-                    style={{fontSize:"67%", fontStyle:"italic", color:"hsl(201deg 37% 49% / 96%)"}}
-                > Click on row to show expanded metric details<
-                    /span></h3>
-                <div className="webrx-table">
-                    <Table
-                        data={tableSummary.rows}
-                        columns={tableSummary.cols}
-                        onSelectionChange={handleSelectionChange}
-                        sortable={false}
-                        selectedRowId={selectedRowId}
-                        // selectedRow={selectedRowRef.current}
-                    />
+                <div className={"webrx-table-wrapper"}>
+                    <div className={"webrx-table-main"}>
+                        <h3>WebRx Metrics, All Wikis <
+                            span
+                            style={{fontSize:"67%", fontStyle:"italic", color:"hsl(201deg 37% 49% / 96%)"}}
+                        > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click on row to show expanded metric details<
+                            /span></h3>
+                        <div className="webrx-table webrx-summary-table">
+                            <Table
+                                data={tableSummary.rows}
+                                columns={tableSummary.cols}
+                                onSelectionChange={handleSelectionChange}
+                                sortable={false}
+                                selectedRowId={selectedRowId}
+                                // selectedRow={selectedRowRef.current}
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -189,18 +193,17 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
                 <div className="row iari-table-display" key={i}>
                     <div className="col col-12">
                         <div className={"webrx-table-wrapper"}>
-                            <div className={"webrx-table-element webrx-table-main"}>
+                            <div className={"webrx-table-main"}>
                                 <h3>Details for: {table.name}</h3>
-                                <div className="webrx-table">
+                                <div className="webrx-table webrx-details-table">
                                     <Table
                                         data={table.rows}
                                         columns={table.cols}
-                                        className={"stats-by-site"}
                                         sortable={true}
                                     />
                                 </div>
                             </div>
-                            <div className={"webrx-table-element webrx-table-filler"}>
+                            <div className={"webrx-table-shim"}>
                                 &nbsp; {/* provides shim so that out-of-table scrolling can occur */}
                             </div>
                         </div>
