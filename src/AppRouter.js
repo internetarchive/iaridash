@@ -9,6 +9,7 @@ import Layout from "./Layout";
 import TestLinks from "./components/pages/TestLinks";
 import TarbInsights from "./components/pages/TarbInsights";
 import WebRx from "./components/pages/WebRx";
+import Archives from "./components/pages/Archives";
 
 const  AppRouter = () => {
 
@@ -19,8 +20,9 @@ const  AppRouter = () => {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
-                    <Route path="/tarb" element={<TarbInsights />} />
                     <Route path="/webrx" element={<WebRx />} />
+                    <Route path="/tarb" element={<TarbInsights />} />
+                    <Route path="/archives" element={<Archives />} />
                     <Route path="/grid" element={<Grid />} />
                     <Route path="/command" element={<Command/>}/>
                     <Route path="/links" element={<TestLinks/>}/>

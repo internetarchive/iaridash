@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import package_json from "../package.json";
 import Dropdown from "./components/Dropdown";
 
-import {IariSources} from "./constants/endpoints";
+import {IariSources} from "./constants/iariEndpoints";
 import {UrlStatusCheckMethods} from "./constants/checkMethods";
 import {IareEnvironments} from "./constants/environments";
 
@@ -94,8 +94,8 @@ export default function App({
     const versionInfo = `version ${package_json.version}`
     const siteInfo = (env?.key !== IareEnvironments.PROD.key)
         ? (env.key !== IareEnvironments.STAGE.key
-            ? ` LOCAL SITE `
-            : ` STAGING SITE `)
+            ? ` LOCAL `
+            : ` STAGING `)
         : ''
 
     console.log("buttonShowDebug: env is " + env?.key)
@@ -148,7 +148,7 @@ export default function App({
         <div>{buttons}</div>
         <p><span className={'label'}>Environment:</span> {env?.caption}, ({window.location.host})</p>
         <p><span className={'label'}>IARE version:</span> {package_json.version}</p>
-        <p><span className={'label'}>IARI Source:</span> {myIariSourceId} ({IariSources[myIariSourceId]?.proxy})</p>
+        <p><span className={'label'}>IARI Source:</span> {myIariSourceId} ({IariSources[myIariSourceId]?.endpoint})</p>
         <p><span className={'label'}>Check Method:</span> {UrlStatusCheckMethods[checkMethod].caption} ({checkMethod})</p>
         <p><span className={'label'}>URL from address line:</span> {myPath}</p>
         <p><span className={'label'}>Force Refresh:</span> {refreshCheck ? "TRUE" : "false"}</p>
@@ -161,7 +161,8 @@ export default function App({
         environmentKey: env?.key,
         versionDisplay: versionInfo,
         siteDisplay: siteInfo,
-        iariBase: IariSources[myIariSourceId]?.proxy,
+        iariSource: IariSources[myIariSourceId]?.endpoint,
+        iariSourceDisplay: IariSources[myIariSourceId]?.caption,
         urlStatusMethod: checkMethod,
         isDebug: !!isDebug,
         buttonShowDebug: buttonShowDebug,

@@ -100,6 +100,9 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
             return numA - numB;
         }
 
+        // return empty array of tableData is empty
+        if (!tableData) return []
+
         // create table data for details
         const tables = tableData.map( (table, i) => {
             const t = {
@@ -142,6 +145,16 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
         })
 
         return tables
+    }
+
+    if (!webRxData || typeof(webRxData) !== 'object') {
+        return <p>WebRx is not a valid object.</p>
+    }
+    if (!webRxData['table_totals']) {
+        return <p>WebRx data is missing 'table_totals'.</p>
+    }
+    if (!webRxData['tables']) {
+        return <p>WebRx data is missing 'tables'.</p>
     }
 
     const tableSummary = getSummaryTable(webRxData['table_totals'])

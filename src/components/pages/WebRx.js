@@ -1,89 +1,59 @@
 // import React, {useEffect} from 'react';
 import React from 'react';
+import Loader from "../Loader";
 import RouteHeader from "../RouteHeader";
 import WebRxStats from "../main/WebRxStats";
 import '../main/webrx.css';
-import webRxData from '../../__tests__/_test_data/webRxData.json';
+// import webRxDataFromFile from '../../__tests__/_test_data/webRxData.json';
+import {ConfigContext} from "../../contexts/ConfigContext";
+
 
 const WebRx = () => {
+
+    const myConfig = React.useContext(ConfigContext);
+    const myIariSource = myConfig?.iariSource;
 
     // await fetch results for rx data:
 ////    iariSource/insights
 
+    const [webRxData, setWebRxData] = React.useState({})
+    const [isLoading, setIsLoading] = React.useState(false)
 
-    // useEffect( () => { // [myIariBase, pageData, processReferences, processUrls, myStatusCheckMethod]
-    //
-    //     const fetchWebRxData = async () => {
-    //
-    //         const iariBase: myIariBase,
-    //             urlArray: pageData.urls,
-    //             refresh: pageData.forceRefresh,
-    //             timeout: 60,
-    //             method: myStatusCheckMethod
-    //         })
-    //     }
-    //
-    //
-    //     const fetchData = async () => {
-    //
-    //         try {
-    //
-    //             // setUrlStatusLoadingMessage(`Retrieving URL status codes with ${UrlStatusCheckMethods[myStatusCheckMethod].caption} method`)
-    //             // setIsDataReady(false);
-    //             // setIsLoadingUrls(true);
-    //
-    //             console.log(`BEFORE fetch data`)
-    //             // fetch info for all urls and wait for results before continuing
-    //             const myData = await fetchWebRxData()
-    //             console.log(`AFTER fetch data`)
-    //
-    //
-    //             // NB TODO: fetch article data from IARI for V2 or article parsing to get array of citerefs
-    //             // const newRefs = await fetchNewRefs()  // grabs article_V2 data from IARI
-    //
-    //             // process received data - TODO this should eventually be done in IARI
-    //             processUrls(pageData, myUrls);  // creates pageData.urlDict and pageData.urlArray; loads pageData.errors
-    //             processReferences(pageData)  //
-    //             associateRefsWithLinks(pageData)  // associates url links with references
-    //
-    //             processReliabilityData(pageData)
-    //             processBooksData(pageData)
-    //
-    //             processProbes(pageData)
-    //
-    //             processActionables(pageData)
-    //
-    //             // if any errors, display
-    //             if (pageData.process_errors?.length > 0) setPageErrors(pageData.process_errors)
-    //
-    //             // announce to UI all is ready
-    //             setIsDataReady(true);
-    //             setIsLoadingUrls(false);
-    //
-    //         } catch (error) {
-    //             console.error('Error fetching data:', error.message);
-    //             console.error(error.stack);
-    //             pageData.urlResults = []
-    //
-    //             setPageErrors(error.message)
-    //             setIsLoadingUrls(false);
-    //         }
-    //
-    //     }
-    //
-    //     fetchPageData()
-    //
-    // },   [
-    //     myIariBase,
-    //     pageData,
-    //     processReferences,
-    //     processUrls,
-    //     associateRefsWithLinks,
-    //     myStatusCheckMethod,
-    //     processReliabilityData,
-    //     processBooksData,
-    //     processActionables,
-    // ])
+    React.useEffect( () => {
+
+        const fetchWebRxData = async () => {
+
+            const urlFetchWebRx = `${myIariSource}/insights`
+
+            return fetch(urlFetchWebRx);
+
+        }
+
+        const gatherWebRxData = async () => {
+
+            try {
+                setIsLoading(true)
+
+                const response = await fetchWebRxData()
+                const myData = await response.json()
+
+                setWebRxData(myData)
+
+            } catch (error) {
+                console.error('Error fetching data:', error.message);
+                console.error(error.stack);
+                setWebRxData(null)
+
+            } finally {
+                setIsLoading(false);
+            }
+
+        }
+
+        gatherWebRxData();
+
+    }, [myIariSource])
+
 
 
 
@@ -91,10 +61,15 @@ const WebRx = () => {
     return <>
         {false && <RouteHeader caption = {"WebRx Statistics"}
                          subCaption = {false && "Show WebRx aggregate data results."} />}
-            <WebRxStats webRxData={webRxData}
-                        options={{dateRange:"2001-2025", anotherDate:"latest"}} />
-        </>
 
+        {isLoading
+            ? <Loader message={"Fetching WebRx Data..."}/>
+            : <WebRxStats
+                webRxData={webRxData}
+                options={{dateRange:"2001-2025", anotherDate:"latest"}}
+            />
+        }
+    </>
 }
 
 export default WebRx;

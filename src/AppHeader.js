@@ -7,6 +7,7 @@ export default function AppHeader({
                                       appTitle,
                                       versionInfo,
                                       siteInfo,
+                                      iariInfo,
                                       buttonShowDebug,
                                       debugContents,
                                   }) {
@@ -17,9 +18,10 @@ export default function AppHeader({
     myConfig = myConfig ? myConfig : {} // prevents undefined myConfig.[param_name] errors
 
     const publicRoutes = [
-        ["/",'Home'],
-        ["/tarb",'TARB Insights'],
+        // ["/",'Home'],
         ["/webrx",'Web Rx'],
+        ["/tarb",'TARB'],
+        ["/archives",'Archives'],
         ["/grid",'Data Grid'],
     ].map( rp => {
         return <li key={rp[0]}>
@@ -40,7 +42,7 @@ export default function AppHeader({
 
         <div className={"header-contents"}>
             <h1>{appTitle}</h1>
-            <div className={"header-aux1"}>{versionInfo}{siteInfo}{buttonShowDebug}</div>
+            <div className={"header-aux1"}>{versionInfo}{siteInfo} ({iariInfo}) {buttonShowDebug}</div>
             {debugContents}
         </div>
 

@@ -4,10 +4,6 @@
     --color-list-fg-hover: #fffde5; /*blue;*/
 
     --color-list-bg-hover: #9ccfe5;
-    /*--color-list-bg-hover: #81c8e7;*/
-    /*--color-list-bg-hover: #CFF0FF;*/
-    /*--color-list-bg-hover: #cfdeff;*/
-
     --color-list-header-bg: #cff0ff;
 
     --color-button-bg: #81c8e7;
@@ -80,7 +76,8 @@ body .iaridash .header h1 {
     color:red;
 }
 body.env-production .iaridash .header h1 {
-    color:#e30040;
+    /*color:#e30040;*/
+    color:#0091fb;
 }
 body.env-local .iaridash .header h1 {
     color: #3692c4;

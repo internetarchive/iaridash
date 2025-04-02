@@ -15,6 +15,8 @@ const Layout = ({ options={}, children }) => {
                 appTitle={myConfig.appTitle}
                 versionInfo={myConfig.versionDisplay}
                 siteInfo={myConfig.siteDisplay}
+                iariInfo={myConfig.iariSourceDisplay}
+
                 buttonShowDebug={myConfig.buttonShowDebug}
                 debugContents={myConfig.debugContents}
             />

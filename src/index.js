@@ -13,35 +13,34 @@ import './custom_defs_v1.css';
 import './custom.css';
 
 import {UrlStatusCheckMethods} from "./constants/checkMethods";
-import {IariSources} from "./constants/endpoints";
+import {IariSources} from "./constants/iariEndpoints";
 import {IareEnvironments} from "./constants/environments";
 
 const REGEX_PRODUCTION_ENV = new RegExp(/^(?:(?:[\w-]+\.)+)?(?:[\w-]+\.)?archive\.org$/);
-// if "(\.?)archive.org" at end of string
-
-
+// checks if "(\.?)archive.org" at end of string
 
 
 const getIariSource = (qParams, targetEnvironment) => {
-    // TODO: will change default to "iari" eventually, when that proxy is stable
+    // TODO: will change default to "iari" eventually, when that endpoint is stable
 
-    // NB: ALWAYS hard-wire IARI source to iari_prod when IARE in Production environment
+    // ALWAYS hard-wire IARI source to iari_prod when IARE in Production environment
     if (targetEnvironment === IareEnvironments.PROD.key) {
         return IariSources.iari_prod.key
     }
 
-    // else default to stage if not specified
+    // else default to Staging if not specified
     const sourceKey = queryParameters.has("iari-source")
         ? queryParameters.get("iari-source")
         : IariSources.iari_stage.key
 
-    // if specified source not in our defined choices, default to stage, and error
+    // if specified source not in our defined choices, default to staging, and log error
     if (!IariSources[sourceKey]) {
         console.error(`IARI Source ${sourceKey} not supported.`)
         return IariSources.iari_stage.key
     }
     return sourceKey
 }
+
 
 const getEnvironment = () => {
     // comment out whn not debugging...
