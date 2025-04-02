@@ -1,6 +1,4 @@
-// src/components/pages/Home.js
-import React, {useState} from 'react';
-import {getIabotArchiveData, getWaybackArchiveData} from "./../../utils/archiveUtils"
+import React from 'react';
 import RouteHeader from "../RouteHeader";
 
 const Home = () => {
