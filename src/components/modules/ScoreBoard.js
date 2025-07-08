@@ -1,6 +1,6 @@
 import React from "react";
 import DataGrid from "./DataGrid";
-import ControlBox from "../../shared/ControlBox";
+import ControlBox from "./ControlBox";
 import {gridDef} from "./GridDefs"
 import {ConfigContext, DataContext} from "../../contexts/ConfigContext";
 //import {testGridData} from "./TestGridData";

@@ -13,7 +13,7 @@ import './custom_defs_v1.css';
 import './custom.css';
 
 import {UrlStatusCheckMethods} from "./constants/checkMethods";
-import {IariSources} from "./constants/iariEndpoints";
+import {IariSources} from "./constants/iariSources";
 import {IareEnvironments} from "./constants/environments";
 
 const REGEX_PRODUCTION_ENV = new RegExp(/^(?:(?:[\w-]+\.)+)?(?:[\w-]+\.)?archive\.org$/);
@@ -51,11 +51,6 @@ const getEnvironment = () => {
     if (host === "internetarchive.github.io") return  IareEnvironments.STAGE
     if (host === "localhost:3300") return  IareEnvironments.LOCAL
     return IareEnvironments.OTHER
-    // const host = window.location.host
-    // if (REGEX_PRODUCTION_ENV.test(host)) return 'env-production'
-    // if (host === "internetarchive.github.io") return 'env-staging'
-    // if (host === "localhost:3300") return 'env-local'
-    // return "env-other"
 }
 
 const getMethod = (qParams, targetEnvironment) => {

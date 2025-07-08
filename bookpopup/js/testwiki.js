@@ -413,13 +413,13 @@
                         //     SettingsDialog.static.title = mw.msg( 'twt-settings-title' );
                         //     SettingsDialog.static.actions = [
                         //         {
-                        //             modes: 'main',
+                        //             modes: 'modules',
                         //             action: 'save',
                         //             label: mw.msg( 'twt-save' ),
                         //             flags: [ 'primary', 'progressive' ]
                         //         },
                         //         {
-                        //             modes: 'main',
+                        //             modes: 'modules',
                         //             flags: [ 'safe', 'close' ]
                         //         },
                         //         {
@@ -543,7 +543,7 @@
                         //         return SettingsDialog.parent.prototype.getSetupProcess.call( this, data )
                         //             .next( function () {
                         //                 this.stackLayout.setItem( this.panelSettings );
-                        //                 this.actions.setMode( 'main' );
+                        //                 this.actions.setMode( 'modules' );
                         //             }, this );
                         //     };
                         //

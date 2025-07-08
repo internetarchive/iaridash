@@ -1,6 +1,6 @@
 import React from "react";
 import DataRow from "./DataRow";
-import './datagrid.css'
+import '../css/datagrid.css'
 
 /*
 display gridData using gridDef as template

@@ -70,7 +70,7 @@
 }
 
 
-/* webrx-table-wrapper, webrx-table-element, and webrx-table-main
+/* webrx-table-wrapper, webrx-table-element, and webrx-table-modules
    aid in the more natural scrolling along detail tables */
 .webrx-table-wrapper {
     display: flex;
@@ -86,4 +86,13 @@
 }
 .webrx-table-shim {
     flex-basis: auto;
+}
+
+.webrx-details-section {
+    margin-left:3rem;
+    margin-top:1rem;
+}
+.webrx-details-section h3 {
+    font-weight: bold;
+    font-size: 1.0rem;
 }

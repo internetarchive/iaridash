@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import package_json from "../package.json";
 import Dropdown from "./components/Dropdown";
 
-import {IariSources} from "./constants/iariEndpoints";
+import {IariSources} from "./constants/iariSources";
 import {UrlStatusCheckMethods} from "./constants/checkMethods";
 import {IareEnvironments} from "./constants/environments";
 
@@ -27,9 +27,9 @@ export default function App({
     const [isShowExpertMode, setIsShowExpertMode] = useState(true);
     const [isShowNewFeatures, setIsShowNewFeatures] = useState(true);
 
-    // params settable from from address url
-    const [refreshCheck, setRefreshCheck] = useState(myRefresh);
-    const [checkMethod, setCheckMethod] = useState(myMethod);
+    // params settable from address url
+    const [forceRefresh, setForceRefresh] = useState(myRefresh);
+    const [checkStatusMethod, setCheckStatusMethod] = useState(myMethod);
 
     // eslint-disable-next-line no-unused-vars
     const [myError, setMyError] = useState(null);
@@ -56,19 +56,19 @@ export default function App({
 
     // initialize
     useEffect(() => {
-        setRefreshCheck(myRefresh);
+        setForceRefresh(myRefresh);
     }, [myRefresh])
 
 
     const handleCheckMethodChange = (methodId) => {
         // console.log(`handleStatusMethodChange: new method is: ${methodId}`)
-        setCheckMethod(methodId);
+        setCheckStatusMethod(methodId);
     };
     const methodChoices = Object.keys(UrlStatusCheckMethods).filter(f => !["IARI", "IABOT_SEARCHURL"].includes(f)).map( key => {
         return { caption: UrlStatusCheckMethods[key].caption, value: UrlStatusCheckMethods[key].key }
     })
     const methodChoiceSelect = <div className={"check-method-wrapper"}>
-        <Dropdown choices={methodChoices} label={'Check Method:'} onSelect={handleCheckMethodChange} defaultChoice={checkMethod}/>
+        <Dropdown choices={methodChoices} label={'Check Method:'} onSelect={handleCheckMethodChange} defaultChoice={checkStatusMethod}/>
     </div>
 
 
@@ -149,9 +149,9 @@ export default function App({
         <p><span className={'label'}>Environment:</span> {env?.caption}, ({window.location.host})</p>
         <p><span className={'label'}>IARE version:</span> {package_json.version}</p>
         <p><span className={'label'}>IARI Source:</span> {myIariSourceId} ({IariSources[myIariSourceId]?.endpoint})</p>
-        <p><span className={'label'}>Check Method:</span> {UrlStatusCheckMethods[checkMethod].caption} ({checkMethod})</p>
+        <p><span className={'label'}>Check Method:</span> {UrlStatusCheckMethods[checkStatusMethod].caption} ({checkStatusMethod})</p>
         <p><span className={'label'}>URL from address line:</span> {myPath}</p>
-        <p><span className={'label'}>Force Refresh:</span> {refreshCheck ? "TRUE" : "false"}</p>
+        <p><span className={'label'}>Force Refresh:</span> {forceRefresh ? "TRUE" : "false"}</p>
 
     </div>
 
@@ -163,7 +163,7 @@ export default function App({
         siteDisplay: siteInfo,
         iariSource: IariSources[myIariSourceId]?.endpoint,
         iariSourceDisplay: IariSources[myIariSourceId]?.caption,
-        urlStatusMethod: checkMethod,
+        urlStatusMethod: checkStatusMethod,
         isDebug: !!isDebug,
         buttonShowDebug: buttonShowDebug,
         isShowShortcuts: isShowShortcuts,

@@ -1,5 +1,5 @@
 import React from "react";
-import ShortcutDefs from "../constants/ShortcutDefs";
+import {ShortcutDefs} from "../constants/shortcutDefs";
 
 /*
 relies on global; ShortcutDefs for the button for buttonKey key

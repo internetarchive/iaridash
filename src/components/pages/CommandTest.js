@@ -1,8 +1,8 @@
 import React from 'react';
-import CommandTest from "../main/CommandTest";
+import CommandTestDisplay from "../modules/CommandTestDisplay";
 import RouteHeader from "../RouteHeader";
 
-const Command = () => {
+const CommandTest = () => {
 
     const handleAction = (result) => {
         // error of not object like: {action: <action>, value: <value>}
@@ -15,19 +15,19 @@ const Command = () => {
 
 
         else {
-            console.log(`ScoreBoard Action "${action}" not supported.`)
-            alert(`Scoreboard Action "${action}" not supported.`)
+            console.log(`CommandTest Action "${action}" not supported.`)
+            alert(`CommandTest Action "${action}" not supported.`)
         }
 
     }
 
     return (<>
-        <RouteHeader caption = {"Command Tester"} subCaption = "Page to exercise commands over the wire" />
+        <RouteHeader caption = {"CommandTest Tester"} subCaption = "Page to exercise commands over the wire" />
 
         <div className={"container-fluid"}>
             <div className="row">
                 <div className={"col-12"}>
-                    <CommandTest commandData={{}} onAction={handleAction}/>
+                    <CommandTestDisplay commandData={{}} onAction={handleAction}/>
                 </div>
             </div>
         </div>
@@ -35,4 +35,4 @@ const Command = () => {
     );
 };
 
-export default Command;
+export default CommandTest;

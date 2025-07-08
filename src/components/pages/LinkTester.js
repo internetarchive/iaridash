@@ -1,26 +1,16 @@
-// src/components/pages/TestLinks.js
-import React from 'react';
-import RouteHeader from "../RouteHeader";
+// src/components/pages/LinkTester.js
+import React from 'react'
+import RouteHeader from "../RouteHeader"
+import {IariSources} from "../../constants/iariSources"
 
-const TestLinks = () => {
-
-    // const handleAction = (result) => {
-    //     // error if not object like: {action: <action>, value: <value>}
-    //     const {action, value} = result;
-    //     console.log(`TestLinks:handleAction: action=${action}, value=${value}`);
-    //
-    //     if (0) {
-    //         // placebo to make coding easier for adding "else if" conditions
-    //     } else {
-    //         console.log(`Action "${action}" not supported.`)
-    //         alert(`Action "${action}" not supported.`)
-    //     }
-    //
-    // }
+const LinkTester = () => {
+    // test links for IARI right now...could be expanded for general links later
 
     const endpoints = [
 
         "version",
+
+        "refs_lookup?url=https://en.wikipedia.org/wiki/Siemens_scandal",
 
         "check-url?url=https://example.com/",
 
@@ -38,19 +28,20 @@ const TestLinks = () => {
         + "&url=https://www.easterisland.travel/easter-island-facts-and-info/tapati-rapa-nui-festival/",
     ]
 
-    const iari_sources = [
-        {name: "Local", source: "http://localhost:5000/v2/"},
-        {name: "Staging", source: "https://iabot-api.archive.org/services/context/iari-stage/v2/"},
-    ]
+    // const iari_sources = [
+    //     {name: "Local", source: "http://localhost:5000/v2/"},
+    //     {name: "Staging", source: "https://iabot-api.archive.org/services/context/iari-stage/v2/"},
+    // ]
+    const iari_sources = ['iari_local', 'iari_stage']  // keys into IariSources
 
     const linksForSource = (source) => {
         return <>
-            <h2>{source.name} <span className={"smaller"}>{source.source}</span></h2>
+            <h2>{source.caption} <span className={"smaller"}>{source.api_base}</span></h2>
             {
                 endpoints.map(endpoint => {
                     return <div className={"another-link"}>
                         <a target={"_blank"} rel="noreferrer"
-                           href={source.source + endpoint}>{endpoint}</a>
+                           href={source.api_base + endpoint}>{endpoint}</a>
                     </div>
                 })
             }
@@ -64,8 +55,8 @@ const TestLinks = () => {
             <div className="row">
                 <div className={"col-12"}>
                     {
-                        iari_sources.map(iSrc => {
-                            return linksForSource(iSrc)
+                        iari_sources.map(source_key => {
+                            return linksForSource(IariSources[source_key])
                         })
                     }
                 </div>
@@ -74,4 +65,4 @@ const TestLinks = () => {
     </>
 }
 
-export default TestLinks
+export default LinkTester

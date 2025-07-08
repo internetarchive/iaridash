@@ -19,9 +19,10 @@ export default function AppHeader({
 
     const publicRoutes = [
         // ["/",'Home'],
+        ["/cd",'Citations Database'],
         ["/webrx",'Web Rx'],
         ["/tarb",'TARB'],
-        ["/archives",'Archives'],
+        ["/archives",'Test Archives'],
         ["/grid",'Data Grid'],
     ].map( rp => {
         return <li key={rp[0]}>
@@ -30,7 +31,7 @@ export default function AppHeader({
     })
 
     const localRoutes = [
-        ["/command", 'Command Tester'],
+        ["/command", 'CommandTest Tester'],
         ["/links", 'Link Tester'],
     ].map(rp => {
         return <li key={rp[0]}>

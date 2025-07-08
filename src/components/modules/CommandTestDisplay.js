@@ -1,10 +1,14 @@
 import React, {useState} from "react";
-import './commandText.css'
+import '../css/commandTest.css'
 
 /*
 display command test for generic command, with response in response box
  */
-export default function CommandTest({commandData = null, onAction}) {
+export default function CommandTestDisplay(
+    {
+        commandData = null,
+        onAction
+    }) {
 
     const editable = true
     const [localCommandText, setLocalCommandText]= useState("command text here")
@@ -17,11 +21,11 @@ export default function CommandTest({commandData = null, onAction}) {
 
     const buttonEngageCommand = <button
         className={`utility-button`} style={{width:"7rem"}}
-        onClick={engageCommand}><span>{editable ? "Run Command" : "???"}</span></button>
+        onClick={engageCommand}><span>{editable ? "Run CommandTest" : "???"}</span></button>
 
     // const header = <div className={"header-all-parts"}>
     //     <div className={"header-left-part"}>
-    //         <h3>Command Text</h3>{buttonEngageCommand}
+    //         <h3>CommandTest Text</h3>{buttonEngageCommand}
     //     </div>
     // </div>
 

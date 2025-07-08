@@ -194,36 +194,46 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
         {/*    <RawJson obj={tables}/>*/}
         {/*</>)}*/}
 
-        {/* Details tables */}
-        {tablesDetails.map( (table, i) => {
+        {/*webrx-details-table*/}
 
-            // skip all tables except that which id matches selectedRowId
-            if (isNullOrUndef(selectedRowId) ||
-                (Number(table.id) !== Number(selectedRowId))) {
-                return null
-            }
-            return (
-                <div className="row iari-table-display" key={i}>
-                    <div className="col col-12">
-                        <div className={"webrx-table-wrapper"}>
-                            <div className={"webrx-table-main"}>
-                                <h3>Details for: {table.name}</h3>
-                                <div className="webrx-table webrx-details-table">
-                                    <Table
-                                        data={table.rows}
-                                        columns={table.cols}
-                                        sortable={true}
-                                    />
+        {/* Details tables */}
+        <div className="row iari-table-display">
+            <div className="col col-12">
+                <div className={"webrx-details-section"}>
+
+                    {tablesDetails.map( (table, i) => {
+
+                        // skip all tables except that which id matches selectedRowId
+                        if (isNullOrUndef(selectedRowId) ||
+                            (Number(table.id) !== Number(selectedRowId))) {
+                            return null
+                        }
+                        return (
+                            <div className="row iari-table-display" key={i}>
+                                <div className="col col-12">
+                                    <div className={"webrx-table-wrapper"}>
+                                        <div className={"webrx-table-main"}>
+                                            <h3>Details for: {table.name}</h3>
+                                            <div className="webrx-table">
+                                                <Table
+                                                    data={table.rows}
+                                                    columns={table.cols}
+                                                    sortable={true}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className={"webrx-table-shim"}>
+                                            &nbsp; {/* provides shim so that out-of-table scrolling can occur */}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className={"webrx-table-shim"}>
-                                &nbsp; {/* provides shim so that out-of-table scrolling can occur */}
-                            </div>
-                        </div>
-                    </div>
+                        )
+                    })}
                 </div>
-            )
-        })}
+            </div>
+        </div>
+
 
     </>
 }
