@@ -80,7 +80,7 @@ const CitationsDatabase = () => {
                 setIsLoadingTimer(true)  // prevents "too soon" flashing of loading icon
                 setTimeout(() => {
                     setIsLoadingTimer(false)
-                }, 1000); // 1.0 seconds
+                }, 853); // milliseconds
 
                 try {
                     const response = await fetch(apiUrl)
@@ -135,8 +135,8 @@ const CitationsDatabase = () => {
             : <div>
                 {errors}
                 <h3>Citation Data</h3>
-                <div>iariBase: {iariBase}</div>
-                <div>apiUrl: {displayApiUrl}</div>
+                {/*<div>iariBase: {iariBase}</div>*/}
+                {/*<div>apiUrl: {displayApiUrl}</div>*/}
                 <CitationsDataDisplay
                     citationData={citationData}
                     citationLabel={{

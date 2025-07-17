@@ -20,18 +20,20 @@ const REGEX_PRODUCTION_ENV = new RegExp(/^(?:(?:[\w-]+\.)+)?(?:[\w-]+\.)?archive
 // checks if "(\.?)archive.org" at end of string
 
 
-const getIariSource = (qParams, targetEnvironment) => {
+const getIariSource = (qParams, targetEnvKey) => {
     // TODO: will change default to "iari" eventually, when that endpoint is stable
 
-    // ALWAYS hard-wire IARI source to iari_prod when IARE in Production environment
-    if (targetEnvironment === IareEnvironments.PROD.key) {
+    // Production IARE environment ALWAYS gets iari_prod IARI source
+    if (targetEnvKey === IareEnvironments.PROD.key) {
         return IariSources.iari_prod.key
     }
 
-    // else default to Staging if not specified
+    // set to specified source if specified, iari_stage if not Local and not specified
     const sourceKey = queryParameters.has("iari-source")
         ? queryParameters.get("iari-source")
-        : IariSources.iari_stage.key
+        : (targetEnvKey === IareEnvironments.LOCAL.key
+            ? IariSources.iari_local.key
+            : IariSources.iari_stage.key)
 
     // if specified source not in our defined choices, default to staging, and log error
     if (!IariSources[sourceKey]) {
@@ -53,10 +55,10 @@ const getEnvironment = () => {
     return IareEnvironments.OTHER
 }
 
-const getMethod = (qParams, targetEnvironment) => {
+const getMethod = (qParams, targetEnvKey) => {
     const keyDefaultMethod = UrlStatusCheckMethods.WAYBACK.key
 
-    if (targetEnvironment === IareEnvironments.PROD) return keyDefaultMethod
+    if (targetEnvKey === IareEnvironments.PROD) return keyDefaultMethod
     // else
     const methodKey = queryParameters.has("method")
         ? queryParameters.get("method")
@@ -81,8 +83,8 @@ const env = getEnvironment();  // return an Environment structure
 const myDebug = queryParameters.has("debug") ? queryParameters.get("debug").toLowerCase() === 'true' : false;
 const myPath = queryParameters.has("url") ? queryParameters.get("url") : '';
 const myRefresh = queryParameters.has("refresh") ? queryParameters.get("refresh").toLowerCase() === 'true' : false;
-const myIariSourceId = getIariSource(queryParameters, env);
-const myMethod = getMethod(queryParameters, env);
+const myIariSourceId = getIariSource(queryParameters, env?.key);
+const myMethod = getMethod(queryParameters, env?.key);
 
 root.render(<App env={env}
                  myPath={myPath}
