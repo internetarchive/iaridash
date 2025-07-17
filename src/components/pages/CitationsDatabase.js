@@ -10,11 +10,13 @@ const CitationsDatabase = () => {
 
     const hasMounted = React.useRef(false);
     const [isLoading, setIsLoading] = React.useState(false)
+    const [isLoadingTimer, setIsLoadingTimer] = React.useState(false)
     const [citationParams, setCitationParams] = React.useState({
         pathName: pathInitial,
         checkedRawRefs: false
     })
     const [citationData, setCitationData] = React.useState(null);
+    const [displayApiUrl, setDisplayApiUrl] = React.useState('');
     const [error, setError] = React.useState(null);
 
 
@@ -58,25 +60,27 @@ const CitationsDatabase = () => {
             // use of "hasMounted" prevents fetching of data during
             // component first time with null citationParams.pathName
 
-            console.log(`citationParams: pathName: ${citationParams.pathName} and checkRawRefs: ${citationParams.checkedRawRefs}`)
-            alert(`Received new citationParams: pathName: ${citationParams.pathName} and checkRawRefs: ${citationParams.checkedRawRefs}`)
-
-            // const baseUrl = `https://wikipediacitations.scatter.red/`
-            const baseUrl = `${iariBase}/refs_lookup/`
+            console.log(`citationParams: pathName: ${citationParams.pathName}; checkRawRefs: ${citationParams.checkedRawRefs}`)
+            // alert(`Received new citationParams: pathName: ${citationParams.pathName} and checkRawRefs: ${citationParams.checkedRawRefs}`)
 
             // const citationApiUrl = `https://wikipediacitations.scatter.red/?url=${encodedUrl}&output=json`
-
+            const baseUrl = `${iariBase}refs_lookup`
             const params = new URLSearchParams({
-                url: encodeURIComponent(citationParams.pathName),
+                url: encodeURI(citationParams.pathName),
                 output: 'json',
                 // ...extraParams
             });
-            // return `${base}?${params.toString()}`;
             const apiUrl = `${baseUrl}?${params.toString()}`
+            console.log(`Citations Database apiUrl: ${apiUrl}`)
+            setDisplayApiUrl(apiUrl)
 
             const fetchData = async () => {
                 setIsLoading(true)
                 setError(null)
+                setIsLoadingTimer(true)  // prevents "too soon" flashing of loading icon
+                setTimeout(() => {
+                    setIsLoadingTimer(false)
+                }, 1000); // 1.0 seconds
 
                 try {
                     const response = await fetch(apiUrl)
@@ -126,15 +130,17 @@ const CitationsDatabase = () => {
             </div>
         </div>
 
-        {isLoading
+        {isLoading || isLoadingTimer
             ? <Loader message={"Fetching Citations Data..."}/>
             : <div>
                 {errors}
-                <div>Citation Data will go here...will render citationData</div>
+                <h3>Citation Data</h3>
+                <div>iariBase: {iariBase}</div>
+                <div>apiUrl: {displayApiUrl}</div>
                 <CitationsDataDisplay
                     citationData={citationData}
                     citationLabel={{
-                        caption: `Data for Citation Data for ${citationParams.pathName}`,
+                        caption: `Citation Data for: ${citationParams.pathName}`,
                         other: 'other caption data, like num records, e.g., can go here'
                     }}
                     options = {{}}

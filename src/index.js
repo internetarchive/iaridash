@@ -70,10 +70,13 @@ const getMethod = (qParams, targetEnvironment) => {
     return methodKey
 }
 
+// must calc with extraction because hash stops query params from being parsed
+const queryString = window.location.hash.split('?')[1]  // Extract the part after "?" from the hash
+
 // ========================================
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const queryParameters = new URLSearchParams(window.location.search)
+const queryParameters = new URLSearchParams(queryString)
 const env = getEnvironment();  // return an Environment structure
 const myDebug = queryParameters.has("debug") ? queryParameters.get("debug").toLowerCase() === 'true' : false;
 const myPath = queryParameters.has("url") ? queryParameters.get("url") : '';

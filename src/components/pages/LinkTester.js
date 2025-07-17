@@ -39,7 +39,7 @@ const LinkTester = () => {
             <h2>{source.caption} <span className={"smaller"}>{source.api_base}</span></h2>
             {
                 endpoints.map(endpoint => {
-                    return <div className={"another-link"}>
+                    return <div className={"another-link"} key={endpoint}>
                         <a target={"_blank"} rel="noreferrer"
                            href={source.api_base + endpoint}>{endpoint}</a>
                     </div>
@@ -56,7 +56,7 @@ const LinkTester = () => {
                 <div className={"col-12"}>
                     {
                         iari_sources.map(source_key => {
-                            return linksForSource(IariSources[source_key])
+                            return <div key={source_key}>{linksForSource(IariSources[source_key])}</div>
                         })
                     }
                 </div>

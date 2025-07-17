@@ -148,7 +148,7 @@ export default function App({
         <div>{buttons}</div>
         <p><span className={'label'}>Environment:</span> {env?.caption}, ({window.location.host})</p>
         <p><span className={'label'}>IARE version:</span> {package_json.version}</p>
-        <p><span className={'label'}>IARI Source:</span> {myIariSourceId} ({IariSources[myIariSourceId]?.endpoint})</p>
+        <p><span className={'label'}>IARI Base:</span> {myIariSourceId} ({IariSources[myIariSourceId]?.api_base})</p>
         <p><span className={'label'}>Check Method:</span> {UrlStatusCheckMethods[checkStatusMethod].caption} ({checkStatusMethod})</p>
         <p><span className={'label'}>URL from address line:</span> {myPath}</p>
         <p><span className={'label'}>Force Refresh:</span> {forceRefresh ? "TRUE" : "false"}</p>
@@ -161,8 +161,8 @@ export default function App({
         environmentKey: env?.key,
         versionDisplay: versionInfo,
         siteDisplay: siteInfo,
-        iariSource: IariSources[myIariSourceId]?.endpoint,
-        iariSourceDisplay: IariSources[myIariSourceId]?.caption,
+        iariBase: IariSources[myIariSourceId]?.api_base,
+        iariBaseDisplay: IariSources[myIariSourceId]?.caption,
         urlStatusMethod: checkStatusMethod,
         isDebug: !!isDebug,
         buttonShowDebug: buttonShowDebug,
