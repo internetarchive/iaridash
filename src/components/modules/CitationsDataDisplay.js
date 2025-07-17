@@ -1,4 +1,5 @@
 import React from "react";
+import '../css/citationsData.css'
 
 // temporary...
 import { JsonEditor } from 'json-edit-react'
