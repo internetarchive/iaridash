@@ -90,16 +90,17 @@ body {
 
 /* environment specific */
 
-body .iaridash .header h1 {
+body .iaridash h1.app-title {
     color:red;
 }
-body.env-production .iaridash .header h1 {
+body.env-production .iaridash h1.app-title {
     /*color:#e30040;*/
     color:#0091fb;
 }
-body.env-local .iaridash .header h1 {
+body.env-local .iaridash h1.app-title {
     color:#1ecc36;
 }
+
 
 /* bootstrap fixes */
 
@@ -111,7 +112,7 @@ xxx.container-fluid .row {
 }
 
 
-/* iari-view specific */
+/* iaridash layout flow */
 
 .iaridash {
     display: flex;
@@ -139,6 +140,7 @@ xxx.container-fluid .row {
     padding-bottom:1rem !important;
 }
 
+/* iaridash element redefines */
 
 .iaridash hr {
     margin: 0 0 .5rem;
@@ -175,7 +177,7 @@ xxx.container-fluid .row {
 .iaridash .main-page-nav li {
     display: inline;
     margin-right: .5rem;
-    margin-bottom: .65rem;
+    margin-bottom: .75rem;
 }
 
 .iaridash .main-page-nav li a {

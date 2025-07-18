@@ -19,6 +19,10 @@ export default function CitationsDataDisplay(
         ? <div className={'citation-data-display-caption'}>{citationLabel.caption}</div>
         : null
 
+    const statistics = citationData
+        ? <div>Execution time: {citationData["execution_time"]}</div>
+        : <p>Nothing to show</p>
+
     console.log(`CitationsDataDisplay render`)
 
 
@@ -27,6 +31,11 @@ export default function CitationsDataDisplay(
         <div className="citation-data-display-header">
             {caption}
         </div>
+
+        <div className="citation-data-display-statistics">
+            {statistics}
+        </div>
+
         <div className="citation-data-display-body">
             <div className="citation-data-json">
                 <JsonEditor data={citationData}/>

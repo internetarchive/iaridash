@@ -42,7 +42,7 @@ export default function AppHeader({
     return <div className={"iaridash-header"}>
 
         <div className={"header-contents"}>
-            <h1>{appTitle}</h1>
+            <h1 className={'app-title'}>{appTitle}</h1>
             <div className={"header-aux1"}>{versionInfo}{siteInfo} ({iariInfo}) {buttonShowDebug}</div>
             {debugContents}
         </div>

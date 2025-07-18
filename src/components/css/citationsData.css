@@ -36,6 +36,9 @@
 .citation-data-display-header {
 
 }
+.citation-data-display-statistics {
+    margin-bottom: var(--iaridash-margin-small) !important;
+}
 .citation-data-display-caption {
     padding-bottom: var(--iaridash-margin-small) !important;
 }
