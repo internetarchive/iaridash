@@ -1,5 +1,6 @@
 import React from "react"
 import Checkbox from "./Checkbox";
+import './css/pathFetch.css';
 
 /*
 
@@ -54,10 +55,10 @@ export default function PathFetch(
         })
     }
 
-    const pathFetch = <div className={"path-input-wrapper"}
-    ><label
-        htmlFor="pathInput" className={'path-input-label'}>Wikipedia Article URL:</label
-    ><input
+    const fetchInput = <>
+        <label
+            htmlFor="pathInput" className={'path-input-label'}>Wikipedia Article URL:</label
+        ><input
         id="pathInput" name="pathInput"
         className={"path-fetch-input"}
         type="search"
@@ -70,10 +71,10 @@ export default function PathFetch(
         onChange={handlePathChange}
         onKeyPress={handlePathKeyPress} // TODO deprecated - should change to onKeyDown
         placeholder={placeholder ? placeholder : ''}
-    />
-    </div>
+        />
+    </>
 
-    const fetchOptions = <div>
+    const fetchOptions = <>
         <Checkbox className={"chk-fetch-options"}
                   id="chk-raw-refs"
                   label={" " + initialCheckedRawRefsLabel}
@@ -82,15 +83,22 @@ export default function PathFetch(
                       setCheckedRawRefs(!checkedRawRefs)
                   }}
         />
-    </div>
+    </>
 
-    return <div className={`path-fetch-wrapper ${className ? className : ''}`}>
-        {pathFetch}
-        {fetchOptions}
-        <div style={{display: "block"}}>
+    return <div className={`path-fetch-container ${className ? className : ''}`}>
+        
+        <div className={"path-input-fetch"}>
+            {fetchInput}
+        </div>
+        
+        <div className={"path-input-options"}>
+            {fetchOptions}
+        </div>
+        
+        <div className={"path-input-submit"} style={{display: "block"}}>
             <button
                 className={"utility-button"}
-                style={{margin: "0 0 0.2rem 10px"}}
+                // style={{margin: "0 0 0.2rem 10px"}}
                 onClick={handlePathSubmit}>
                 <span>{submitButtonText}</span>
             </button

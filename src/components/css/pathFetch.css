@@ -1,0 +1,92 @@
+.path-fetch-container {
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    background-color: var(--citation-data-header-background-color);
+    padding: .75rem !important;
+    border-radius: var(--iaridash-radius-large);
+    border: 1px solid rgba(0, 0, 0, 0.075);
+    width: 100%;
+}
+
+.citation-path-fetch-container {
+}
+
+
+.path-fetch-container > div:not(:last-of-type) {
+    margin-bottom: var(--iaridash-margin-medium);
+}
+
+.path-fetch-input {
+    width:29rem;
+}
+
+.path-fetch-wrap {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: .5rem;
+}
+.path-fetch #pathInput {
+    width:29rem;
+    font-size: .9rem;
+    padding: 2pt 2pt 2pt 4pt;
+    border:1px solid dimgrey;
+}
+.path-fetch #pathInput::placeholder {
+    color: #a0a0a0;
+}
+
+.path-input-fetch {
+    margin-bottom: .5rem;
+    /*display:contents;  !* NB chatGPT syas display: copntents is not supported by IE *!*/
+}
+
+@media screen and (max-width: 800px) {
+    /*.path-input-fetch {*/
+    /*    marginBottom: .5rem;*/
+    /*    display:contents;*/
+    /*}*/
+
+    .path-fetch #pathInput {
+        width:100%;
+    }
+}
+
+.path-input-label {
+    color:dimgrey;
+    margin-right:.5em;
+    font-size:.9rem;
+    padding-top: 0.175rem;
+}
+
+.path-fetch-wrap button {
+    margin-top:.35em;
+}
+
+.path-fetch-wrap .chk-force-refresh {
+    margin-top:.65em;
+}
+
+.path-fetch .path-shortcut {
+    margin-left:10px;
+}
+
+.path-fetch-wrap .chk-force-refresh {
+    margin-left: .5rem;
+    margin-right: .25rem;
+}
+
+/* defaults for ChoiceFetch component */
+
+.choice-fetch-items {
+    display:flex;
+    flex-direction:column;
+    margin-bottom:.5rem;
+    font-size: .85rem;
+    color:var(--color-h4)
+}
+.choice-fetch-item {
+    margin-left: .8rem;
+}

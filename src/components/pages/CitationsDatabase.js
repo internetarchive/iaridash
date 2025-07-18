@@ -114,9 +114,9 @@ const CitationsDatabase = () => {
     )
 
 
-    return <>
-        <div className="row citations-display">
-            <div className="col col-12">
+    return <div className="citation-data-container">
+        <div className="row gx-0 citation-data-header">
+            <div className="col col-12 citation-path-fetch-container">
                 <PathFetch
                     initialPath={citationParams.pathName}
                     initialCheckedRawRefs={citationParams.checkedRawRefs}
@@ -130,25 +130,23 @@ const CitationsDatabase = () => {
             </div>
         </div>
 
+        <div className="row citation-data-body">
         {isLoading || isLoadingTimer
             ? <Loader message={"Fetching Citations Data..."}/>
-            : <div>
-                {errors}
-                <h3>Citation Data</h3>
-                {/*<div>iariBase: {iariBase}</div>*/}
-                {/*<div>apiUrl: {displayApiUrl}</div>*/}
-                <CitationsDataDisplay
+            : <CitationsDataDisplay
                     citationData={citationData}
                     citationLabel={{
                         caption: `Citation Data for: ${citationParams.pathName}`,
                         other: 'other caption data, like num records, e.g., can go here'
                     }}
-                    options = {{}}
-                    onAction = {handleAction}
+                    options={{}}
+                    onAction={handleAction}
+                    errors={{errors}}
                 />
-            </div>
         }
-    </>
+        </div>
+
+    </div>
 }
 
 export default CitationsDatabase;

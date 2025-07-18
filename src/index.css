@@ -1,4 +1,11 @@
 :root {
+    --iaridash-margin-small: .5rem;
+    --iaridash-margin-medium: .75rem;
+    --iaridash-margin-large: 1rem;
+
+    --iaridash-radius-small: .25rem;
+    --iaridash-radius-large: .75rem;
+
     --border-tab: 3pt solid hsl(192deg 91% 42% / 20%);
     --border-tab-active: 3pt solid hsl(345, 95%, 49%);
     --border-tab-active-hover: 3pt solid hsl(345, 95%, 69%);
@@ -111,6 +118,28 @@ xxx.container-fluid .row {
     flex-direction: column;
     height:100%;
 }
+
+.iaridash-header {
+    display: flex;
+    flex-direction: column;
+}
+.iaridash-header .header-contents {
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    margin-bottom:.65rem;
+}
+
+.iaridash-contents {
+    flex-grow:1;
+    overflow-y: scroll;
+    /*background: #e0e0f2;*/
+    margin-bottom:1rem;
+    padding-bottom:1rem !important;
+}
+
+
 .iaridash hr {
     margin: 0 0 .5rem;
 }
@@ -127,29 +156,26 @@ xxx.container-fluid .row {
     font-style:italic;
 }
 
-.iaridash .header {
-    display: flex;
-    flex-direction: column;
-}
-.iaridash .header-contents {
-    display:flex;
-    flex-direction:row;
-    flex-wrap:wrap;
-    justify-content: space-between;
-    margin-bottom:.65rem;
-}
 
 .iaridash .main-page-nav {
-    margin-top:.22rem;
+    margin-top: var(--iaridash-margin-small);
 }
+
 .iaridash .main-page-nav ol,
 .iaridash .main-page-nav ul {
-    padding-left: 0px !important;
+    /*padding-left: 0px !important;*/
+
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .iaridash .main-page-nav li {
     display: inline;
     margin-right: .5rem;
+    margin-bottom: .65rem;
 }
 
 .iaridash .main-page-nav li a {
@@ -259,7 +285,7 @@ button.utility-button {
     border: 1px solid transparent;
     border-radius: .3rem;
     padding: .28rem .42rem;
-    margin: 0 0 .5rem .5rem;
+    /*margin: 0 0 .5rem .5rem;*/
     vertical-align: middle;
     font-size: .69rem;
 
@@ -395,99 +421,13 @@ table.single-detail tr td:not(:first-child) {
     padding: 1rem 1rem 0;
     margin-top:.5rem;
     margin-bottom:.25rem;
-
     border:1px solid black;
 }
-.path-fetch-wrapper {
-    padding: 2pt 2pt 2pt 4pt;
-    /*border:1px solid dimgrey;*/
-    /*border-radius: 0.5rem;*/
 
-    display: inline-flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin-bottom: .5rem;
-}
-.path-fetch-wrapper > div {
-    margin-bottom: 1rem;
-}
-
-.path-fetch-input {
-    width:29rem;
-}
-
-.path-fetch-wrap {
-    display: inline-flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-bottom: .5rem;
-}
-.path-fetch #pathInput {
-    width:29rem;
-    font-size: .9rem;
-    padding: 2pt 2pt 2pt 4pt;
-    border:1px solid dimgrey;
-}
-.path-fetch #pathInput::placeholder {
-    color: #a0a0a0;
-}
-
-.path-input-wrapper {
-    margin-bottom: .5rem;
-    /*display:contents;  !* NB chatGPT syas display: copntents is not supported by IE *!*/
-}
-
-@media screen and (max-width: 800px) {
-    /*.path-input-wrapper {*/
-    /*    marginBottom: .5rem;*/
-    /*    display:contents;*/
-    /*}*/
-
-    .path-fetch #pathInput {
-        width:100%;
-    }
-}
-
-.path-input-label {
-    color:dimgrey;
-    margin-right:.5em;
-    font-size:.9rem;
-    padding-top: 0.175rem;
-}
-
-.path-fetch-wrap button {
-    margin-top:.35em;
-}
-
-.path-fetch-wrap .chk-force-refresh {
-    margin-top:.65em;
-}
-
-.path-fetch .path-shortcut {
-    margin-left:10px;
-}
-
-.path-fetch-wrap .chk-force-refresh {
-    margin-left: .5rem;
-    margin-right: .25rem;
-}
-
-/* defaults for ChoiceFetch component */
-
-.choice-fetch-items {
-    display:flex;
-    flex-direction:column;
-    margin-bottom:.5rem;
-    font-size: .85rem;
-    color:var(--color-h4)
-}
-.choice-fetch-item {
-    margin-left: .8rem;
-}
 
 .list-instruction {
-font-style:italic;
-font-weight:normal;
+    font-style:italic;
+    font-weight:normal;
 }
 
 .box-caption {

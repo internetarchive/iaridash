@@ -39,7 +39,7 @@ export default function AppHeader({
         </li>
     })
 
-    return <div className={"header"}>
+    return <div className={"iaridash-header"}>
 
         <div className={"header-contents"}>
             <h1>{appTitle}</h1>

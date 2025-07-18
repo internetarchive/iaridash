@@ -21,8 +21,9 @@ const Layout = ({ options={}, children }) => {
                 debugContents={myConfig.debugContents}
             />
 
+            <div className="iaridash-contents">
             <Outlet />
-
+            </div>
         </>
     );
 };
