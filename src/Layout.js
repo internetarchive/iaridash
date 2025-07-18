@@ -18,7 +18,7 @@ const Layout = ({ options={}, children }) => {
                 iariInfo={myConfig.iariBaseDisplay}
 
                 buttonShowDebug={myConfig.buttonShowDebug}
-                debugContents={myConfig.debugContents}
+                debugDisplay={myConfig.debugDisplay}
             />
 
             <div className="iaridash-contents">

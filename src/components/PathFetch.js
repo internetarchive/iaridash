@@ -14,8 +14,8 @@ we should generalize this to take an array of auxiliary settings that
 export default function PathFetch(
     {
         initialPath='',
-        initialCheckedRawRefs= false,
-        initialCheckedRawRefsLabel= 'Show Raw References',
+        initialUseRawRefs= false,
+        initialUseRawRefsLabel= 'Show Raw References',
         handleSubmit,
         labelPathText = "Submit",
         submitButtonText = "Submit",
@@ -24,7 +24,7 @@ export default function PathFetch(
     }) {
 
     const [pathName, setPathName] = React.useState(initialPath); // init with passed in name
-    const [checkedRawRefs, setCheckedRawRefs] = React.useState(initialCheckedRawRefs);
+    const [useRawRefs, setUseRawRefs] = React.useState(initialUseRawRefs);
 
     const handlePathChange = (event) => {
         console.log("CitationsDataDisplay::handlePathChange: event.target.value is:" + event.target.value)
@@ -50,7 +50,7 @@ export default function PathFetch(
         handleSubmit({
             path: pathName,
             options: {
-                checkedRawRefs: checkedRawRefs
+                useRawRefs: useRawRefs
             }
         })
     }
@@ -77,10 +77,10 @@ export default function PathFetch(
     const fetchOptions = <>
         <Checkbox className={"chk-fetch-options"}
                   id="chk-raw-refs"
-                  label={" " + initialCheckedRawRefsLabel}
-                  value={checkedRawRefs}
+                  label={" " + initialUseRawRefsLabel}
+                  value={useRawRefs}
                   onChange={() => {
-                      setCheckedRawRefs(!checkedRawRefs)
+                      setUseRawRefs(!useRawRefs)
                   }}
         />
     </>

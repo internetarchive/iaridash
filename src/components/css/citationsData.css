@@ -1,7 +1,8 @@
 :root {
-    --citation-data-border-radius: .75rem;
-    --citation-data-header-background-color: #d8eeff;
+    --citation-data-border-radius: var(--iaridash-radius-large);
 }
+
+/* JSON editor component override */
 
 .jer-editor-container {
     border-radius: 0 !important;
@@ -36,17 +37,26 @@
 .citation-data-display-header {
 
 }
-.citation-data-display-statistics {
+
+.citation-data-display-statistics > div {
     margin-bottom: var(--iaridash-margin-small) !important;
 }
+
 .citation-data-display-caption {
     padding-bottom: var(--iaridash-margin-small) !important;
 }
+.citation-data-display-caption-details {
+    background-color: var(--iaridash-details-box-bg);
+    border-radius: var(--iaridash-details-box-radius);
+    border: var(--iaridash-box-border);
+    padding: var(--iaridash-details-box-padding);
+    margin-bottom: var(--iaridash-margin-small);
+}
+
 .citation-data-display-body {
     flex-grow: 1;
     overflow: auto;
     border-radius: var(--citation-data-border-radius);
     border: 1px solid rgba(0, 0, 0, 0.075);
-    /*background-color: #d1649c;*/
 }
 

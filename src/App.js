@@ -143,7 +143,7 @@ export default function App({
     </>
 
     // eslint-disable-next-line no-unused-vars
-    const debugContents = <div className={"debug-section " + (isDebug ? "debug-on" : "debug-off")}>
+    const debugDisplay = <div className={"debug-section " + (isDebug ? "debug-on" : "debug-off")}>
         <div style={{marginBottom:".5rem"}}>{iariChoiceSelect} {methodChoiceSelect}</div>
         <div>{buttons}</div>
         <p><span className={'label'}>Environment:</span> {env?.caption}, ({window.location.host})</p>
@@ -169,7 +169,7 @@ export default function App({
         isShowShortcuts: isShowShortcuts,
         isShowExpertMode: isShowExpertMode,
         isShowNewFeatures: isShowNewFeatures,
-        debugContents: debugContents
+        debugDisplay: debugDisplay
     }
 
     // in the following render, we wrap in ConfigContext so all components in the sub-tree

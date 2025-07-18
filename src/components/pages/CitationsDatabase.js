@@ -1,8 +1,9 @@
 import React from 'react';
-import CitationsDataDisplay from "../modules/CitationsDataDisplay";
+import CitationsDataDisplay from "../services/CitationsDataDisplay";
 import PathFetch from "../PathFetch";
 import {ConfigContext} from "../../contexts/ConfigContext";
 import Loader from "../Loader";
+import MakeLink from "../MakeLink";
 
 
 const CitationsDatabase = () => {
@@ -13,7 +14,7 @@ const CitationsDatabase = () => {
     const [isLoadingTimer, setIsLoadingTimer] = React.useState(false)
     const [citationParams, setCitationParams] = React.useState({
         pathName: pathInitial,
-        checkedRawRefs: false
+        useRawRefs: false
     })
     const [citationData, setCitationData] = React.useState(null);
     const [displayApiUrl, setDisplayApiUrl] = React.useState('');
@@ -49,7 +50,7 @@ const CitationsDatabase = () => {
     const handlePathResults = (pathResults) => {
         setCitationParams({
             pathName: pathResults.path,
-            checkedRawRefs: pathResults.options?.checkedRawRefs,
+            useRawRefs: pathResults.options?.useRawRefs,
         })
     }
 
@@ -60,16 +61,17 @@ const CitationsDatabase = () => {
             // use of "hasMounted" prevents fetching of data during
             // component first time with null citationParams.pathName
 
-            console.log(`citationParams: pathName: ${citationParams.pathName}; checkRawRefs: ${citationParams.checkedRawRefs}`)
-            // alert(`Received new citationParams: pathName: ${citationParams.pathName} and checkRawRefs: ${citationParams.checkedRawRefs}`)
+            console.log(`citationParams: pathName: ${citationParams.pathName}; checkRawRefs: ${citationParams.useRawRefs}`)
+            // alert(`Received new citationParams: pathName: ${citationParams.pathName} and checkRawRefs: ${citationParams.useRawRefs}`)
 
             // const citationApiUrl = `https://wikipediacitations.scatter.red/?url=${encodedUrl}&output=json`
             const baseUrl = `${iariBase}refs_lookup`
             const params = new URLSearchParams({
                 url: encodeURI(citationParams.pathName),
                 output: 'json',
-                // ...extraParams
+                raw: citationParams.useRawRefs ? 'true' : 'false',
             });
+
             const apiUrl = `${baseUrl}?${params.toString()}`
             console.log(`Citations Database apiUrl: ${apiUrl}`)
             setDisplayApiUrl(apiUrl)
@@ -115,12 +117,13 @@ const CitationsDatabase = () => {
 
 
     return <div className="citation-data-container">
+
         <div className="row gx-0 citation-data-header">
             <div className="col col-12 citation-path-fetch-container">
                 <PathFetch
                     initialPath={citationParams.pathName}
-                    initialCheckedRawRefs={citationParams.checkedRawRefs}
-                    initialCheckedRawRefsLabel = "Show Raw References"
+                    initialUseRawRefs={citationParams.useRawRefs}
+                    initialUseRawRefsLabel = "Show Raw References"
 
                     handleSubmit={handlePathResults}
                     submitButtonText = "Submit"
@@ -137,7 +140,7 @@ const CitationsDatabase = () => {
                     citationData={citationData}
                     citationLabel={{
                         caption: `Citation Data for: ${citationParams.pathName}`,
-                        other: 'other caption data, like num records, e.g., can go here'
+                        details: <div>Api Url: <MakeLink href={displayApiUrl}/></div>
                     }}
                     options={{}}
                     onAction={handleAction}

@@ -70,7 +70,7 @@
 }
 
 
-/* webrx-table-wrapper, webrx-table-element, and webrx-table-modules
+/* webrx-table-wrapper, webrx-table-element, and webrx-table-services
    aid in the more natural scrolling along detail tables */
 .webrx-table-wrapper {
     display: flex;

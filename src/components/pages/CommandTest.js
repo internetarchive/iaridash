@@ -1,5 +1,5 @@
 import React from 'react';
-import CommandTestDisplay from "../modules/CommandTestDisplay";
+import CommandTestDisplay from "../services/CommandTestDisplay";
 import RouteHeader from "../RouteHeader";
 
 const CommandTest = () => {

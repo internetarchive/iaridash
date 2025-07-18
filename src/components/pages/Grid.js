@@ -1,6 +1,6 @@
 // src/components/pages/Grid.js
 import React from 'react';
-import ScoreBoard from "../modules/ScoreBoard";
+import ScoreBoard from "../services/ScoreBoard";
 import RouteHeader from "../RouteHeader";
 
 const Grid = () => {

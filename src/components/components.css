@@ -309,7 +309,7 @@
     border: 1px solid black;
 }
 .url-actionable-buttons button div:first-of-type {
-    text-align: left;  /* left aligns modules text, keeping "count info"  centered */
+    text-align: left;  /* left aligns services text, keeping "count info"  centered */
 }
 .url-actionable-buttons button.btn:hover {
     background-color: var(--color-filter-btn-hover-bg) !important;

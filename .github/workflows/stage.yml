@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - modules
+      - services
 
 jobs:
   build:

@@ -14,19 +14,36 @@ export default function CitationsDataDisplay(
         errors = null,
     }) {
 
+    const [showDetails, setShowDetails] = React.useState(false)
+
+    const showDetailsButton = <button
+        className={"utility-button detail-button"}
+        // style={{margin: "0 0 0.2rem 10px"}}
+        onClick={() => {setShowDetails(prev => !prev)}}
+    >
+        <span>{'...'}</span>
+    </button>
 
     const caption = citationLabel?.caption
-        ? <div className={'citation-data-display-caption'}>{citationLabel.caption}</div>
+        ? <>
+            <div className={'citation-data-display-caption'}>{citationLabel.caption}{showDetailsButton}</div>
+            {showDetails ? <div className={'citation-data-display-caption-details'}>{citationLabel["details"]}</div> : null}
+        </>
+
         : null
 
     const statistics = citationData
-        ? <div>Execution time: {citationData["execution_time"]}</div>
+        ? <>
+            <div>Execution time: {citationData["execution_time"]}</div>
+            <div>{citationData["use_raw"] ? 'Showing raw reference data' : 'Showing normalized reference data'}</div>
+        </>
         : <p>Nothing to show</p>
 
     console.log(`CitationsDataDisplay render`)
 
 
     // NB OnAction can be setup and linked to any event of the displayed data
+
     return <div className="citation-data-display-container">
         <div className="citation-data-display-header">
             {caption}

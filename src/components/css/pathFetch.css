@@ -3,7 +3,7 @@
     flex-direction: column;
     flex-wrap: wrap;
 
-    background-color: var(--citation-data-header-background-color);
+    background-color: var(--iaridash-focus-box-bg);
     padding: .75rem !important;
     border-radius: var(--iaridash-radius-large);
     border: 1px solid rgba(0, 0, 0, 0.075);

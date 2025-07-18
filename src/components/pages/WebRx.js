@@ -1,7 +1,7 @@
 import React from 'react';
 import Loader from "../Loader";
 import RouteHeader from "../RouteHeader";
-import WebRxStats from "../modules/WebRxStats";
+import WebRxStats from "../services/WebRxStats";
 import '../css/webrx.css';
 // import webRxDataFromFile from '../../__tests__/_test_data/webRxData.json';
 import {ConfigContext} from "../../contexts/ConfigContext";

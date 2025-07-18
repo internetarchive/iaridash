@@ -9,7 +9,7 @@ export default function AppHeader({
                                       siteInfo,
                                       iariInfo,
                                       buttonShowDebug,
-                                      debugContents,
+                                      debugDisplay,
                                   }) {
 
     const location = useLocation();
@@ -44,7 +44,10 @@ export default function AppHeader({
         <div className={"header-contents"}>
             <h1 className={'app-title'}>{appTitle}</h1>
             <div className={"header-aux1"}>{versionInfo}{siteInfo} ({iariInfo}) {buttonShowDebug}</div>
-            {debugContents}
+        </div>
+
+        <div className={"debug-display"}>
+            {debugDisplay}
         </div>
 
         <nav className={"main-page-nav"}>

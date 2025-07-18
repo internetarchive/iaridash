@@ -3,19 +3,24 @@
     --iaridash-margin-medium: .75rem;
     --iaridash-margin-large: 1rem;
 
-    --iaridash-radius-small: .25rem;
+    --iaridash-radius-small: .5rem;
     --iaridash-radius-large: .75rem;
+
+    --iaridash-focus-box-bg: #d8eeff;
+    --iaridash-focus-box-radius: var(--iaridash-radius-large);
+    --iaridash-details-box-bg: #d8d8d8;
+    --iaridash-details-box-radius: var(--iaridash-radius-small);
+    --iaridash-details-box-padding: var(--iaridash-margin-small);
+
+    --iaridash-box-border: 1pt solid hsl(192deg 0% 65%);
 
     --border-tab: 3pt solid hsl(192deg 91% 42% / 20%);
     --border-tab-active: 3pt solid hsl(345, 95%, 49%);
     --border-tab-active-hover: 3pt solid hsl(345, 95%, 69%);
     --border-tab-hover: 3pt solid #e3b5c0;
+
     --color-bg-tab: #efefef;
     --color-bg-tab-active: white;
-
-
-
-
 
     --color-list-fg-selected: #054630; /*#1c654f;*/
     --color-list-bg-selected: #ceefd9; /*#c4e4c8;*/
@@ -49,7 +54,6 @@
 
     /* heights of lists - NB: should be dynamic */
     --height-list: 68vh;
-    --height-list-pdf: 70vh;
     --border-list:1px solid black;
 
     --radio-button-magnify:1.35;
@@ -301,6 +305,12 @@ button.utility-button.small-button {
     background-color: #d3d3d3;
     color: #4d4d4d;
     border-color: #888888;
+}
+button.utility-button.detail-button {
+    background-color: var(--iaridash-details-box-bg);
+    border: 1px solid #888888;
+    margin-left:.5rem;
+    color:black;
 }
 
 

@@ -58,8 +58,7 @@
 }
 
 .status-col .fetch-on {
-    /*content: url('../../images/IYNL.gif');*/
-    content: url('../../images/spinny2.gif');
+    content: url('../../images/spinny2.v2.gif');
 }
 
 .status-col .fetch-off {
