@@ -1,5 +1,5 @@
 import React from "react";
-import RawJson from "../RawJson";
+import RawJson from "../../components/RawJson";
 // import {ConfigContext} from "../../contexts/ConfigContext"
 // import PureJson from "../utils/PureJson";
 // import RawJson from "../RawJson";

@@ -1,5 +1,5 @@
 import React from "react";
-import '../components.css';
+import '../../components/css/components.css';
 
 // TODO: add tooltipID? add onAction? or is all this covered in contents?
 export default function ControlBox({

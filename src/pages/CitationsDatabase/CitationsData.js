@@ -1,12 +1,12 @@
 import React from 'react';
-import CitationsDataDisplay from "../services/CitationsDataDisplay";
-import PathFetch from "../PathFetch";
+import CitationsDataDisplay from "./CitationsDataDisplay";
+import PathFetch from "../../components/PathFetch";
 import {ConfigContext} from "../../contexts/ConfigContext";
-import Loader from "../Loader";
-import MakeLink from "../MakeLink";
+import Loader from "../../components/Loader";
+import MakeLink from "../../components/MakeLink";
 
 
-const CitationsDatabase = () => {
+const CitationsData = () => {
     const pathInitial = "https://en.wikipedia.org/wiki/Siemens_scandal"
 
     const hasMounted = React.useRef(false);
@@ -36,7 +36,7 @@ const CitationsDatabase = () => {
 
         else if (action === "fetch_citation_data"
         ) {
-            console.log("CitationsDatabase: Action: fetch citation data")
+            console.log("CitationsData: Action: fetch citation data")
         }
 
         else {
@@ -152,4 +152,4 @@ const CitationsDatabase = () => {
     </div>
 }
 
-export default CitationsDatabase;
+export default CitationsData;

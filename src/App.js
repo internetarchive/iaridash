@@ -175,7 +175,7 @@ export default function App({
     // in the following render, we wrap in ConfigContext so all components in the sub-tree
     // can access this, and provide DataContext to provide access to data that is retained
     // across routing changes (within AppRouter).
-    // If we did not pass dataContext from this level, data for the Grid component would be
+    // If we did not pass dataContext from this level, data for the DataGrid component would be
     // reset every time we changed the route. I suppose there are other ways to persist state
     // or data (like a db)
 

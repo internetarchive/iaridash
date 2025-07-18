@@ -1,10 +1,10 @@
 import React from "react";
-import DataGrid from "./DataGrid";
+import DataGridDisplay from "./DataGridDisplay";
 import ControlBox from "./ControlBox";
 import {gridDef} from "./GridDefs"
 import {ConfigContext, DataContext} from "../../contexts/ConfigContext";
 //import {testGridData} from "./TestGridData";
-import {nowTime} from "./dataUtils";
+import {nowTime} from "../../utils/dataUtils";
 
 export default function ScoreBoard({options = {}}) {
 
@@ -246,8 +246,8 @@ export default function ScoreBoard({options = {}}) {
                           onChange={(e) => setGridItems(e.target.value)}
                 />
 <hr/>
-                {/*<h2>Data Grid</h2>*/}
-                {/*<DataGrid gridData={gridData} gridDef={myGridDef}/>*/}
+                {/*<h2>Data DataGrid</h2>*/}
+                {/*<DataGridDisplay gridData={gridData} gridDef={myGridDef}/>*/}
 
             </div>
         </div>
@@ -258,7 +258,7 @@ export default function ScoreBoard({options = {}}) {
     <div className="row">
         <div className={"col"}>
             <h2>Data Grid Results</h2>
-            <DataGrid gridData={gridData} gridDef={myGridDef}/>
+            <DataGridDisplay gridData={gridData} gridDef={myGridDef}/>
         </div>
     </div>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import RouteHeader from "../RouteHeader";
+import RouteHeader from "../components/RouteHeader";
 
 const Home = () => {
 

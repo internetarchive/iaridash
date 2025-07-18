@@ -1,16 +1,16 @@
-// src/components/pages/Grid.js
+// src/components/pages/DataGrid.js
 import React from 'react';
-import ScoreBoard from "../services/ScoreBoard";
-import RouteHeader from "../RouteHeader";
+import ScoreBoard from "./ScoreBoard";
+import RouteHeader from "../../components/RouteHeader";
 
-const Grid = () => {
-    console.log("Page: Grid.js")
+const DataGrid = () => {
+    console.log("Page: DataGrid.js")
     return <>
-        <RouteHeader caption = {"Grid"}
+        <RouteHeader caption = {"DataGrid"}
                      subCaption = "Compare results of different operations on a list of URLs." />
         <p style={{color:"#e30040", fontWeight:"bold"}}>Under Construction...</p>
         <ScoreBoard options={{}} />
     </>
 }
 
-export default Grid;
+export default DataGrid;

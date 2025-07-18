@@ -1,6 +1,6 @@
 import {fetchUrl} from "../../utils/iariUtils";
 import {UrlStatusCheckMethods} from "../../constants/checkMethods.js"
-import RawJson from "../RawJson";
+import RawJson from "../../components/RawJson";
 
 export const gridDef = {
 

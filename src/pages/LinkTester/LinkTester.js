@@ -1,6 +1,6 @@
 // src/components/pages/LinkTester.js
 import React from 'react'
-import RouteHeader from "../RouteHeader"
+import RouteHeader from "../../components/RouteHeader"
 import {IariSources} from "../../constants/iariSources"
 
 const LinkTester = () => {

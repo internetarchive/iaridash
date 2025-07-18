@@ -1,11 +1,11 @@
 import React from "react";
 import DataRow from "./DataRow";
-import '../css/datagrid.css'
+import './datagrid.css'
 
 /*
 display gridData using gridDef as template
  */
-export default function DataGrid({gridData = null, gridDef = {}, options = {}
+export default function DataGridDisplay({gridData = null, gridDef = {}, options = {}
         }) {
 
     // exit with message if no columns to show

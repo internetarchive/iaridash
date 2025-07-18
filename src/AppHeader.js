@@ -22,8 +22,8 @@ export default function AppHeader({
         ["/cd",'Citations Database'],
         ["/webrx",'Web Rx'],
         ["/tarb",'TARB'],
-        ["/archives",'Test Archives'],
-        ["/grid",'Data Grid'],
+        ["/archives",'Test TestArchives'],
+        ["/grid",'Data DataGrid'],
     ].map( rp => {
         return <li key={rp[0]}>
             <Link to={rp[0]} className={location.pathname === rp[0] ? "active-link" : ""}>{rp[1]}</Link>

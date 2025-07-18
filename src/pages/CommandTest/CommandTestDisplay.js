@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import '../css/commandTest.css'
+import './commandTest.css'
 
 /*
 display command test for generic command, with response in response box

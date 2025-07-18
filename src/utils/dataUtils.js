@@ -1,4 +1,4 @@
-import {fetchUrl} from "../../utils/iariUtils"
+import {fetchUrl} from "./iariUtils"
 export const nowTime = () => {
     // Create a new Date object
     const currentDate = new Date();

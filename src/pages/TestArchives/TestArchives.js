@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import {getIabotArchiveData, getWaybackArchiveData} from "./../../utils/archiveUtils"
-import RouteHeader from "../RouteHeader";
+import {getIabotArchiveData, getWaybackArchiveData} from "../../utils/archiveUtils"
+import RouteHeader from "../../components/RouteHeader";
 
-const Archives = () => {
+const TestArchives = () => {
 
     const testUrl = "http://travel.nationalgeographic.com/travel/world-heritage/easter-island/"
 
@@ -117,4 +117,4 @@ const Archives = () => {
     </> )
 }
 
-export default Archives
+export default TestArchives

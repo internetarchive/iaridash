@@ -1,6 +1,6 @@
 import React from 'react';
-import CommandTestDisplay from "../services/CommandTestDisplay";
-import RouteHeader from "../RouteHeader";
+import CommandTestDisplay from "./CommandTestDisplay";
+import RouteHeader from "../../components/RouteHeader";
 
 const CommandTest = () => {
 

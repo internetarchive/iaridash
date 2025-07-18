@@ -183,10 +183,10 @@
     cursor: pointer;
 }
 .filter-box-show.open {
-    content: url('../images/eye_open.svg');
+    content: url('../../images/eye_open.svg');
 }
 .filter-box-show.closed {
-    content: url('../images/eye_closed.svg');
+    content: url('../../images/eye_closed.svg');
 }
 
 /* flock boxes - surrounds flock style components  */

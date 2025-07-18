@@ -243,10 +243,10 @@ const fetchUrlArchive = async (iariBase, url, refresh=false) => {
 
 // returns a promise containing array of results of checking archive status of urls in irlArray
 export const fetchUrlArchives = async ({
-                                           iariBase= '',
-                                           urlArray=[],
-                                           refresh=false,
-                                       } = {}) => {
+                   iariBase= '',
+                   urlArray=[],
+                   refresh=false,
+               } = {}) => {
 
     // return empty array if urlArray is falsey (null, undefined, or 0 length)
     if (!urlArray?.length) return Promise.resolve([])
