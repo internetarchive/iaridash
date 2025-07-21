@@ -90,8 +90,8 @@ const TestArchives = () => {
         <div className={"container-fluid"}>
             <div className={"row"}>
 
-                <div className={"row header-left-part"}>
-                    <h3>URL to test: {buttonIabotArchive} {buttonWaybackArchive}</h3>
+                <div className={"row header-left-part"} style={{marginBottom: '.5rem'}}>
+                    <h3>URL to test: {buttonWaybackArchive}</h3>
                 </div>
 
                 <textarea className={`source-url-text ${''/* your code here */}`}
@@ -107,7 +107,7 @@ const TestArchives = () => {
             <div className={"row"}>&nbsp;</div>
 
             <div className={"row"}>
-                <h3>Test Results here</h3>
+                <h3>Results here</h3>
                 <textarea className={`result-text multi-line-textarea ${''/* your code here */}`}
                           readOnly={testIsEditable ? false : true}
                           value={localResultsText}

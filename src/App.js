@@ -8,7 +8,7 @@ import {IareEnvironments} from "./constants/environments";
 
 import {ConfigContext, DataContext} from "./contexts/ConfigContext"
 
-import AppRouter from "./AppRouter";
+import AppRouter from "./routes/AppRouter";
 
 
 export default function App({

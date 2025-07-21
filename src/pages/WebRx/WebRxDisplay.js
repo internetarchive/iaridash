@@ -1,21 +1,22 @@
 import React from "react";
 // import RawJson from "../RawJson";
-import Table  from "../../components/Table"
-import {isNullOrUndef} from "chart.js/helpers";
+import Table from "../../components/Table"
+// import {isNullOrUndef} from "chart.js/helpers";
+import WebRxDetails from "./WebRxDetails";
+import WebRxSummary from "./WebRxSummary";
 
 
-export default function WebRxStats({webRxData={}, options = null, onAction}) {
+export default function WebRxDisplay({webRxData={}, options = null, onAction}) {
 
-    //// const selectedRowRef = React.useRef(null);
-    const [selectedRowId, setSelectedRowId] = React.useState(0)  // assume first row as default selection
+    const [selectedTableId, setSelectedTableId] = React.useState(0)  // assume first row as default selection
 
     const handleSelectionChange = React.useCallback((selectedId) => {
-        setSelectedRowId(selectedId); // Updates selection without unnecessary re-renders
+        setSelectedTableId(selectedId); // Updates selection without unnecessary re-renders
         // selectedRowRef.current = selectedId;
         console.log(`Selected row changed to: ${selectedId}`)
     }, [])
 
-    // // Sample Data
+    // // Data format for table data
 
     // const columns = [
     //     { accessorKey: "id", header: "ID" },
@@ -100,11 +101,11 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
             return numA - numB;
         }
 
-        // return empty array of tableData is empty
+        // return empty array if tableData is empty
         if (!tableData) return []
 
         // create table data for details
-        const tables = tableData.map( (table, i) => {
+        return tableData.map((table, i) => {
             const t = {
                 name: table.name,
                 id: i
@@ -116,7 +117,7 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
                 header: "Wiki Site",
             }]
 
-            table["column_names"].forEach( (colName, i) => {
+            table["column_names"].forEach((colName, i) => {
                 t.cols.push({
                     accessorKey: `d${i}`,
                     header: colName,
@@ -131,20 +132,18 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
             })
 
             // add data rows to table; data columns keyed as "dX"
-            t.rows = table["rows"].map( (row, i) => {
+            t.rows = table["rows"].map((row, i) => {
                 const r = {id: row["site"]}
-                row.cols.forEach( (d,i) => {
+                row.cols.forEach((d, i) => {
                     r[`d${i}`] = d.toLocaleString()
                 })
-                r.total =  row["total"].toLocaleString()
+                r.total = row["total"].toLocaleString()
                 return r
             })
 
             return t  // to be added to tables array
 
         })
-
-        return tables
     }
 
     if (!webRxData || typeof(webRxData) !== 'object') {
@@ -160,33 +159,16 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
     const tableSummary = getSummaryTable(webRxData['table_totals'])
     const tablesDetails = getDetailTables(webRxData['tables'])
 
-    console.log(`WebRxStats render, selectedRowId: ${selectedRowId}`)
+    console.log(`WebRxStats render, selectedTableId: ${selectedTableId}`)
 
-    return <>
+    return <div className="webrx-display-container">
 
-        {/* Totals Table */}
-        <div className="row iari-table-display">
-            <div className="col col-12">
-                <div className={"webrx-table-wrapper"}>
-                    <div className={"webrx-table-main"}>
-                        <h3>WebRx Metrics, All Wikis <
-                            span
-                            style={{fontSize:"67%", fontStyle:"italic", color:"hsl(201deg 37% 49% / 96%)"}}
-                        > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click on row to show expanded metric details<
-                            /span></h3>
-                        <div className="webrx-table webrx-summary-table">
-                            <Table
-                                data={tableSummary.rows}
-                                columns={tableSummary.cols}
-                                onSelectionChange={handleSelectionChange}
-                                sortable={false}
-                                selectedRowId={selectedRowId}
-                                // selectedRow={selectedRowRef.current}
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div className="webrx-display-header">
+            <WebRxSummary
+                tableSummary={tableSummary}
+                selectedTableId={selectedTableId}
+                onSelectionChange={handleSelectionChange}
+            />
         </div>
 
         {/*{false && ( <>*/}
@@ -194,48 +176,9 @@ export default function WebRxStats({webRxData={}, options = null, onAction}) {
         {/*    <RawJson obj={tables}/>*/}
         {/*</>)}*/}
 
-        {/*webrx-details-table*/}
-
-        {/* Details tables */}
-        <div className="row iari-table-display">
-            <div className="col col-12">
-                <div className={"webrx-details-section"}>
-
-                    {tablesDetails.map( (table, i) => {
-
-                        // skip all tables except that which id matches selectedRowId
-                        if (isNullOrUndef(selectedRowId) ||
-                            (Number(table.id) !== Number(selectedRowId))) {
-                            return null
-                        }
-                        return (
-                            <div className="row iari-table-display" key={i}>
-                                <div className="col col-12">
-                                    <div className={"webrx-table-wrapper"}>
-                                        <div className={"webrx-table-main"}>
-                                            <h3>Details for: {table.name}</h3>
-                                            <div className="webrx-table">
-                                                <Table
-                                                    data={table.rows}
-                                                    columns={table.cols}
-                                                    sortable={true}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className={"webrx-table-shim"}>
-                                            &nbsp; {/* provides shim so that out-of-table scrolling can occur */}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
-            </div>
+        <div className="webrx-display-body">
+            <WebRxDetails tables={tablesDetails} selectedTableId={selectedTableId} />
         </div>
 
-
-    </>
+    </div>
 }
-
-

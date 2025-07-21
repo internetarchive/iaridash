@@ -2,15 +2,15 @@
 import React from 'react';
 // import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
-import Home from './pages/Home';
-import DataGrid from './pages/DataGrid/DataGrid';
-import CommandTest from './pages/CommandTest/CommandTest';
-import Layout from "./Layout";
-import LinkTester from "./pages/LinkTester/LinkTester";
-import TarbInsights from "./pages/Tarb/TarbInsights";
-import WebRx from "./pages/WebRx/WebRx";
-import TestArchives from "./pages/TestArchives/TestArchives";
-import CitationsData from "./pages/CitationsDatabase/CitationsData";
+import Home from '../pages/Home';
+import DataGrid from '../pages/DataGrid/DataGrid';
+import CommandTest from '../pages/CommandTest/CommandTest';
+import Layout from "../layouts/Layout";
+import TestLinks from "../pages/TestLinks/TestLinks";
+import TarbInsights from "../pages/Tarb/TarbInsights";
+import WebRx from "../pages/WebRx/WebRx";
+import TestArchives from "../pages/TestArchives/TestArchives";
+import CitationsData from "../pages/CitationsDatabase/CitationsData";
 
 const  AppRouter = () => {
 
@@ -27,7 +27,7 @@ const  AppRouter = () => {
                     <Route path="/archives" element={<TestArchives />} />
                     <Route path="/grid" element={<DataGrid />} />
                     <Route path="/command" element={<CommandTest/>}/>
-                    <Route path="/links" element={<LinkTester/>}/>
+                    <Route path="/links" element={<TestLinks/>}/>
                 </Route>
             </Routes>
         </Router>

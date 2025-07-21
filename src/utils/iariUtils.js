@@ -451,7 +451,7 @@ export const fetchUrls = async ({
 
 
 export const iariPostProcessUrl = (urlObj) => {
-    /* does things that IARI should have already done for us but doesn't
+    /* does exampleEndpointsDefs.js that IARI should have already done for us but doesn't
         urlObj.isArchive
         urlObj.hasTemplateArchive
         urlObj.tld

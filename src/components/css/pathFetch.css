@@ -3,9 +3,9 @@
     flex-direction: column;
     flex-wrap: wrap;
 
-    background-color: var(--iaridash-focus-box-bg);
+    background-color: var(--iari-focus-box-bg);
     padding: .75rem !important;
-    border-radius: var(--iaridash-radius-large);
+    border-radius: var(--iari-radius-large);
     border: 1px solid rgba(0, 0, 0, 0.075);
     width: 100%;
 }
@@ -15,7 +15,7 @@
 
 
 .path-fetch-container > div:not(:last-of-type) {
-    margin-bottom: var(--iaridash-margin-medium);
+    margin-bottom: var(--iari-spacing-medium);
 }
 
 .path-fetch-input {

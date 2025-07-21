@@ -1,18 +1,27 @@
 :root {
-    --iaridash-margin-small: .5rem;
-    --iaridash-margin-medium: .75rem;
-    --iaridash-margin-large: 1rem;
+    --iari-border-small: 1px solid black;
+    --iari-border-medium: 2pt solid black;
+    --iari-border-large: .25rem solid black;
 
-    --iaridash-radius-small: .5rem;
-    --iaridash-radius-large: .75rem;
+    --iari-spacing-small: .5rem;
+    --iari-spacing-medium: .75rem;
+    --iari-spacing-large: 1rem;
 
-    --iaridash-focus-box-bg: #d8eeff;
-    --iaridash-focus-box-radius: var(--iaridash-radius-large);
-    --iaridash-details-box-bg: #d8d8d8;
-    --iaridash-details-box-radius: var(--iaridash-radius-small);
-    --iaridash-details-box-padding: var(--iaridash-margin-small);
+    --iari-radius-small: .5rem;
+    --iari-radius-medium: .65rem;
+    --iari-radius-large: .75rem;
 
-    --iaridash-box-border: 1pt solid hsl(192deg 0% 65%);
+    --iari-focus-box-bg: #d8eeff;
+    --iari-focus-box-radius: var(--iari-radius-large);
+    --iari-details-box-bg: #d8d8d8;
+    --iari-details-box-radius: var(--iari-radius-small);
+    --iari-details-box-padding: var(--iari-spacing-small);
+
+    --iari-box-border: 1pt solid hsl(192deg 0% 65%);
+
+    --iari-color-greenish: #83dfcf;
+    --iari-color-blueish: #6fc0de;
+
 
     --border-tab: 3pt solid hsl(192deg 91% 42% / 20%);
     --border-tab-active: 3pt solid hsl(345, 95%, 49%);
@@ -62,6 +71,7 @@
     --border-normal: 1pt solid black;
 
     --size-h1: 1.6rem;
+
 }
 
 html, body, #root {
@@ -73,6 +83,19 @@ body {
     font: 14px "Century Gothic", Futura, sans-serif;
     margin: 15px 20px 20px;
 }
+
+/*.iari-ux-container {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    height: 100%;*/
+/*}*/
+/*.iari-ux-header {*/
+/*}*/
+/*.iari-ux-body {*/
+/*    flex-grow: 1;*/
+/*    overflow: auto;*/
+/*}*/
+
 
 .iaridash h1 {
     font-size:1.65rem;
@@ -164,7 +187,7 @@ xxx.container-fluid .row {
 
 
 .iaridash .main-page-nav {
-    margin-top: var(--iaridash-margin-small);
+    margin-top: var(--iari-spacing-small);
 }
 
 .iaridash .main-page-nav ol,
@@ -214,7 +237,9 @@ xxx.container-fluid .row {
 }
 
 .iaridash textarea.source-url-text {
-    padding-top:0.35rem
+    padding-top:0.35rem;
+    height: 2rem;
+    border-radius: var(--iari-radius-small);
 }
 
 .header-aux1 {
@@ -307,7 +332,7 @@ button.utility-button.small-button {
     border-color: #888888;
 }
 button.utility-button.detail-button {
-    background-color: var(--iaridash-details-box-bg);
+    background-color: var(--iari-details-box-bg);
     border: 1px solid #888888;
     margin-left:.5rem;
     color:black;

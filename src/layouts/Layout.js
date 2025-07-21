@@ -1,7 +1,7 @@
 import React from 'react';
 import AppHeader from './AppHeader';
 import {Outlet} from "react-router-dom";
-import {ConfigContext} from "./contexts/ConfigContext";
+import {ConfigContext} from "../contexts/ConfigContext";
 
 const Layout = ({ options={}, children }) => {
     console.log("rendering Layout.js, options:", options)

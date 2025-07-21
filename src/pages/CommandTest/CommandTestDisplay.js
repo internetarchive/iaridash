@@ -16,7 +16,7 @@ export default function CommandTestDisplay(
 
     const engageCommand = () => {
         // may want to set "fetching / waiting" status
-        onAction({action: "engageCommand", value: localCommandText})
+        onAction({action: "opCommand", value: localCommandText})
     }
 
     const buttonEngageCommand = <button

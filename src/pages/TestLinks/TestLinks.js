@@ -1,44 +1,24 @@
-// src/components/pages/LinkTester.js
+// src/components/pages/TestLinks.js
 import React from 'react'
 import RouteHeader from "../../components/RouteHeader"
 import {IariSources} from "../../constants/iariSources"
+import './testLinks.css'
 
-const LinkTester = () => {
+import { exampleEndpoints } from "../../constants/endpointsDefs.js"
+
+const TestLinks = () => {
     // test links for IARI right now...could be expanded for general links later
+    // links are made fron each iari source and all defined endpoints.
 
-    const endpoints = [
-
-        "version",
-
-        "refs_lookup?url=https://en.wikipedia.org/wiki/Siemens_scandal",
-
-        "check-url?url=https://example.com/",
-
-        "check-url"
-        + "?refresh=true"
-        + "&method=wayback"
-        + "&url=google.com/",
-
-        "check-url"
-            + "?url=https://www.easterisland.travel/easter-island-facts-and-info/tapati-rapa-nui-festival/",
-
-        "check-url"
-        + "?refresh=true"
-        + "&method=wayback"
-        + "&url=https://www.easterisland.travel/easter-island-facts-and-info/tapati-rapa-nui-festival/",
-    ]
-
-    // const iari_sources = [
-    //     {name: "Local", source: "http://localhost:5000/v2/"},
-    //     {name: "Staging", source: "https://iabot-api.archive.org/services/context/iari-stage/v2/"},
-    // ]
     const iari_sources = ['iari_local', 'iari_stage']  // keys into IariSources
+    const filteredExampleEndpoints = exampleEndpoints // for when we get to where we want to filter default...
 
     const linksForSource = (source) => {
         return <>
             <h2>{source.caption} <span className={"smaller"}>{source.api_base}</span></h2>
+            <h3 className={"iari-list-label"}>{"endpoint links:"}</h3>
             {
-                endpoints.map(endpoint => {
+                filteredExampleEndpoints.map(endpoint => {
                     return <div className={"another-link"} key={endpoint}>
                         <a target={"_blank"} rel="noreferrer"
                            href={source.api_base + endpoint}>{endpoint}</a>
@@ -49,7 +29,7 @@ const LinkTester = () => {
         }
 
     return <>
-        <RouteHeader caption = {"Test Links"} />
+        <RouteHeader caption = {"IARI Test Links"} subCaption = {"Click on Endpoint Link to open up results in another tab."}/>
 
         <div className={"container-fluid"}>
             <div className="row">
@@ -65,4 +45,4 @@ const LinkTester = () => {
     </>
 }
 
-export default LinkTester
+export default TestLinks

@@ -1,7 +1,7 @@
 import React from "react";
 import {Link, useLocation} from "react-router-dom";
-import {ConfigContext} from "./contexts/ConfigContext";
-import {IareEnvironments} from "./constants/environments";
+import {ConfigContext} from "../contexts/ConfigContext";
+import {IareEnvironments} from "../constants/environments";
 
 export default function AppHeader({
                                       appTitle,
@@ -22,8 +22,8 @@ export default function AppHeader({
         ["/cd",'Citations Database'],
         ["/webrx",'Web Rx'],
         ["/tarb",'TARB'],
-        ["/archives",'Test TestArchives'],
         ["/grid",'Data DataGrid'],
+        ["/archives",'Test Archives'],
     ].map( rp => {
         return <li key={rp[0]}>
             <Link to={rp[0]} className={location.pathname === rp[0] ? "active-link" : ""}>{rp[1]}</Link>
@@ -32,7 +32,7 @@ export default function AppHeader({
 
     const localRoutes = [
         ["/command", 'CommandTest Tester'],
-        ["/links", 'Link Tester'],
+        ["/links", 'IARI Tester'],
     ].map(rp => {
         return <li key={rp[0]}>
             <Link to={rp[0]} className={location.pathname === rp[0] ? "active-link" : ""}>{rp[1]}</Link>

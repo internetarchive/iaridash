@@ -13,6 +13,14 @@ const CommandTest = () => {
             // placebo to make coding easier for adding "else if" conditions
         }
 
+        else if (action === "opCommand") {
+            console.log(`CommandTest Action: "${action}" engaged.`)
+            alert(`CommandTest Action: "${action}" engaged.\n`
+            + `What does it do? run as http and hope it gets results as JSON?\n`
+            + `Display as html if can be?\n`
+            + `or, what...show as plain text or offer reader?`)
+        }
+
 
         else {
             console.log(`CommandTest Action "${action}" not supported.`)
