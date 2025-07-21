@@ -1,7 +1,4 @@
 import React from "react";
-// import RawJson from "../RawJson";
-import Table from "../../components/Table"
-// import {isNullOrUndef} from "chart.js/helpers";
 import WebRxDetails from "./WebRxDetails";
 import WebRxSummary from "./WebRxSummary";
 
