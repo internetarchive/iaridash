@@ -9,11 +9,6 @@
     --color-column-header: #b0b0b0;
 }
 
-/* DELETEME */
-/*.iari-table-display {*/
-/*    margin-bottom:1rem;*/
-/*}*/
-
 .webrx-container {
     display: flex;
     flex-direction: column;
@@ -29,10 +24,10 @@
 .webrx-body {
     flex-grow: 1;
     overflow: auto;
-    background-color: var(--iari-color-greenish);
-    border: var(--iari-border-small);border-color: #228243;
-    border: var(--iari-border-medium);border-color: #0aed58;
-    border-radius: var(--iari-radius-small);
+    /*background-color: var(--iari-color-greenish);*/
+    /*border: var(--iari-border-small);border-color: #228243;*/
+    /*border: var(--iari-border-medium);border-color: #0aed58;*/
+    /*border-radius: var(--iari-radius-small);*/
 }
 
 .webrx-display-container {
@@ -41,13 +36,53 @@
     height: 100%;
 }
 .webrx-display-header {
+    margin-bottom: var(--iari-spacing-large);
+    /*border: var(--iari-border-medium);*/
+    /*border-radius: var(--iari-radius-large);*/
+    /*background-color: #0098d9;*/
+}
+
+
+.webrx-display-header .iari-ux-header {
+    border: var(--iari-header-border);
+    border-radius: var(--iari-radius-medium);
+    padding: var(--iari-spacing-small);
     margin-bottom: var(--iari-spacing-small);
 }
+
+
 .webrx-display-body {
     flex-grow: 1;
     overflow: auto;
+    /*border: var(--iari-border-small);*/
+    /*border-radius: var(--iari-radius-small);*/
 }
 
+
+.webrx-details-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.webrx-details-header {
+    /*border: var(--iari-border-small);*/
+    border: 1.5pt solid var(--iari-color-header-border);
+    border-radius: var(--iari-radius-small);
+
+    /*margin-bottom: var(--iari-spacing-small);*/
+    margin-bottom: var(--iari-spacing-medium);
+    padding: var(--iari-spacing-small);
+
+    background-color: var(--iari-color-header-bg);
+    color: var(--iari-color-header-fg) !important;
+}
+.webrx-details-header h3 {
+    color: inherit !important;
+}
+.webrx-details-body {
+    flex-grow: 1;
+    overflow: auto;
+}
 
 
 /* === table stuff ***/
@@ -68,10 +103,9 @@
 
 
 .webrx-table {
-    max-height:var(--height-webrx-table);
+    height: 100%;
     overflow: scroll;
     overflowY: auto;
-    /*background-color: #d1d2d4 ;*/
     color:var(--color-webrx-data);
 }
 
@@ -106,15 +140,15 @@
 }
 
 
-
 /* webrx-table-wrapper, webrx-table-element, and webrx-table-services
    aid in the more natural scrolling along detail tables */
-.webrx-table-wrapper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-}
+/*.webrx-table-wrapper {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    flex-wrap: wrap;*/
+/*    width: 100%;*/
+/*}*/
+
 .webrx-table-element {
     /*border: 3px solid palevioletred;*/
 }

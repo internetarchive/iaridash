@@ -35,11 +35,23 @@
     height: 100%;
 }
 .citation-data-display-header {
-
+    /*background-color: var(--iari-color-greenish);*/
 }
 
-.citation-data-display-statistics > div {
-    margin-bottom: var(--iari-spacing-small) !important;
+.citation-data-display-statistics {
+    border: var(--iari-border-small);
+    border-radius: var(--iari-radius-small);
+    /*background-color: var(--iari-color-blueish);*/
+    background-color: var(--iari-details-box-bg);
+
+    padding: .25rem .5rem;
+    color: #353535;
+}
+.citation-data-display-statistics > div:not(:last-child) {
+    /*margin-bottom: var(--iari-spacing-small) !important;*/
+}
+.citation-data-display-statistics > div:last-child {
+    margin-bottom: 0 !important;
 }
 
 .citation-data-display-caption {

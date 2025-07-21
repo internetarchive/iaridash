@@ -1,7 +1,15 @@
 :root {
+    --iari-color-greenish: #83dfcf;
+    --iari-color-blueish: #6fc0de;
+    --iari-color-redish: #de6fa5;
+    --iari-color-header-border: #6ca4c0;
+
+
     --iari-border-small: 1px solid black;
     --iari-border-medium: 2pt solid black;
     --iari-border-large: .25rem solid black;
+
+    --iari-header-border: 1.5pt solid var(--iari-color-header-border);
 
     --iari-spacing-small: .5rem;
     --iari-spacing-medium: .75rem;
@@ -11,6 +19,9 @@
     --iari-radius-medium: .65rem;
     --iari-radius-large: .75rem;
 
+    --iari-color-header-bg: #9cd1ea;
+    --iari-color-header-fg: #444444;
+
     --iari-focus-box-bg: #d8eeff;
     --iari-focus-box-radius: var(--iari-radius-large);
     --iari-details-box-bg: #d8d8d8;
@@ -18,9 +29,6 @@
     --iari-details-box-padding: var(--iari-spacing-small);
 
     --iari-box-border: 1pt solid hsl(192deg 0% 65%);
-
-    --iari-color-greenish: #83dfcf;
-    --iari-color-blueish: #6fc0de;
 
 
     --border-tab: 3pt solid hsl(192deg 91% 42% / 20%);
@@ -84,19 +92,21 @@ body {
     margin: 15px 20px 20px;
 }
 
-/*.iari-ux-container {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    height: 100%;*/
-/*}*/
-/*.iari-ux-header {*/
-/*}*/
-/*.iari-ux-body {*/
-/*    flex-grow: 1;*/
-/*    overflow: auto;*/
-/*}*/
+.iari-ux-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.iari-ux-header {
+}
+.iari-ux-body {
+    flex-grow: 1;
+    overflow: auto;
+}
 
-
+.iari-ux-header h3 {
+    margin: 0;
+}
 .iaridash h1 {
     font-size:1.65rem;
     font-weight:bold;

@@ -5,8 +5,8 @@
 
     background-color: var(--iari-focus-box-bg);
     padding: .75rem !important;
-    border-radius: var(--iari-radius-large);
-    border: 1px solid rgba(0, 0, 0, 0.075);
+    border-radius: var(--iari-radius-small);
+    border: 1pt solid hsl(207.92deg 75.94% 73.92%);
     width: 100%;
 }
 

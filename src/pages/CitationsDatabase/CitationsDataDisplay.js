@@ -26,10 +26,11 @@ export default function CitationsDataDisplay(
 
     const caption = citationLabel?.caption
         ? <>
-            <div className={'citation-data-display-caption'}>{citationLabel.caption}{showDetailsButton}</div>
-            {showDetails ? <div className={'citation-data-display-caption-details'}>{citationLabel["details"]}</div> : null}
+            <h3 className={'citation-data-display-caption'}>{citationLabel.caption}{showDetailsButton}</h3>
+            {showDetails
+                ? <div className={'citation-data-display-caption-details'}>{citationLabel["details"]}</div>
+                : null}
         </>
-
         : null
 
     const statistics = citationData
@@ -45,13 +46,14 @@ export default function CitationsDataDisplay(
     // NB OnAction can be setup and linked to any event of the displayed data
 
     return <div className="citation-data-display-container">
+
         <div className="citation-data-display-header">
             {caption}
+            <div className="citation-data-display-statistics">
+                {statistics}
+            </div>
         </div>
 
-        <div className="citation-data-display-statistics">
-            {statistics}
-        </div>
 
         <div className="citation-data-display-body">
             <div className="citation-data-json">

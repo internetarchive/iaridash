@@ -161,9 +161,9 @@ export default function WebRxDisplay({webRxData={}, options = null, onAction}) {
 
     console.log(`WebRxStats render, selectedTableId: ${selectedTableId}`)
 
-    return <div className="webrx-display-container">
+    return <div className="webrx-display-container iari-ux-container">
 
-        <div className="webrx-display-header">
+        <div className="webrx-display-header iari-ux-header">
             <WebRxSummary
                 tableSummary={tableSummary}
                 selectedTableId={selectedTableId}
@@ -176,7 +176,7 @@ export default function WebRxDisplay({webRxData={}, options = null, onAction}) {
         {/*    <RawJson obj={tables}/>*/}
         {/*</>)}*/}
 
-        <div className="webrx-display-body">
+        <div className="webrx-display-body iari-ux-body">
             <WebRxDetails tables={tablesDetails} selectedTableId={selectedTableId} />
         </div>
 
