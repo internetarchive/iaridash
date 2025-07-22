@@ -47,6 +47,7 @@ const getIariSource = (qParams, targetEnvKey) => {
 const getEnvironment = () => {
     // comment out when not debugging...
     // return IareEnvironments.PROD
+    // return IareEnvironments.STAGE
 
     const host = window.location.host
     if (REGEX_PRODUCTION_ENV.test(host)) return IareEnvironments.PROD

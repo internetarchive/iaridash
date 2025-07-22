@@ -29,7 +29,7 @@
     --iari-details-box-padding: var(--iari-spacing-small);
 
     --iari-box-border: 1pt solid hsl(192deg 0% 65%);
-
+    --iari-button-radius: .35rem;
 
     --border-tab: 3pt solid hsl(192deg 91% 42% / 20%);
     --border-tab-active: 3pt solid hsl(345, 95%, 49%);
@@ -101,7 +101,7 @@ body {
 }
 .iari-ux-body {
     flex-grow: 1;
-    overflow: auto;
+    /*overflow: auto;*/
 }
 
 .iari-ux-header h3 {
@@ -128,7 +128,8 @@ body {
 /* environment specific */
 
 body .iaridash h1.app-title {
-    color:red;
+    /*color:red;*/
+    color: #0074ff;
 }
 body.env-production .iaridash h1.app-title {
     /*color:#e30040;*/
@@ -241,6 +242,15 @@ xxx.container-fluid .row {
     background-color: var(--color-bg-tab-active);
 }
 
+.iari-input-box {
+    margin-bottom: var(--iari-spacing-medium);
+    /*background-color: var(--iari-color-greenish);*/
+    padding: var(--iari-spacing-small);
+    border: var(--iari-border-medium);
+    border-radius: var(--iari-radius-small);
+    border-color: var(--iari-color-header-border);
+}
+
 .iaridash textarea {
     width:100%;
     resize:both;
@@ -248,6 +258,7 @@ xxx.container-fluid .row {
 
 .iaridash textarea.source-url-text {
     padding-top:0.35rem;
+    padding-left: .5rem;
     height: 2rem;
     border-radius: var(--iari-radius-small);
 }
@@ -265,10 +276,10 @@ body.env-other .header-aux1-display span.non-production {
     display:inherit;
 }
 
-.iaridash .multi-line-textarea {
-    height:16rem;
-    resize: both;
-}
+/*.iaridash .iari-multi-line-textarea {*/
+/*    height:100%;*/
+/*    resize: both;*/
+/*}*/
 
 .iaridash h2 {
     margin-top:1rem;
@@ -316,15 +327,17 @@ body.env-other .header-aux1-display span.non-production {
 
 button.utility-button {
     display: inline-block;
+    width: auto;
     text-align: center;
     line-height: 1;
+
     cursor: pointer;
     -webkit-appearance: none;
 
     transition: background-color .25s ease-out, color .25s ease-out;
 
     border: 1px solid transparent;
-    border-radius: .3rem;
+    border-radius: var(--iari-button-radius);
     padding: .28rem .42rem;
     /*margin: 0 0 .5rem .5rem;*/
     vertical-align: middle;

@@ -22,8 +22,7 @@ export default function AppHeader({
         ["/cd",'Citations Database'],
         ["/webrx",'Web Rx'],
         ["/tarb",'TARB'],
-        ["/grid",'Data DataGrid'],
-        ["/archives",'Test Archives'],
+        ["/archives",'Archive Test'],
     ].map( rp => {
         return <li key={rp[0]}>
             <Link to={rp[0]} className={location.pathname === rp[0] ? "active-link" : ""}>{rp[1]}</Link>
@@ -31,6 +30,7 @@ export default function AppHeader({
     })
 
     const localRoutes = [
+        ["/grid",'Data DataGrid'],
         ["/command", 'CommandTest Tester'],
         ["/links", 'IARI Tester'],
     ].map(rp => {

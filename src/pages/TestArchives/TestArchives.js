@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {getIabotArchiveData, getWaybackArchiveData} from "../../utils/archiveUtils"
 import RouteHeader from "../../components/RouteHeader";
+import './testArchives.css'
 
 const TestArchives = () => {
 
@@ -83,39 +84,59 @@ const TestArchives = () => {
         onClick={engageWaybackArchive}><span>Query Wayback Archive</span></button>
 
 
-    return ( <>
-        <RouteHeader caption = {"Archive Tests"}
-                     subCaption = "Quick results of archive status of links" />
+    return ( <div className="iari-ux-container">
+        <div className={"iari-ux-header"}>
+            <RouteHeader caption = {"Archive Test"}
+                         subCaption = "Check archive status of URL link at archive.org" />
+        </div>
 
-        <div className={"container-fluid"}>
-            <div className={"row"}>
+        <div className={"iari-ux-body"}>
 
-                <div className={"row header-left-part"} style={{marginBottom: '.5rem'}}>
-                    <h3>URL to test: {buttonWaybackArchive}</h3>
+            <div className={"iari-ux-container"}>
+
+                <div className={"iari-ux-header iari-input-box"} >
+                    <div className={"row header-left-part"} style={{marginBottom: '.5rem'}}>
+                        <h3>URL to test:</h3>
+                    </div>
+
+                    <textarea className={`source-url-text ${''/* your code here */}`}
+                              readOnly={textIsEditable ? false : true}
+                              value={localSourceText}
+                              onChange={(e) => setLocalSourceText(e.target.value)}/>
+
+                    {/*<div className={"row xxheader-right-part"}>*/}
+                    {/*    {buttonIabotArchive}*/}
+                    {/*</div>*/}
+
+                    <div className={"row gx-0"}>
+                        <div style={{marginTop: '.5rem'}}>
+                            {buttonWaybackArchive}
+                        </div>
+                    </div>
                 </div>
 
-                <textarea className={`source-url-text ${''/* your code here */}`}
-                          readOnly={textIsEditable ? false : true}
-                          value={localSourceText}
-                          onChange={(e) => setLocalSourceText(e.target.value)}/>
+                <div className={"iari-ux-body"}>
 
-                {/*<div className={"row xxheader-right-part"}>*/}
-                {/*    {buttonIabotArchive}*/}
-                {/*</div>*/}
+                    <div className={"iari-ux-container"}>
 
-            </div>
+                        <div className={"iari-ux-header"}>
+                            <h3>Results here</h3>
+                        </div>
 
-            <div className={"row"}>&nbsp;</div>
+                        <div className={"iari-ux-body"}>
+                            <textarea className={`multi-line-textarea test-results-textarea`}
+                                      readOnly={textIsEditable ? false : true}
+                                      value={localResultsText}
+                            />
+                        </div>
 
-            <div className={"row"}>
-                <h3>Results here</h3>
-                <textarea className={`result-text multi-line-textarea ${''/* your code here */}`}
-                          readOnly={textIsEditable ? false : true}
-                          value={localResultsText}
-                />
+                    </div>
+
+                </div>
+
             </div>
         </div>
-    </> )
+    </div> )
 }
 
 export default TestArchives

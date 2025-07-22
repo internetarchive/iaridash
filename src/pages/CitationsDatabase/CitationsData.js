@@ -4,6 +4,7 @@ import PathFetch from "../../components/PathFetch";
 import {ConfigContext} from "../../contexts/ConfigContext";
 import Loader from "../../components/Loader";
 import MakeLink from "../../components/MakeLink";
+import RouteHeader from "../../components/RouteHeader";
 
 
 const CitationsData = () => {
@@ -118,18 +119,24 @@ const CitationsData = () => {
 
     return <div className="citation-data-container">
 
-        <div className="row gx-0 citation-data-header">
-            <div className="col col-12 citation-path-fetch-container">
-                <PathFetch
-                    initialPath={citationParams.pathName}
-                    initialUseRawRefs={citationParams.useRawRefs}
-                    initialUseRawRefsLabel = "Show Raw References"
+        <div className="citation-data-header">
 
-                    handleSubmit={handlePathResults}
-                    submitButtonText = "Submit"
+            <RouteHeader caption={"Citations Database"}
+                         subCaption={null}/>
 
-                    placeholder={"Enter a Wikipedia article here"}
-                />
+            <div className="row gx-0">
+                <div className="col col-12 citation-path-fetch-container">
+                    <PathFetch
+                        initialPath={citationParams.pathName}
+                        initialUseRawRefs={citationParams.useRawRefs}
+                        initialUseRawRefsLabel = "Show Raw References"
+
+                        handleSubmit={handlePathResults}
+                        submitButtonText = "Submit"
+
+                        placeholder={"Enter a Wikipedia article here"}
+                    />
+                </div>
             </div>
         </div>
 

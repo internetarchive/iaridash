@@ -1,0 +1,12 @@
+/* webrx css */
+:root {
+}
+
+/* other elements */
+.test-results-textarea {
+    background-color: azure !important;
+    border: var(--iari-border-small);
+    border-radius: var(--iari-radius-small);
+    padding-left: var(--iari-spacing-small);
+    height: 100% !important;
+}

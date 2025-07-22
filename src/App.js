@@ -107,12 +107,6 @@ export default function App({
             // up and down triangles:  onClick={toggleDebug} >{isDebug ? <>&#9650;</> : <>&#9660;</>}</button>
 
 
-    // console.log(`rendering App.js:`, JSON.stringify({
-    //     refreshCheck: refreshCheck,
-    //     statusMethod: checkMethod,
-    //     iari_source: myIariSourceId,
-    //     config: config,
-    // }))
     console.log(`rendering App.js:`)
 
     useEffect(() => {
