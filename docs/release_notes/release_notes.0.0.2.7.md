@@ -1,4 +1,4 @@
-release version 0.0.2.6
+release version 0.0.2.7
 
 ### Citations Database
 * Queries James Hare's Citation Database for citations in a Wiki article
