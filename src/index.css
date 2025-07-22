@@ -144,6 +144,7 @@ body.env-production .iaridash h1.app-title {
 /* local environment */
 body.env-local .iaridash h1.app-title {
     color:#1ecc36;
+    margin-bottom:.5rem !important;
 }
 
 
@@ -231,12 +232,13 @@ xxx.container-fluid .row {
     border-radius: .5rem;
     padding:2pt 4pt;
 
-    color:darkgrey;
+    color: #909090;
     background-color: var(--color-bg-tab);
 
 }
 .iaridash .main-page-nav li a:hover {
     border: var(--border-tab-hover);
+    color: #606060;
 }
 .iaridash .main-page-nav li a.active-link:hover {
     border: var(--border-tab-active-hover);

@@ -30,8 +30,8 @@ export default function AppHeader({
     })
 
     const localRoutes = [
-        ["/grid",'Data DataGrid'],
-        ["/command", 'CommandTest Tester'],
+        ["/grid",'DataGrid'],
+        ["/command", 'Command Tester'],
         ["/links", 'IARI Tester'],
     ].map(rp => {
         return <li key={rp[0]}>

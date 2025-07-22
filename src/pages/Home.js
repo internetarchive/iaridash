@@ -10,10 +10,10 @@ const Home = () => {
         <div className={"container-fluid"}>
             <div className={"row"}>
                 <ul>
+                    <li>Citations Database: Interact with James Hare's Citation Database</li>
                     <li>WebRx: Show statistics from WebMedic and LAMP</li>
-                    <li>TARB: Show statistics from TARB Insights (currently not working on public site)</li>
-                    <li>Archives: Quick archive status results for links</li>
-                    <li>Data Grid: Compare operation results for set of links</li>
+                    <li>TARB: Show statistics from TARB Insights (currently not working on staging site)</li>
+                    <li>Archive test: Quick archive status results for links</li>
                 </ul>
             </div>
         </div>

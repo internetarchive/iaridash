@@ -133,7 +133,7 @@ const TestArchives = () => {
                     <div className={"iari-ux-container"}>
 
                         <div className={"iari-ux-header"}>
-                            <h3>Results here</h3>
+                            <h3>Results:</h3>
                         </div>
 
                         <div className={"iari-ux-body"}>
