@@ -4,8 +4,9 @@
 
 /* other elements */
 .test-results-textarea {
-    background-color: azure !important;
+    background-color: hsl(209 70% 98% / 1) !important;
     border: var(--iari-border-small);
+    border-color: #e9e9e9;
     border-radius: var(--iari-radius-small);
     padding-left: var(--iari-spacing-small);
     height: 100% !important;

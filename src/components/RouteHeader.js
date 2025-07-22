@@ -7,7 +7,6 @@ export default function RouteHeader({caption = "section", subCaption = ""}) {
     return <div className={"nav-route-header"}>
         <h1>{caption}</h1>
         {sub}
-        <hr/>
     </div>
 
 }

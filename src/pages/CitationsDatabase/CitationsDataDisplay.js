@@ -54,7 +54,6 @@ export default function CitationsDataDisplay(
             </div>
         </div>
 
-
         <div className="citation-data-display-body">
             <div className="citation-data-json">
                 <JsonEditor data={citationData}/>

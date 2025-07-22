@@ -2,7 +2,11 @@
     --iari-color-greenish: #83dfcf;
     --iari-color-blueish: #6fc0de;
     --iari-color-redish: #de6fa5;
-    --iari-color-header-border: #6ca4c0;
+    /*--iari-color-header-border: #6ca4c0;*/
+    --iari-color-header-border: #a6d1e7;
+    /*--iari-color-header-bg: #9cd1ea;*/
+    --iari-color-header-bg: #c5ebfd;
+    --iari-color-header-fg: #444444;
 
 
     --iari-border-small: 1px solid black;
@@ -19,17 +23,16 @@
     --iari-radius-medium: .65rem;
     --iari-radius-large: .75rem;
 
-    --iari-color-header-bg: #9cd1ea;
-    --iari-color-header-fg: #444444;
+    --iari-box-border: 1pt solid hsl(192deg 0% 65%);
+    --iari-button-radius: .35rem;
 
     --iari-focus-box-bg: #d8eeff;
     --iari-focus-box-radius: var(--iari-radius-large);
+
     --iari-details-box-bg: #d8d8d8;
+    --iari-details-box-border: 1pt solid #a0a0a0;
     --iari-details-box-radius: var(--iari-radius-small);
     --iari-details-box-padding: var(--iari-spacing-small);
-
-    --iari-box-border: 1pt solid hsl(192deg 0% 65%);
-    --iari-button-radius: .35rem;
 
     --border-tab: 3pt solid hsl(192deg 91% 42% / 20%);
     --border-tab-active: 3pt solid hsl(345, 95%, 49%);
@@ -125,16 +128,20 @@ body {
 
 
 
-/* environment specific */
+/* environment specific treatments */
 
+/* default environment */
 body .iaridash h1.app-title {
     /*color:red;*/
     color: #0074ff;
+    margin-bottom: 0 !important;
 }
+/* production environment */
 body.env-production .iaridash h1.app-title {
     /*color:#e30040;*/
     color:#0091fb;
 }
+/* local environment */
 body.env-local .iaridash h1.app-title {
     color:#1ecc36;
 }
@@ -167,7 +174,6 @@ xxx.container-fluid .row {
     flex-direction:row;
     flex-wrap:wrap;
     justify-content: space-between;
-    margin-bottom:.65rem;
 }
 
 .iaridash-contents {
@@ -244,11 +250,11 @@ xxx.container-fluid .row {
 
 .iari-input-box {
     margin-bottom: var(--iari-spacing-medium);
-    /*background-color: var(--iari-color-greenish);*/
-    padding: var(--iari-spacing-small);
+    background-color: var(--iari-focus-box-bg);
     border: var(--iari-border-medium);
-    border-radius: var(--iari-radius-small);
     border-color: var(--iari-color-header-border);
+    border-radius: var(--iari-radius-small);
+    padding: var(--iari-spacing-small);
 }
 
 .iaridash textarea {
