@@ -102,14 +102,15 @@ body {
 }
 .iari-ux-header {
 }
+.iari-ux-header h3 {
+    margin: 0;
+}
 .iari-ux-body {
     flex-grow: 1;
     /*overflow: auto;*/
 }
 
-.iari-ux-header h3 {
-    margin: 0;
-}
+
 .iaridash h1 {
     font-size:1.65rem;
     font-weight:bold;
@@ -130,7 +131,7 @@ body {
 
 /* environment specific treatments */
 
-/* default environment */
+/* generic for all environments */
 body .iaridash h1.app-title {
     /*color:red;*/
     color: #0074ff;
@@ -144,7 +145,6 @@ body.env-production .iaridash h1.app-title {
 /* local environment */
 body.env-local .iaridash h1.app-title {
     color:#1ecc36;
-    margin-bottom:.5rem !important;
 }
 
 
@@ -175,6 +175,7 @@ xxx.container-fluid .row {
     flex-direction:row;
     flex-wrap:wrap;
     justify-content: space-between;
+    margin-bottom:0.5rem;
 }
 
 .iaridash-contents {
@@ -273,7 +274,7 @@ xxx.container-fluid .row {
 
 .header-aux1 {
     margin-top: 0;
-    padding-top: 0.75rem;
+    padding-top: 0.65rem;
     font-weight: normal;
     color: grey;
 }
