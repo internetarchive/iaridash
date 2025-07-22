@@ -110,7 +110,7 @@ body {
 .iaridash h1 {
     font-size:1.65rem;
     font-weight:bold;
-    /*color:blue;*/
+    color: #555555;
 }
 
 .iaridash .header h1 {
