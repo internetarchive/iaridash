@@ -40,7 +40,7 @@ export const getIabotArchiveData = async (urlLink) => {
 
 
     const iabotEndpoint = "https://iabot.wmcloud.org/api.php?wiki=enwiki"
-    const modifiedUrl = urlLink  // shall use url protection fileter later...
+    const modifiedUrl = urlLink  // shall use url protection filter later...
     const endpoint = iabotEndpoint
         + `&action=searchurldata`
         + `&urls=${modifiedUrl}`
@@ -88,11 +88,6 @@ export const getIabotArchiveData = async (urlLink) => {
         );
 
     return results;
-    //
-    // return {
-    //     "status": "OK",
-    //     "description": "Test Archive Feature here..."
-    // }
 
 }
 

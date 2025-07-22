@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {getIabotArchiveData, getWaybackArchiveData} from "../../utils/archiveUtils"
 import RouteHeader from "../../components/RouteHeader";
 import './testArchives.css'
+import Loader from "../../components/Loader";
 
 const TestArchives = () => {
 
@@ -11,6 +12,8 @@ const TestArchives = () => {
     const [localSourceText, setLocalSourceText]= useState(testUrl)
     const [localResultsText, setLocalResultsText]= useState("test results here")
 
+    const [isLoading, setIsLoading] = React.useState(false)
+    const [isLoadingTimer, setIsLoadingTimer] = React.useState(false)
 
     const showIabotArchiveResults = (urlLink) => {
 
@@ -28,20 +31,30 @@ const TestArchives = () => {
 
     }
 
+    const fetchWaybackArchiveResults = async (urlLink) => {
 
-    const showWaybackArchiveResults = (urlLink) => {
+        setIsLoading(true)
+        // setError(null)
+        setIsLoadingTimer(true)  // prevents "too soon" flashing of loading icon
+        setTimeout(() => {
+            setIsLoadingTimer(false)
+        }, 853); // milliseconds
 
-        // eslint-disable-next-line no-unused-vars
-        const result = getWaybackArchiveData(urlLink)
-            .then( response => {
-                    setLocalResultsText(JSON.stringify(response, null, 2))
-                }
-            )
+        try {
+            const response = await getWaybackArchiveData(urlLink)
+            setLocalResultsText(JSON.stringify(response, null, 2))
+        } catch (error) {
+            console.error('Error fetching Wayback data:', error)
+            setLocalResultsText("Error fetching Wayback data.")
+        } finally {
+            setIsLoading(false);
+        }
+
     }
 
     const handlePageAction = (result) => {
 
-        // error of not object like: {action: <action>, value: <value>}
+        // TODO error if object not like: {action: <action>, value: <value>}
         const {action, value} = result;
         console.log (`Command:handleHomeAction: action=${action}, value=${value}`);
 
@@ -55,7 +68,7 @@ const TestArchives = () => {
         }
 
         else if (action === "FETCH_WAYBACK_ARCHIVE") {
-            showWaybackArchiveResults(value)
+            fetchWaybackArchiveResults(value)
         }
 
         else {
@@ -124,10 +137,13 @@ const TestArchives = () => {
                         </div>
 
                         <div className={"iari-ux-body"}>
-                            <textarea className={`multi-line-textarea test-results-textarea`}
-                                      readOnly={textIsEditable ? false : true}
-                                      value={localResultsText}
+                        {isLoading || isLoadingTimer
+                            ? <Loader message={"Fetching Archive Data..."} options={{width: '100px'}}/>
+                            : <textarea className={`multi-line-textarea test-results-textarea`}
+                                          readOnly={textIsEditable ? false : true}
+                                          value={localResultsText}
                             />
+                        }
                         </div>
 
                     </div>
