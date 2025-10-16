@@ -79,20 +79,6 @@ const CitationData = (
         })
     }
 
-    const buildApiUrl = (apiParams) => {
-        console.log(`getApiUrl: pathName: ${apiParams.pathName}; useRawRefs: ${apiParams.useRawRefs}`)
-
-        const baseUrl = `${iariBase}refs_lookup`
-
-        const urlParams = new URLSearchParams({
-            url: encodeURI(apiParams.pathName),
-            output: 'json',
-            raw: apiParams.useRawRefs ? 'true' : 'false',
-        });
-
-        return `${baseUrl}?${urlParams.toString()}`
-
-    }
 
     // when apiParams changed, run this
     React.useEffect(() => {
@@ -102,6 +88,21 @@ const CitationData = (
         if (!componentHasMounted.current) {
             componentHasMounted.current = true
             return
+        }
+
+        const buildApiUrl = (apiParams) => {
+            console.log(`getApiUrl: pathName: ${apiParams.pathName}; useRawRefs: ${apiParams.useRawRefs}`)
+
+            const baseUrl = `${iariBase}refs_lookup`
+
+            const urlParams = new URLSearchParams({
+                url: encodeURI(apiParams.pathName),
+                output: 'json',
+                raw: apiParams.useRawRefs ? 'true' : 'false',
+            });
+
+            return `${baseUrl}?${urlParams.toString()}`
+
         }
 
         const apiUrl = buildApiUrl(apiParams);
