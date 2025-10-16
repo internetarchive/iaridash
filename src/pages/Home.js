@@ -12,6 +12,7 @@ const Home = () => {
                 <ul>
                     <li>Citations Database: Interact with James Hare's Citation Database</li>
                     <li>WebRx: Show statistics from WebMedic and LAMP</li>
+                    <li>Wiki: Show statistics from Wikipedia</li>
                     <li>TARB: Show statistics from TARB Insights (currently not working on staging site)</li>
                     <li>Archive test: Quick archive status results for links</li>
                 </ul>

@@ -1,4 +1,7 @@
 :root {
+
+    --iare-ux-body-overflow-y: auto;
+
     --iari-color-greenish: #83dfcf;
     --iari-color-blueish: #6fc0de;
     --iari-color-redish: #de6fa5;
@@ -110,6 +113,22 @@ body {
     flex-grow: 1;
     /*overflow: auto;*/
 }
+
+
+
+.iari-ux-header {
+    /*flex: 0 0 auto; !* fixed height *!*/
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto; /* don’t grow or shrink */
+}
+.iari-ux-body {
+    flex: 1 1 auto;  /* grow to fill remaining space */
+    overflow-y: var(--iare-ux-body-overflow-y);
+    height: 100%;
+    width:100%;
+}
+
 
 
 .iaridash h1 {

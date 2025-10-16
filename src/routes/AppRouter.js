@@ -9,6 +9,7 @@ import Layout from "../layouts/Layout";
 import TestLinks from "../pages/TestLinks/TestLinks";
 import TarbInsights from "../pages/Tarb/TarbInsights";
 import WebRx from "../pages/WebRx/WebRx";
+import Wiki from "../pages/Wiki/Wiki";
 import TestArchives from "../pages/TestArchives/TestArchives";
 import CitationData from "../pages/CitationsData/CitationData";
 
@@ -24,6 +25,7 @@ const  AppRouter = () => {
                     <Route index element={<Home />} />
                     <Route path="/cd" element={<CitationData />} />
                     <Route path="/webrx" element={<WebRx />} />
+                    <Route path="/wiki" element={<Wiki />} />
                     <Route path="/tarb" element={<TarbInsights />} />
                     <Route path="/archives" element={<TestArchives />} />
                     <Route path="/grid" element={<DataGrid />} />

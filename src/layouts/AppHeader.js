@@ -19,9 +19,10 @@ export default function AppHeader({
 
     const publicRoutes = [
         // ["/",'Home'],
-        ["/cd",'Citations Database'],
         ["/webrx",'Web Rx'],
+        ["/wiki",'Wiki'],
         ["/tarb",'TARB'],
+        ["/cd",'Citations Database'],
         ["/archives",'Archive Test'],
     ].map( rp => {
         return <li key={rp[0]}>
