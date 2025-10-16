@@ -5,7 +5,7 @@ import './citationsData.css'
 import { JsonEditor } from 'json-edit-react'
 
 
-export default function CitationsDataDisplay(
+export default function CitationDataDisplay(
     {
         citationData = {},
         citationLabel = null,

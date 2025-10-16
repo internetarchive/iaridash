@@ -27,7 +27,7 @@ export default function PathFetch(
     const [useRawRefs, setUseRawRefs] = React.useState(initialUseRawRefs);
 
     const handlePathChange = (event) => {
-        console.log("CitationsDataDisplay::handlePathChange: event.target.value is:" + event.target.value)
+        console.log("CitationDataDisplay::handlePathChange: event.target.value is:" + event.target.value)
         setPathName(event.target.value);
     }
 

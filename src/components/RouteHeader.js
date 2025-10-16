@@ -1,3 +1,9 @@
+/*
+RouteHeader
+
+provides consistent manner to display "page" headers
+
+ */
 import React from "react";
 
 export default function RouteHeader({caption = "section", subCaption = ""}) {

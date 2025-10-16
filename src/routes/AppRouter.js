@@ -10,18 +10,19 @@ import TestLinks from "../pages/TestLinks/TestLinks";
 import TarbInsights from "../pages/Tarb/TarbInsights";
 import WebRx from "../pages/WebRx/WebRx";
 import TestArchives from "../pages/TestArchives/TestArchives";
-import CitationsData from "../pages/CitationsDatabase/CitationsData";
+import CitationData from "../pages/CitationsData/CitationData";
 
 const  AppRouter = () => {
 
     console.log("rendering AppRouter.js")
 
+    // TODO use onAction/handleAction here, and send to components???
     return (
         <Router>
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
-                    <Route path="/cd" element={<CitationsData />} />
+                    <Route path="/cd" element={<CitationData />} />
                     <Route path="/webrx" element={<WebRx />} />
                     <Route path="/tarb" element={<TarbInsights />} />
                     <Route path="/archives" element={<TestArchives />} />

@@ -65,7 +65,7 @@ const WebRx = () => {
         {isLoading
             ? <Loader message={"Fetching WebRx Data..."}/>
             : <WebRxDisplay
-                webRxData={webRxData}
+                webRxData={webRxData['webrx']}
                 options={{dateRange:"2001-2025", anotherDate:"latest"}}
             />
         }

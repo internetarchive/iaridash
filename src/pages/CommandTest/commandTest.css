@@ -28,3 +28,39 @@ xxx.command-results {
 /*    padding-left:0 !important;*/
 /*}*/
 
+.command-results {
+    margin-bottom:1rem;
+    padding:.35rem .5rem .35rem .5rem;
+    border:1px solid black;
+    border-radius: var(--iari-radius-tiny);
+    min-height:10rem;
+}
+
+.command-text {
+    border-radius: var(--iari-radius-tiny);
+    padding-left: 0.5rem;
+}
+.command-string {
+    /*font-family: monospace;*/
+    /*font-size: 1.1rem;*/
+    margin-bottom:.5rem;
+
+}
+
+.suggested-commands-container {
+    padding:.35rem .5rem .35rem .5rem;
+    border:1px solid black;
+    border-radius: var(--iari-radius-tiny);
+    /*margin-top:1rem;*/
+    margin-bottom:2.5rem;
+}
+
+.suggested-command:not(:first-child) {
+    margin-top:.5rem;
+}
+
+.suggested-command {
+    cursor:pointer;
+    display: block;
+    text-decoration: none;
+}
