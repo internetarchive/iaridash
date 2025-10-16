@@ -20,6 +20,7 @@ export default function WikiDisplay({wikiData={}, options = null, onAction}) {
 
         const parseLocaleNumber = (value) => {
             if (typeof value !== "string") return value;
+            // eslint-disable-next-line
             const normalized = value.replace(/[,\.]/g, match =>
                 match === ',' ? '' : '.');
             return parseFloat(normalized);
