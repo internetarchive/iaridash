@@ -1,5 +1,8 @@
 :root {
     --citation-data-border-radius: var(--iari-radius-large);
+
+    --column-width-ref: 35rem;
+
 }
 
 /* JSON editor component override */
@@ -75,3 +78,18 @@
     border: 1px solid rgba(0, 0, 0, 0.075);
 }
 
+
+
+.citation-data-body .wiki-table td {
+    text-align: left;
+}
+
+.citation-data-body .wiki-table th:nth-child(5),
+.citation-data-body .wiki-table td:nth-child(5){
+    width: var(--column-width-ref);
+    min-width: var(--column-width-ref);
+    max-width: var(--column-width-ref);
+    /*background-color: #47e547;*/
+    overflow-wrap: break-word;
+
+}
