@@ -2,8 +2,6 @@ import React from "react";
 import './citationsData.css'
 import '../Wiki/wiki.css'
 
-// temporary...
-import { JsonEditor } from 'json-edit-react'
 import Table from "../../components/Table";
 
 
@@ -52,7 +50,6 @@ export default function CitationDataDisplay({
 
     const showDetailsButton = <button
         className={"utility-button detail-button"}
-        // style={{margin: "0 0 0.2rem 10px"}}
         onClick={() => {setShowDetails(prev => !prev)}}
     >
         <span>{'...'}</span>
@@ -121,23 +118,16 @@ export default function CitationDataDisplay({
         return <p>citationData is not a valid object.</p>
     }
 
-    // these are test specific to the citationsData format
+    // test any specific properties of citationsData here to ensure compatibility;
+    // return error markup if not successful
+    // example:
     // if (!citationData.schema) {
     //     return <p>wikiData is missing "schema".</p>
-    // }
-    // if (!wikiData.schema.fields) {
-    //     return <p>wikiData is missing "schema.fields".</p>
-    // }
-    // if (!wikiData.data) {
-    //     return <p>wikiData is missing "data".</p>
     // }
 
 
     const tableData = convertTableData(citationData)
 
-
-
-    // NB OnAction can be setup and linked to any event of the displayed data
 
     return <div className="citation-data-display-container">
 
@@ -157,12 +147,6 @@ export default function CitationDataDisplay({
                 />
             </div>
         </div>
-
-        {/*<div className="citation-data-display-body">*/}
-        {/*    <div className="citation-data-json">*/}
-        {/*        <JsonEditor data={citationData}/>*/}
-        {/*    </div>*/}
-        {/*</div>*/}
 
     </div>
 }
