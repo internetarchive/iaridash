@@ -34,7 +34,14 @@ const WebRx = () => {
                 const response = await fetchWebRxData()
                 const myData = await response.json()
 
-                setWebRxData(myData)
+                // validate, returning null if fail
+                if (!myData['webrx']) {
+                    setWebRxData(null)
+                    // TODO: somehow indicate error
+                } else {
+                    setWebRxData(myData['webrx'])
+                }
+
 
             } catch (error) {
                 console.error('Error fetching data:', error.message);
@@ -65,7 +72,7 @@ const WebRx = () => {
         {isLoading
             ? <Loader message={"Fetching WebRx Data..."}/>
             : <WebRxDisplay
-                webRxData={webRxData['webrx']}
+                webRxData={webRxData}
                 options={{dateRange:"2001-2025", anotherDate:"latest"}}
             />
         }

@@ -146,6 +146,7 @@ export default function WebRxDisplay({webRxData={}, options = null, onAction}) {
     if (!webRxData || typeof(webRxData) !== 'object') {
         return <p>WebRx is not a valid object.</p>
     }
+
     if (!webRxData['table_totals']) {
         return <p>WebRx data is missing 'table_totals'.</p>
     }

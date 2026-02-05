@@ -53,6 +53,8 @@ xxx.command-results {
     border-radius: var(--iari-radius-tiny);
     /*margin-top:1rem;*/
     margin-bottom:2.5rem;
+    height: 10rem;
+    overflow: scroll;
 }
 
 .suggested-command:not(:first-child) {

@@ -4,14 +4,14 @@ import RouteHeader from "../../components/RouteHeader"
 import {IariSources} from "../../constants/iariSources"
 import './testLinks.css'
 
-import { exampleEndpoints } from "../../constants/endpointsDefs.js"
+import { iariTestLinks } from "../../constants/iariTestLinks.js"
 
 const TestLinks = () => {
     // test links for IARI right now...could be expanded for general links later
     // links are made fron each iari source and all defined endpoints.
 
     const iari_sources = ['iari_local', 'iari_stage']  // keys into IariSources
-    const filteredExampleEndpoints = exampleEndpoints // for when we get to where we want to filter default...
+    const filteredExampleEndpoints = iariTestLinks // for when we get to where we want to filter default...
 
     const linksForSource = (source) => {
         return <>

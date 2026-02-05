@@ -5,11 +5,16 @@ I guess its like their own personal library.
  */
 
 
-export const exampleEndpoints = [
+export const iariTestLinks = [
 
         "version",
 
         "refs_lookup?url=https://en.wikipedia.org/wiki/Siemens_scandal",
+
+        "tarb_insights",
+        "extract_grok?page_title=Easter_Island",
+
+        "probe?url=https://example.com/",
 
         "check-url?url=https://example.com/",
 

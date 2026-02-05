@@ -8,6 +8,11 @@ import {ConfigContext} from "../../contexts/ConfigContext";
 
 
 const Wiki = () => {
+    // Display various Wiki statistics
+    // grab data from IABot database
+    // process and siaply in simple metric
+    // maybe supply filterable detail data
+
 
     const [wikiData, setWikiData] = React.useState({})
     const [isLoading, setIsLoading] = React.useState(false)

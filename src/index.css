@@ -578,3 +578,6 @@ table.single-detail tr td:not(:first-child) {
     height:8rem;
 }
 
+.hilite {
+    color:var(--iari-color-blueish);
+}

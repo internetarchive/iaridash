@@ -29,8 +29,11 @@ export default function CommandTestDisplay(
     const suggestedCommands = commandList.length > 0
         ? commandList.map((command, i) => <a
             key={i}
-            href={"https://example.com"}
-            onClick={() => setLocalCommandText(command)}
+            href={""}
+            onClick={(e) => {
+                e.preventDefault();
+                setLocalCommandText(command)}
+            }
             className="suggested-command"
         >{command}</a>)
         : <p>No commands to show</p>

@@ -2,6 +2,8 @@ import React from 'react';
 import CommandTestDisplay from "./CommandTestDisplay";
 import RouteHeader from "../../components/RouteHeader";
 
+import { iariTestCommands } from "../../constants/iariTestCommands.js"
+
 const CommandTest = () => {
 
     const [jsonCommandResults, setJsonCommandResults] = React.useState({})
@@ -9,22 +11,7 @@ const CommandTest = () => {
     const sectionTitle = "Command Tester"
     const sectionDescription = "Exercise commands over the wire; assumes output is in JSON format"
 
-    const commandList = [
-        // "https://iabot.wmcloud.org/api.php?action=statistics&format=flat", // from tarb_insighta
-        "https://iabot-api.archive.org/services/context/iari-stage/v2/version", // version of stage IARI
-        "https://iabot-api.archive.org/services/context/iari-stage/v2/tarb_insights", // TARB stats data
-
-        "http://localhost:5001/v2/version",
-        "http://localhost:5001/v2/tarb_insights",   // TARB stats data
-        "http://localhost:5001/v2/wiki_insights",   // Wiki stats data
-        "http://localhost:5001/v2/insights",        // WebRx stats data
-
-        "(following has CORS issue)", // TARB stats data
-        "https://commons.wikimedia.org/w/index.php?title=Data%3AWikipedia%5Fstatistics%2Fexturls%2Etab&action=raw",
-
-    ]
-
-    const commandText = "https://iabot.wmcloud.org/api.php?action=statistics&format=flat"
+    const defaultCommandText = "https://iabot.wmcloud.org/api.php?action=statistics&format=flat"
 
     const fetchJsonCommandResults = async (command) => {
 
@@ -86,8 +73,8 @@ const CommandTest = () => {
                 <div className={"col-12"}>
                     <CommandTestDisplay
                         commandResults={jsonCommandResults}
-                        commandList={commandList}
-                        commandText={commandText} onAction={handleAction}/>
+                        commandList={iariTestCommands}
+                        commandText={defaultCommandText} onAction={handleAction}/>
                 </div>
             </div>
         </div>
