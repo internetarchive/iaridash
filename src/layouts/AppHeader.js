@@ -23,7 +23,7 @@ export default function AppHeader({
         ["/wiki",'Wiki'],
         ["/tarb",'TARB'],
         ["/cd",'Citations Database'],
-        ["/archives",'Archive Test'],
+        ["/archives",'Wayback Archive Test'],
     ].map( rp => {
         return <li key={rp[0]}>
             <Link to={rp[0]} className={location.pathname === rp[0] ? "active-link" : ""}>{rp[1]}</Link>
