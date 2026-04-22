@@ -25,7 +25,7 @@ const REGEX_ENV_LOCAL = new RegExp(/^localhost:3300/);
 const getIariSource = (qParams, targetEnvKey) => {
     // TODO: will change default to "iari" eventually, when that endpoint is stable
 
-    // Production IARE environment ALWAYS gets iari_prod IARI source
+    // Production IARE environment ALWAYS gets iari_prod  source:
     if (targetEnvKey === IareEnvironments.PROD.key) {
         return IariSources.iari_prod.key
     }
@@ -34,8 +34,8 @@ const getIariSource = (qParams, targetEnvKey) => {
     const sourceKey = queryParameters.has("iari-source")
         ? queryParameters.get("iari-source")
         : (targetEnvKey === IareEnvironments.LOCAL.key
-            ? IariSources.iari_local.key
-            : IariSources.iari_stage.key)
+            ? IariSources.iari_local.key   // default to iari_local if IARE is local
+            : IariSources.iari_stage.key)  // else default to iari_stage if not specified
 
     // if specified source not in our defined choices, default to staging, and log error
     if (!IariSources[sourceKey]) {
@@ -50,7 +50,7 @@ const getEnvironment = () => {
     // comment out when not debugging...
     // return IareEnvironments.PROD
     // return IareEnvironments.STAGE
-    return IareEnvironments.STAGE
+    // return IareEnvironments.STAGE
 
     const host = window.location.host
     if (REGEX_ENV_PRODUCTION.test(host)) return IareEnvironments.PROD
