@@ -25,8 +25,8 @@ export default function CommandTestDisplay(
         className={`utility-button`} style={{width:"7rem", marginTop: "-0.2rem", marginLeft: "1rem"}}
         onClick={engageCommand}><span>{editable ? "Run Command" : "???"}</span></button>
 
-
     const suggestedCommands = commandList.length > 0
+        // eslint-disable-next-line
         ? commandList.map((command, i) => <a
             key={i}
             href={"#"}
