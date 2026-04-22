@@ -12,11 +12,11 @@ export default function TarbInsightsDisplay({tarbData={}, options = null, onActi
             return parseFloat(normalized);
         };
 
-        const numericSortFunction = (rowA, rowB, columnId) => {
-            const numA = parseLocaleNumber(rowA.getValue(columnId));
-            const numB = parseLocaleNumber(rowB.getValue(columnId));
-            return numA - numB;
-        }
+        // const numericSortFunction = (rowA, rowB, columnId) => {
+        //     const numA = parseLocaleNumber(rowA.getValue(columnId));
+        //     const numB = parseLocaleNumber(rowB.getValue(columnId));
+        //     return numA - numB;
+        // }
 
         const alphaSort = (rowA, rowB, columnId) => {
             const strA = String(rowA.getValue(columnId)).toLowerCase();

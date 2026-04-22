@@ -1,9 +1,9 @@
 import React from 'react';
 import {ConfigContext} from "../../contexts/ConfigContext";
-import {IareEnvironments} from "../../constants/environments";
+// import {IareEnvironments} from "../../constants/environments";
 import RouteHeader from "../../components/RouteHeader";
 import Loader from "../../components/Loader";
-import WikiDisplay from "../Wiki/WikiDisplay";
+// import WikiDisplay from "../Wiki/WikiDisplay";
 import TarbInsightsDisplay from "./TarbInsightsDisplay";
 import TarbInsightsDisplayRaw from "./TarbInsightsDisplayRaw";
 // import RouteHeader from "../RouteHeader";

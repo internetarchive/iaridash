@@ -29,7 +29,7 @@ export default function CommandTestDisplay(
     const suggestedCommands = commandList.length > 0
         ? commandList.map((command, i) => <a
             key={i}
-            href={""}
+            href={"#"}
             onClick={(e) => {
                 e.preventDefault();
                 setLocalCommandText(command)}
@@ -38,7 +38,7 @@ export default function CommandTestDisplay(
         >{command}</a>)
         : <p>No commands to show</p>
 
-    console.log(`suggestedCommands: ${suggestedCommands}`)
+    // console.log(`suggestedCommands: ${suggestedCommands}`)
 
     return <>
 
