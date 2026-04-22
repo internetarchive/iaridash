@@ -2,6 +2,8 @@ export const testCommands = [
     "https://iabot-api.archive.org/services/context/iari-stage/v2/version", // version of stage IARI
     "https://iabot-api.archive.org/services/context/iari-stage/v2/tarb_insights", // TARB stats data
 
+    "http://researcher6.fnf.archive.org:5088/v2/version",
+
     "http://localhost:5001/v2/extract_grok?page_title=Easter_Island",
     "http://localhost:5001/v2/wiki_signals?domain=nytimes",
 
