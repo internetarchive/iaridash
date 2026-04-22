@@ -24,6 +24,7 @@ export default function AppHeader({
         ["/tarb",'TARB'],
         ["/cd",'Citations Database'],
         ["/archives",'Wayback Archive Test'],
+        ["/links", 'IARI Tester'],
     ].map( rp => {
         return <li key={rp[0]}>
             <Link to={rp[0]} className={location.pathname === rp[0] ? "active-link" : ""}>{rp[1]}</Link>
@@ -33,7 +34,7 @@ export default function AppHeader({
     const localRoutes = [
         ["/grid",'DataGrid'],
         ["/command", 'Command Tester'],
-        ["/links", 'IARI Tester'],
+        // ["/links", 'IARI Tester'],
     ].map(rp => {
         return <li key={rp[0]}>
             <Link to={rp[0]} className={location.pathname === rp[0] ? "active-link" : ""}>{rp[1]}</Link>
@@ -55,7 +56,7 @@ export default function AppHeader({
             <ul>
                 {publicRoutes}
                 {myConfig.environmentKey === IareEnvironments.LOCAL.key
-                    ? localRoutes
+                    ? localRoutes  // add
                     : null}
             </ul>
         </nav>
