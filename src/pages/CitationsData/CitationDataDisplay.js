@@ -95,7 +95,23 @@ export default function CitationDataDisplay({
             {accessorKey: "latest_revision_timestamp", header: "Latest Revision"},
             {accessorKey: "record_sha1", header: "Record SHA1"},
             {accessorKey: "reference_normalized", header: "Reference"},
-            {accessorKey: "reference_normalized_sha1", header: "Reference SHA1"}
+            {accessorKey: "reference_normalized_sha1", header: "Reference SHA1"},
+    //         {accessorKey: "name", header: () => (
+    // <span title="This is the user's full name">
+    //     Name
+    // </span>)},
+            {
+                accessorKey: 'name',
+                header: 'Name',
+                cell: (info) => (
+                    <span title={`User: ${info.getValue()}`}>
+        {info.getValue()}
+      </span>
+                ),
+                meta: {
+                    tooltip: 'This is the user name column',
+                },
+            },
         ];
 
         const rows = citationData.refs.map((ref, i) => ({

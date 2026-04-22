@@ -1,12 +1,15 @@
-export const iariTestCommands = [
+export const testCommands = [
+    "https://iabot-api.archive.org/services/context/iari-stage/v2/version", // version of stage IARI
+    "https://iabot-api.archive.org/services/context/iari-stage/v2/tarb_insights", // TARB stats data
+
     "http://localhost:5001/v2/extract_grok?page_title=Easter_Island",
     "http://localhost:5001/v2/wiki_signals?domain=nytimes",
 
     // "https://iabot.wmcloud.org/api.php?action=statistics&format=flat", // from tarb_insighta
-    "https://iabot-api.archive.org/services/context/iari-stage/v2/version", // version of stage IARI
-    "https://iabot-api.archive.org/services/context/iari-stage/v2/tarb_insights", // TARB stats data
 
-    "http://localhost:5001/v2/version",
+    "https://iabot-api.archive.org/livewebcheck?url=https://citypopulation.de/en/chile/mun/admin/052__isla_de_pascua/",
+
+    //    "http://localhost:5001/v2/version",
     // "http://localhost:5001/v2/wiki_signals?domain=nytimes.com",
     // "http://localhost:5001/v2/tarb_insights",   // TARB stats data
     "http://localhost:5001/v2/wiki_insights",   // Wiki stats data

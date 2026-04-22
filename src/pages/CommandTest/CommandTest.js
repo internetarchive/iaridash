@@ -2,7 +2,7 @@ import React from 'react';
 import CommandTestDisplay from "./CommandTestDisplay";
 import RouteHeader from "../../components/RouteHeader";
 
-import { iariTestCommands } from "../../constants/iariTestCommands.js"
+import { testCommands } from "../../constants/testCommands.js"
 
 const CommandTest = () => {
 
@@ -21,9 +21,12 @@ const CommandTest = () => {
                 command,
                 {
                     method: method,
+                    mode: 'cors',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Accept': 'application/json'
+                        'Accept': 'application/json',
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
                     }
                 });
             const jsonData = await response.json();
@@ -73,7 +76,7 @@ const CommandTest = () => {
                 <div className={"col-12"}>
                     <CommandTestDisplay
                         commandResults={jsonCommandResults}
-                        commandList={iariTestCommands}
+                        commandList={testCommands}
                         commandText={defaultCommandText} onAction={handleAction}/>
                 </div>
             </div>

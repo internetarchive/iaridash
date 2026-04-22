@@ -16,7 +16,9 @@ import {UrlStatusCheckMethods} from "./constants/checkMethods";
 import {IariSources} from "./constants/iariSources";
 import {IareEnvironments} from "./constants/environments";
 
-const REGEX_PRODUCTION_ENV = new RegExp(/^(?:(?:[\w-]+\.)+)?(?:[\w-]+\.)?archive\.org$/);
+const REGEX_ENV_PRODUCTION = new RegExp(/^(?:(?:[\w-]+\.)+)?(?:[\w-]+\.)?archive\.org$/);
+const REGEX_ENV_STAGE = new RegExp(/^internetarchive.github.io/);
+const REGEX_ENV_LOCAL = new RegExp(/^localhost:3300/);
 // checks if "(\.?)archive.org" at end of string
 
 
@@ -48,11 +50,12 @@ const getEnvironment = () => {
     // comment out when not debugging...
     // return IareEnvironments.PROD
     // return IareEnvironments.STAGE
+    return IareEnvironments.STAGE
 
     const host = window.location.host
-    if (REGEX_PRODUCTION_ENV.test(host)) return IareEnvironments.PROD
-    if (host === "internetarchive.github.io") return  IareEnvironments.STAGE
-    if (host === "localhost:3300") return  IareEnvironments.LOCAL
+    if (REGEX_ENV_PRODUCTION.test(host)) return IareEnvironments.PROD
+    if (REGEX_ENV_STAGE.test(host)) return  IareEnvironments.STAGE
+    if (REGEX_ENV_LOCAL.test(host)) return  IareEnvironments.LOCAL
     return IareEnvironments.OTHER
 }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { useReactTable, getCoreRowModel, getSortedRowModel, flexRender } from "@tanstack/react-table"
-// NB: load first using: npm install @tanstack/react-table
+// NB: install first using: npm install @tanstack/react-table
 
 
 const Table = React.memo(
@@ -60,6 +60,8 @@ const Table = React.memo(
                             <th
                                 key={header.id}
                                 className={"border border-gray-400 px-3 py-2"}
+                                title={header.column.columnDef.meta?.tooltip}
+
                                 style={ sortable ? {cursor: "pointer"} : null}
                                 onClick={sortable ? header.column.getToggleSortingHandler() : null}
                             >

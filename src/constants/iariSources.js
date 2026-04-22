@@ -24,5 +24,10 @@ export const IariSources = {
         caption: 'IARI Local',
         api_base: 'http://localhost:5001/v2/',
     },
+    iari_researcher6: {
+        key: 'iari_researcher6',
+        caption: 'IARI researcher6',
+        api_base: 'http://researcher6.fnf.archive.org:5088/v2/',
+    },
 }
 
