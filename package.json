@@ -1,8 +1,8 @@
 {
   "name": "iaridash",
-  "version": "0.0.2.11",
+  "version": "0.0.2.12",
   "description": "Dashboard for Internet Archive Researcher Interface",
-  "version_name": "0.0.2.11 Added command sets",
+  "version_name": "0.0.2.12",
   "private": true,
   "dependencies": {
     "@tanstack/react-table": "^8.21.2",

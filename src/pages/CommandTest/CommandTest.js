@@ -22,7 +22,7 @@ const CommandTest = () => {
                 command,
                 {
                     method: method,
-                    mode: 'cors',
+                    // mode: 'cors',
                     headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
