@@ -66,3 +66,22 @@ xxx.command-results {
     display: block;
     text-decoration: none;
 }
+.suggested-command:hover {
+    text-decoration: underline;
+}
+.command-text::placeholder{
+    color: #bebebe;
+    opacity: 1; /* ensures consistent color across browsers */
+}
+.sub-command {
+    font-size: 67%;
+    font-style: italic;
+    color: grey;
+}
+/*.command-text::placeholder,*/
+/*.command-text::-moz-placeholder,*/
+/*.command-text:-ms-input-placeholder*/
+/*{*/
+/*    color: red;*/
+/*    opacity: 1; !* ensures consistent color across browsers *!*/
+/*}*/

@@ -6,6 +6,7 @@ import { testCommands } from "../../constants/testCommands.js"
 
 const CommandTest = () => {
 
+    const [commandSet, setCommandSet] = React.useState("test")
     const [jsonCommandResults, setJsonCommandResults] = React.useState({})
 
     const sectionTitle = "Command Tester"
@@ -25,8 +26,8 @@ const CommandTest = () => {
                     headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
-                        'Access-Control-Allow-Origin': '*',
-                        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
+                        // 'Access-Control-Allow-Origin': '*',
+                        // 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
                     }
                 });
             const jsonData = await response.json();
@@ -52,12 +53,18 @@ const CommandTest = () => {
             // placebo to make coding easier for adding "else if" conditions
         }
 
-        else if (action === "opCommand") {
+        else if (action === "run_command") {
             console.log(`CommandTest Action: "${action}" engaged.`)
             // alert(`CommandTest Action: ${action}, command: ${value}`)
 
             // fetch command results, and set property to be delegated to CommandTest display
             fetchJsonCommandResults(value).then(results => setJsonCommandResults(results))
+        }
+
+        else if (action === "change_command_set") {
+            console.log(`CommandTest Action: "${action}" engaged.`)
+
+            setCommandSet(value)
         }
 
 
@@ -76,8 +83,10 @@ const CommandTest = () => {
                 <div className={"col-12"}>
                     <CommandTestDisplay
                         commandResults={jsonCommandResults}
-                        commandList={testCommands}
-                        commandText={defaultCommandText} onAction={handleAction}/>
+                        commandList={testCommands[commandSet]}
+                        commandText={defaultCommandText}
+                        commandSet={commandSet}
+                        onAction={handleAction}/>
                 </div>
             </div>
         </div>

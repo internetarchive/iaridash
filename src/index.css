@@ -114,7 +114,10 @@ body {
     /*overflow: auto;*/
 }
 
-
+.iare-label {
+    display: inline-block;
+    padding-left:.35rem
+}
 
 .iari-ux-header {
     /*flex: 0 0 auto; !* fixed height *!*/
