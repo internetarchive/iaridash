@@ -11,7 +11,7 @@ export default function CommandTestDisplay(
         commandText = null,
         commandResults = null,
         commandList = [],
-        commandSet = "test",
+        commandSetSelected = "test",
         onAction
     }) {
 
@@ -19,11 +19,11 @@ export default function CommandTestDisplay(
     const [localCommandText, setLocalCommandText]= useState( commandText ? commandText : "")
     const [textData, setTextData] = useState(commandResults?.results || {});
 
+    // update command results text data area when commandResults
     useEffect(() => {
-        if (
-            commandResults?.results !== undefined &&
-            commandResults.command === localCommandText
-        ) {
+        if (commandResults?.results !== undefined &&
+            commandResults.command === localCommandText)   // NB Why this? to ensure synchronicity?
+        {
             setTextData(commandResults.results);
         }
     }, [commandResults, localCommandText]);
@@ -59,21 +59,33 @@ export default function CommandTestDisplay(
         >{command}</a>)
         : <p>No commands to show</p>
 
+    // const commandSets = ["test", "iari", "other"]
+    const commandSets = ["test", "iari"]
+
     const commandSetChooser = (
         <div style={{marginLeft: "1rem", display: "inline-flex", alignItems: "center"}}>
-            {["test", "iari", "other"].map((option) => (
-                <label key={option} style={{marginRight: "1rem"}}>
-                    <input
-                        type="radio"
-                        name="commandSet"
-                        value={option}
-                        checked={commandSet === option}
-                        onChange={(e) => onAction({
-                            "action": "change_command_set", "value": e.target.value
-                        })}
-                    /><span className={"iare-label"}>{option}</span>
-                </label>
-            ))}
+            {commandSets.map((commandSet) => {
+                const label = commandSet === "test"
+                    ? "IARI version tests"
+                    : commandSet === "iari"
+                        ? "IARI Commands"
+                        : commandSet
+
+                return <>
+                    <label key={commandSet} style={{marginRight: "1rem"}}>
+                        <input
+                            type="radio"
+                            name="commandSet"
+                            value={commandSet}
+                            checked={commandSetSelected === commandSet}
+                            onChange={(e) => onAction({
+                                "action": "change_command_set", "value": e.target.value
+                            })}
+                        /><span className={"iare-label"}>{label}</span>
+                    </label>
+                </>
+                }
+            )}
         </div>
     );
 
@@ -84,7 +96,8 @@ export default function CommandTestDisplay(
 
                 <div className={"header-all-parts"}>
                     <div className={"row header-left-part"}>
-                        <h3>Suggested Commands{commandSetChooser}<br/><span className={"sub-command"}>Click to insert as Command Text</span></h3>
+                        <h3>Suggested Commands{commandSetChooser}<br/><span className={"sub-command"}>Clicking an item
+                            inserts it into Command Text</span></h3>
                     </div>
                 </div>
 
@@ -100,7 +113,8 @@ export default function CommandTestDisplay(
 
                 <div className={"header-all-parts"}>
                     <div className={"row header-left-part"}>
-                        <h3>Command {buttonEngageCommand}</h3>
+                        <h3>Command Text{buttonEngageCommand} <br/><span
+                            className={"sub-command"}>Click "Run Command" to execute command</span></h3>
                     </div>
                 </div>
 

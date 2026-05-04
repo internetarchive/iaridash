@@ -84,14 +84,13 @@ const queryString = window.location.hash.split('?')[1]  // Extract the part afte
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const queryParameters = new URLSearchParams(queryString)
 const env = getEnvironment();  // return an Environment structure
+
 const myDebug = queryParameters.has("debug") ? queryParameters.get("debug").toLowerCase() === 'true' : false;
-const myPath = queryParameters.has("url") ? queryParameters.get("url") : '';
 const myRefresh = queryParameters.has("refresh") ? queryParameters.get("refresh").toLowerCase() === 'true' : false;
 const myIariSourceId = getIariSource(queryParameters, env?.key);
 const myMethod = getMethod(queryParameters, env?.key);
 
 root.render(<App env={env}
-                 myPath={myPath}
                  myRefresh={myRefresh}
                  myMethod={myMethod}
                  myIariSourceId={myIariSourceId}

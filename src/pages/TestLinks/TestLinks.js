@@ -7,10 +7,12 @@ import './testLinks.css'
 import { iariTestLinks } from "../../constants/iariTestLinks.js"
 
 const TestLinks = () => {
-    // test links for IARI right now...could be expanded for general links later
+    // test links for multiple versions of IARI...could be expanded for general links later
     // links are made fron each iari source and all defined endpoints.
 
-    const iari_sources = ['iari_local', 'iari_researcher6', 'iari_stage']  // keys into IariSources
+    // const iari_sources = [ 'iari_stage', 'iari_researcher6', 'iari_local']  // keys into IariSources
+    const iari_sources = [ 'iari_stage', 'iari_local']  // keys into IariSources
+
     const filteredExampleEndpoints = iariTestLinks // for when we get to where we want to filter default...
 
     const linksForSource = (source) => {
@@ -29,7 +31,9 @@ const TestLinks = () => {
         }
 
     return <>
-        <RouteHeader caption = {"IARI Test Links"} subCaption = {"Click on Endpoint Link to open up results in another tab."}/>
+        <RouteHeader
+            caption = {"IARI Test Links"}
+            subCaption = {"Click on Endpoint Link to open up results in another tab."}/>
 
         <div className={"container-fluid"}>
             <div className="row">

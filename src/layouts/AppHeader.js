@@ -20,12 +20,12 @@ export default function AppHeader({
     const publicRoutes = [
         // ["/",'Home'],
         ["/webrx",'Web Rx'],
-        ["/wiki",'Wiki'],
-        ["/tarb",'TARB'],
         ["/cd",'Citations Database'],
+        ["/tarb",'TARB'],
+        ["/wiki",'Wiki'],
         ["/archives",'Wayback Archive Test'],
-        ["/links", 'IARI Tester'],
         ["/command", 'Command Tester'],
+        ["/links", 'IARI Tester'],
     ].map( rp => {
         return <li key={rp[0]}>
             <Link to={rp[0]} className={location.pathname === rp[0] ? "active-link" : ""}>{rp[1]}</Link>

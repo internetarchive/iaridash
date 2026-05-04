@@ -1,8 +1,8 @@
-export const testCommands = {
+export const CommandSets = {
     "test": [
-        "http://researcher6.fnf.archive.org:5088/v2/version",
-        "http://localhost:5001/v2/version",
         "https://iabot-api.archive.org/services/context/iari-stage/v2/version",
+        "http://localhost:5001/v2/version",
+        // "http://researcher6.fnf.archive.org:5088/v2/version",
     ],
 
     "iari":

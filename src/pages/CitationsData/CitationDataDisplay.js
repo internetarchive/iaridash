@@ -7,7 +7,8 @@ import Table from "../../components/Table";
 
 export default function CitationDataDisplay({
         citationData = {},
-        citationLabel = null,
+        citationLabel = null, 
+        citationUseRawRefs= false,
         options = {},
         onAction = null,
         errors = null,
@@ -94,34 +95,71 @@ export default function CitationDataDisplay({
             {accessorKey: "earliest_revision_timestamp", header: "Earliest Revision"},
             {accessorKey: "latest_revision_timestamp", header: "Latest Revision"},
             {accessorKey: "record_sha1", header: "Record SHA1"},
-            {accessorKey: "reference_normalized", header: "Reference"},
-            {accessorKey: "reference_normalized_sha1", header: "Reference SHA1"},
-    //         {accessorKey: "name", header: () => (
-    // <span title="This is the user's full name">
-    //     Name
-    // </span>)},
-            {
-                accessorKey: 'name',
-                header: 'Name',
-                cell: (info) => (
-                    <span title={`User: ${info.getValue()}`}>
-        {info.getValue()}
-      </span>
-                ),
-                meta: {
-                    tooltip: 'This is the user name column',
-                },
-            },
-        ];
+            ...(citationUseRawRefs
+                    ? [
+                        {accessorKey: "reference_raw", header: "Reference Raw"},
+                        {accessorKey: "reference_raw_sha1", header: "Reference Raw SHA1"},
+                    ]
+                    : [
+                        {accessorKey: "reference_normalized", header: "Reference Normalized"},
+                        {accessorKey: "reference_normalized_sha1", header: "Reference Normalized SHA1"},
+                    ]
+            ),
+            // {
+            //     accessorKey: 'name', header: 'Name',
+            //     cell: (info) => (
+            //         <span title={`User: ${info.getValue()}`}>
+            //            {info.getValue()}
+            //       </span>
+            //     ),
+            //     meta: {
+            //         tooltip: 'This is the user name column',
+            //     },
+            // },
+        ]
+         
+        
+         
+        //     const extra_cols = [
+        //         {accessorKey: "reference_normalized", header: "Reference"},
+        //         {accessorKey: "reference_normalized_sha1", header: "Reference SHA1"},
+        //
+        //         {accessorKey: "reference_raw", header: "Reference Raw"},
+        //         {accessorKey: "reference_raw_sha1", header: "Reference Raw SHA1"},
+        // //         {accessorKey: "name", header: () => (
+        // // <span title="This is the user's full name">
+        // //     Name
+        // // </span>)},
+        //         {accessorKey: 'name', header: 'Name',
+        //             cell: (info) => (
+        //                 <span title={`User: ${info.getValue()}`}>
+        //                {info.getValue()}
+        //   </span>
+        //             ),
+        //             meta: {
+        //                 tooltip: 'This is the user name column',
+        //             },
+        //         },
+        //     ];
 
         const rows = citationData.refs.map((ref, i) => ({
             id_key: i,
             earliest_revision_timestamp: ref.earliest_revision_timestamp,
             latest_revision_timestamp: ref.latest_revision_timestamp,
             record_sha1: ref.record_sha1,
-            reference_normalized: ref.reference_normalized,
-            reference_normalized_sha1: ref.reference_normalized_sha1
-        }));
+
+            ...(citationUseRawRefs
+                    ? {
+                        reference_raw: ref.reference_raw,
+                        reference_raw_sha1: ref.reference_raw_sha1,
+                    }
+                    : {
+
+                        reference_normalized: ref.reference_normalized,
+                        reference_normalized_sha1: ref.reference_normalized_sha1,
+                    }
+            ),
+            }));
 
         return {
             cols,

@@ -13,7 +13,6 @@ import AppRouter from "./routes/AppRouter";
 
 export default function App({
             env,  // this is an Environment structure
-            myPath,
             myRefresh,
             myMethod,
             myIariSourceId,
@@ -141,10 +140,9 @@ export default function App({
         <div style={{marginBottom:".5rem"}}>{iariChoiceSelect} {methodChoiceSelect}</div>
         <div>{buttons}</div>
         <p><span className={'label'}>Environment:</span> {env?.caption}, ({window.location.host})</p>
-        <p><span className={'label'}>IARE version:</span> {package_json.version}</p>
+        <p><span className={'label'}>IARIDASH version:</span> {package_json.version}</p>
         <p><span className={'label'}>IARI Base:</span> {myIariSourceId} ({IariSources[myIariSourceId]?.api_base})</p>
-        <p><span className={'label'}>Check Method:</span> {UrlStatusCheckMethods[checkStatusMethod].caption} ({checkStatusMethod})</p>
-        <p><span className={'label'}>URL from address line:</span> {myPath}</p>
+        <p><span className={'label'}>Check Status Method:</span> {UrlStatusCheckMethods[checkStatusMethod].caption} ({checkStatusMethod})</p>
         <p><span className={'label'}>Force Refresh:</span> {forceRefresh ? "TRUE" : "false"}</p>
 
     </div>

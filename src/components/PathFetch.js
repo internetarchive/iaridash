@@ -15,8 +15,8 @@ export default function PathFetch(
     {
         initialPath='',
         initialUseRawRefs= false,
-        initialUseRawRefsLabel= 'Show Raw References',
-        handleSubmit,
+        initialUseRawRefsLabel= 'Show Raw References (versus Normalized references)',
+        onSubmit,
         labelPathText = "Submit",
         submitButtonText = "Submit",
         placeholder='',
@@ -36,24 +36,33 @@ export default function PathFetch(
         let key = event.key;
         if (key === "Enter") {
             console.log("PathFetch::handlePathKeyPress: submitting via enter-key")
-            returnResults()
+
+            handleFormSubmit()
+            // returnResults()
+
         }
     }
 
-    const handlePathSubmit = (event) => {
-        console.log("PathFetch::handlePathSubmit: pathName is: " + pathName)
-        returnResults()
-    }
-
-    const returnResults = () => {
-        // TODO handle return checked results in a generic fashion
-        handleSubmit({
+    const handleFormSubmit = (event) => {
+        console.log("PathFetch::handleFormSubmit: pathName is: " + pathName)
+        onSubmit({
             path: pathName,
             options: {
                 useRawRefs: useRawRefs
             }
         })
+                // returnResults()
     }
+
+                // const returnResults = () => {
+                //     // TODO handle return checked results in a generic fashion
+                //     onSubmit({
+                //         path: pathName,
+                //         options: {
+                //             useRawRefs: useRawRefs
+                //         }
+                //     })
+                // }
 
     const fetchInput = <>
         <label
@@ -99,7 +108,7 @@ export default function PathFetch(
             <button
                 className={"utility-button"}
                 // style={{margin: "0 0 0.2rem 10px"}}
-                onClick={handlePathSubmit}>
+                onClick={handleFormSubmit}>
                 <span>{submitButtonText}</span>
             </button
             >

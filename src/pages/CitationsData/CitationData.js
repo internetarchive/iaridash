@@ -64,18 +64,18 @@ const CitationData = (
 
     }
 
-    const handlePathResults = (pathResults) => {
+    const handleFormSubmit = (formResults) => {
         // TODO:
         //  send results back up to parent component
-        //  these results would t hen be transformed into a parmaterized URL that
-        //  would be wondow.locted so a URL coul be made to exactly describe what
-        //  is being donw in this program. Similar to IARE
+        //  these results would t hen be transformed into a parameterized URL that
+        //  would be window.located so a URL could be made to exactly describe what
+        //  is being done in this program. Similar to IARE
 
         // for now, just set local params...
 
         setApiParams({
-            pathName: pathResults.path,
-            useRawRefs: pathResults.options?.useRawRefs,
+            pathName: formResults.path,
+            useRawRefs: formResults.options?.useRawRefs,
         })
     }
 
@@ -147,7 +147,7 @@ const CitationData = (
         <div className={"errors"}>Error: {error}</div>
     )
 
-// TODO: get path_to_fetch from parameters for this component OR from context
+    // TODO: get path_to_fetch from parameters for this component OR from context
 
     return <div className="citation-data-container">
 
@@ -161,9 +161,9 @@ const CitationData = (
                     <PathFetch
                         initialPath={apiParams.pathName}
                         initialUseRawRefs={apiParams.useRawRefs}
-                        initialUseRawRefsLabel = "Show Raw References"
+                        initialUseRawRefsLabel = "Show Raw References (versus Normalized references)"
 
-                        handleSubmit={handlePathResults}
+                        onSubmit={handleFormSubmit}
                         submitButtonText = "Submit"
 
                         placeholder={"Enter a Wikipedia article here"}
@@ -181,9 +181,12 @@ const CitationData = (
                         caption: `Citation Data for: ${apiParams.pathName}`,
                         details: <div>Api Url: <MakeLink href={displayApiUrl}/></div>
                     }}
+                    citationUseRawRefs={apiParams.useRawRefs}
+
                     options={{}}
                     onAction={handleAction}
                     errors={{errors}}
+
                 />
         }
         </div>

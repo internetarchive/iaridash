@@ -2,7 +2,7 @@ import React from 'react';
 import CommandTestDisplay from "./CommandTestDisplay";
 import RouteHeader from "../../components/RouteHeader";
 
-import { testCommands } from "../../constants/testCommands.js"
+import { CommandSets } from "../../constants/commandSets.js"
 
 const CommandTest = () => {
 
@@ -10,7 +10,7 @@ const CommandTest = () => {
     const [jsonCommandResults, setJsonCommandResults] = React.useState({})
 
     const sectionTitle = "Command Tester"
-    const sectionDescription = "Exercise commands over the wire; assumes output is in JSON format"
+    const sectionDescription = "Exercise commands over the http wire; assumes output is in JSON format"
 
     const defaultCommandText = "https://iabot.wmcloud.org/api.php?action=statistics&format=flat"
 
@@ -83,9 +83,9 @@ const CommandTest = () => {
                 <div className={"col-12"}>
                     <CommandTestDisplay
                         commandResults={jsonCommandResults}
-                        commandList={testCommands[commandSet]}
+                        commandList={CommandSets[commandSet]}
                         commandText={defaultCommandText}
-                        commandSet={commandSet}
+                        commandSetSelected={commandSet}
                         onAction={handleAction}/>
                 </div>
             </div>
